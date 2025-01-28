@@ -1,12 +1,21 @@
-// backend/models/userModel.js
-const db = require('../config/db')(); // Call the function to get the db instance
+const db = require('../config/db'); // Get the db instance
 
-// Example query to insert data
+// Drop the existing table if it exists
+db.run('DROP TABLE IF EXISTS users', (err) => {
+  if (err) {
+    console.error('Error dropping table:', err);
+  } else {
+    console.log('Table dropped');
+  }
+});
+
+// Recreate the users table with the correct schema
 db.run(`
   CREATE TABLE IF NOT EXISTS users (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     username TEXT,
-    email TEXT
+    email TEXT,
+    password TEXT
   )
 `, (err) => {
   if (err) {
