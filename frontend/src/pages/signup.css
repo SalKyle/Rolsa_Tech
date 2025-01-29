@@ -1,0 +1,52 @@
+body {
+    background: linear-gradient(135deg, #FFFFFF, #FDF0E6, #E4AB80); /* 45deg for angular tilt */
+    min-height: 100vh; /* Make sure the background covers the entire viewport */
+    margin: 0; /* Remove default margin */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white; /* Optional, for text color */
+  }
+  
+.logo {
+    width: 10vw;
+}
+h1{
+    color: #904F0D;
+    width: ;
+}
+h2{
+    color: #904F0D;
+}
+header{
+    padding: 5%;
+    display: flex;
+    align-content: center;
+}
+.input_container{
+    background-color: #F0BD9D;
+    display: flex;
+    flex-direction: column;
+    /* gap: 10px; */
+    padding: 10px;
+    height:59vh;
+    width: 50vw;
+    border-radius: 10px;
+    border-top-left-radius: 10px;     /* Top-left corner */
+    border-top-right-radius: 15px;    /* Top-right corner */
+    border-bottom-left-radius: 5px;   /* Bottom-left corner */
+    border-bottom-right-radius: 20px;
+    align-items: center;
+    
+}
+.signup_input{
+    margin: 10px;
+    padding: 10px;
+    font-size: 16px;
+    width: 90%;
+    border: none; /* Removes any default border */
+    border-bottom: 2px solid #E4AB80;
+    background: none;
+    
+
+}
