@@ -1,52 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400&family=Quicksand:wght@500&display=swap');
+
 body {
-    background: linear-gradient(135deg, #FFFFFF, #FDF0E6, #E4AB80); /* 45deg for angular tilt */
-    min-height: 100vh; /* Make sure the background covers the entire viewport */
-    margin: 0; /* Remove default margin */
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #FFFFFF, #FDF0E6, #E4AB80);
+    min-height: 100vh;
+    margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white; /* Optional, for text color */
-  }
-  
+    color: white;
+}
+
+h1, h2 {
+    font-family: 'Playfair Display', serif;
+    color: #925518;
+}
+
 .logo {
-    width: 10vw;
+    width: 20%;
+
 }
-h1{
-    color: #904F0D;
-    width: ;
-}
-h2{
-    color: #904F0D;
-}
-header{
-    padding: 5%;
+
+header {
+    margin: none;
+    padding: 1%;
     display: flex;
-    align-content: center;
+    align-items: center; /* Centers items vertically */
+    justify-content: center; /* Centers items horizontally */
+    flex-direction: column; /* Stack items vertically */
+    width: 40vw
 }
-.input_container{
+
+
+.input_container {
     background-color: #F0BD9D;
     display: flex;
     flex-direction: column;
-    /* gap: 10px; */
     padding: 10px;
-    height:59vh;
-    width: 50vw;
+    height: 59vh;
+    width: 40vw;
     border-radius: 10px;
-    border-top-left-radius: 10px;     /* Top-left corner */
-    border-top-right-radius: 15px;    /* Top-right corner */
-    border-bottom-left-radius: 5px;   /* Bottom-left corner */
-    border-bottom-right-radius: 20px;
     align-items: center;
-    
 }
-.signup_input{
-    margin: 10px;
+
+.signup_input {
+    font-family: 'Quicksand', sans-serif;
     padding: 10px;
     font-size: 16px;
-    width: 90%;
-    border: none; /* Removes any default border */
+    width: 100%;
+    border: none;
     border-bottom: 2px solid #E4AB80;
     background: none;
-    
+}
 
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 80%;
+}
+
+button {
+    font-family: 'Quicksand', sans-serif;
+    background-color: #904F0D;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 50%;
+    font-size: 0.9em;
+}
+
+.login_link {
+    font-family: 'Poppins', sans-serif;
+    color: #904F0D;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.login_link:hover {
+    color: #50250b;
+}
+
+.signup_input::placeholder {
+    color: #904F0D;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.video-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.video-container video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Overlay for a soft fade effect */
+.video-container::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient( rgba(0, 0, 0, 1) 70%,);
 }
