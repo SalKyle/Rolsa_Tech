@@ -1,15 +1,13 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import "./signup.css";
 import coffee from "./components/4820120-uhd_4096_2160_25fps.mp4";
 import logo from "./components/Bean and Brew.png";
 
-const Signup = ({ setUser, onError }) => {
-  const [username, setUsername] = useState("");
+const Login = ({ setUser, onError }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [con_password, setcon_Password] = useState("");
 
   function BackgroundVideo() {
     return (
@@ -24,62 +22,32 @@ const Signup = ({ setUser, onError }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (password !== con_password) {
-      alert("Passwords do not match!");
-      return;
-    }
 
-    const MIN_PASSWORD_LENGTH = 8;
-    if (password.length < MIN_PASSWORD_LENGTH) {
-      alert(`Password must be at least ${MIN_PASSWORD_LENGTH} characters long.`);
-      return;
-    }
-
-    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\W).+$/;
-    if (!passwordRegex.test(password)) {
-      alert(
-        "Password must contain at least one lowercase letter, one uppercase letter, and one symbol."
-      );
-      return;
-    }
-
-    const userData = { username, email, password };
+    const userData = { email, password };
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/auth/signup",
+        "http://localhost:5000/api/auth/login",
         userData
       );
       setUser(response.data);
     } catch (error) {
-      onError(error);
+      await onError(error);
     }
   };
 
   return (
     <>
-      {/* Include the Background Video */}
+      {/* Background Video */}
       <BackgroundVideo />
 
       <header className="header">
-        
         <img src={logo} alt="Bean and Brew Cafe Logo" className="logo" />
-        
-        
         <h1>Bean and Brew Cafe</h1>
-        
       </header>
 
       <div className="input_container">
-        <h2>Signup</h2>
+        <h2>Login</h2>
         <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            className="signup_input"
-            placeholder="Username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
           <input
             type="email"
             placeholder="Email"
@@ -96,19 +64,13 @@ const Signup = ({ setUser, onError }) => {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-          <input
-            type="password"
-            placeholder="Confirm Password"
-            className="signup_input"
-            value={con_password}
-            onChange={(e) => setcon_Password(e.target.value)}
-            required
-          />
-          <button type="submit">Sign Up</button>
+          <button type="submit">Login</button>
           <div className="signup-footer">
             <p>
-              Already have an account?{" "}
-              <Link to="/login" className = "login_link">Login</Link>
+              Don't have an account?{" "}
+              <Link to="/signup">
+                Signup
+              </Link>
             </p>
           </div>
         </form>
@@ -117,4 +79,4 @@ const Signup = ({ setUser, onError }) => {
   );
 };
 
-export default Signup;
+export default Login;

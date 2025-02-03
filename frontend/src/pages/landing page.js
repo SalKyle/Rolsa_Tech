@@ -11,6 +11,10 @@ const LandingPage = () => (
             <img src={logo} alt="Bean and Brew Cafe Logo" className="logo" />
             <h1>Bean and Brew Cafe</h1>
         </header>
+        <div className="nav">
+            <Link to="/signup"><button>Signup</button></Link>
+            <Link to="/login"><button>Login</button></Link>
+            </div>
 
         <div className="seasonal_offer">
             <div className="video-container">
