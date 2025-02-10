@@ -21,8 +21,15 @@ const LandingPage = () => (
                 <Link to="/signup"><button>Signup</button></Link>
                 <Link to="/login"><button>Login</button></Link>
                 </div>  
+            
+            <div className="links">
+                <Link to={"/menu"}>Menu</Link>
+                <Link to={"/reservation"}>Reservations</Link>
+                <Link to={"/menu"}>Baking Lessons</Link>
+                <Link to={"/menu"}>Rate my Cake</Link>
+                <Link to={"/menu"}>Contact</Link>
             </div>
-        
+        </div>
 
         <div className="seasonal_offer">
             
