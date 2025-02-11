@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import "./signup.css";
-import coffee from "./components/4820120-uhd_4096_2160_25fps.mp4";
-import logo from "./components/Bean and Brew.png";
+import coffee from "../components/4820120-uhd_4096_2160_25fps.mp4";
+import logo from "../components/Bean and Brew.png";
 
 const Signup = ({ setUser, onError }) => {
   const [username, setUsername] = useState("");

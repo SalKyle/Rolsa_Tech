@@ -1,8 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import LandingPage from "./pages/landing page";
-import Signup from "./pages/signup"; // Ensure this file exists
-import Login from "./pages/login"; // Ensure this file exists
+import LandingPage from "./pages/lnd-page/landing page";
+import Signup from "./pages/signup/signup"; // Ensure this file exists
+import Login from "./pages/login/login"; // Ensure this file exists
 
 const App = () => {
   return (
