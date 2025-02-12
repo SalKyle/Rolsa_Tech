@@ -52,7 +52,7 @@ html body {
     z-index: 1; /* Ensures it's above the video */
     text-align: center;
     align-self: flex-start;
-    padding-top: 3%;
+    padding-top: 2.5%;
     width : 100%;
     height: 20%;
 }
@@ -100,6 +100,18 @@ html body {
     .nav {
         flex-direction: column;
     }
+    .login-nav{
+        display: none;
+    }
+    .nav button{
+        font-size: 0.7em !important;
+    }
+    .seasonal_offer h4 {
+        font-size: 1em !important;
+    }
+    .seasonal_offer button {
+        font-size: 0.7em !important;
+    }
 }
 
 @media (max-width: 480px) {
@@ -114,6 +126,19 @@ html body {
     }
     .theme{
         height: 55vh;  
+    }
+    .login-nav{
+        display: none;
+    }
+    .nav button{
+        font-size: 0.7em !important;
+    }
+    .seasonal_offer h4 {
+        font-size: 0.9em !important;
+        word-wrap: break-word;
+    }
+    .seasonal_offer button {
+        font-size: 0.7em !important;
     }
 }
 @media (min-width: 1200px) {
@@ -151,11 +176,11 @@ h1 {display: flex;
 .nav button {
     background: #8B4513; /* Coffee brown */
     color: white;
-    padding: 10px 20px;
+    padding: 8px 15px;
     border: none;
     cursor: pointer;
     width: auto;
-    font-size: 1em;
+    font-size: 0.8em;
     border-radius: 5px;
 }
 
@@ -223,5 +248,131 @@ h1 {display: flex;
 
 .links a:not(:last-child) {
     border-right: 2px solid #8B4513;  /* Vertical line between links */
+}
+/* Hamburger Menu */
+.hamburger-menu {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    align-self: flex-start;
+    margin-top: 3.6%;
+    gap: 5px;
+    padding: 10px;
+    width:20px;
+    z-index: 3;
+}
+
+.bar {
+    width: 30px;
+    height: 3px;
+    background-color: #8B4513;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Menu animation */
+.bar.open:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.bar.open:nth-child(2) {
+    opacity: 0;
+}
+
+.bar.open:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+.links-ham.show{
+    display: none;
+}
+/* Mobile menu */
+@media (max-width: 768px) {
+    .hamburger-menu {
+        display: flex;
+    }
+
+    .links-ham {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 30px;
+        align-self: center;
+        background-color: rgb(223, 173, 117);
+        width: 20%;
+        padding: 20px 0;
+        padding-left: 2.9%;
+        text-align: center;
+        padding-right: 1%;
+    }
+
+    .links-ham.show {
+        display: flex;
+    }
+    .links-ham a:active::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        width: 2px;  /* Short vertical line effect */
+        background-color: #D2691E;  /* Color of the effect */
+    }
+    
+    .links-ham a:not(:last-child) {
+        border-bottom: 2px solid #8B4513;  /* Vertical line between links */
+    }
+    .links-ham a {
+        color: #8B4513;
+        text-decoration: none;
+        padding: 10px;
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 425px) {
+    .hamburger-menu {
+        display: flex;
+    }
+
+    .links-ham {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 30px;
+        align-self: center;
+        background-color: rgb(223, 173, 117);
+        width: 20%;
+        padding: 20px 0;
+        padding-left: 2.9%;
+        text-align: center;
+        padding-right: 1%;
+    }
+
+    .links-ham.show {
+        display: flex;
+    }
+    .links-ham a:active::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        width: 2px;  /* Short vertical line effect */
+        background-color: #D2691E;  /* Color of the effect */
+    }
+    
+    .links-ham a:not(:last-child) {
+        border-bottom: 2px solid #8B4513;  /* Vertical line between links */
+    }
+    .links-ham a {
+        color: #8B4513;
+        text-decoration: none;
+        padding: 10px;
+        font-size: 0.5em;
+    }
+}
+@media (min-width: 769px) {
+    .links-ham {
+        display: none !important; /* Ensures menu stays hidden on larger screens */
+    }
 }
 
