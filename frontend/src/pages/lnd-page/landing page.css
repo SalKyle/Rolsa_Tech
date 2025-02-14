@@ -3,7 +3,7 @@
 
 html body {
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #FFFFFF, #FDF0E6, #E4AB80);
+    background: #f8e4c1 !important; /* Soft coffee theme */
     min-height: 100vh;
     min-width: 100vw;
     margin: 0;
@@ -185,19 +185,49 @@ h1 {display: flex;
 }
 
 .seasonal_offer {
-    width: 100%;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Ensures content stays centered */
+    position: relative; /* Makes sure the child absolute positioning works inside */
+    /* margin-top: -6%; */
+    margin-left: 10%;
+    margin-right: 10%;
+    z-index: 0;
+    opacity: 0.9;
+    margin-bottom: 5%;
+    height: auto;
     padding: 1%;
     text-align: center;
-    background: linear-gradient(to bottom, #f8e4c1, #d2a679); /* Soft coffee theme */
+    background: linear-gradient(to bottom, #f8e4c1, #d2a679);
+    overflow: hidden; /* Ensures content does not leave */
+}
+
+.seasonal_offer img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1; /* Puts image behind text */
+}
+
+.seasonal_offer h4, 
+.seasonal_offer button {
+    position: relative; /* Ensures they stay above the image */
+    z-index: 1;
 }
 
 .seasonal_offer h4 {
     font-size: 1.2em;
     color: #4a2c2a;
+    /* z-index: 4; */
     word-wrap: break-word;
 }
 
 .seasonal_offer button {
+    /* z-index: 4; */
     background: #8B4513;
     color: white;
     padding: 10px 20px;
@@ -376,3 +406,56 @@ h1 {display: flex;
     }
 }
 
+.seasonal_offer1 {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Ensures content stays centered */
+    position: relative; /* Makes sure the child absolute positioning works inside */
+    margin-top: -4%;
+    margin-left: 10%;
+    margin-right: 10%;
+    z-index: 0;
+    opacity: 0.9;
+    margin-bottom: 5%;
+    height: auto;
+    padding: 1%;
+    text-align: center;
+    background: linear-gradient(to bottom, #f8e4c1, #d2a679);
+    overflow: hidden; /* Ensures content does not leave */
+}
+
+.seasonal_offer1 img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1; /* Puts image behind text */
+}
+
+.seasonal_offer1 h4, 
+.seasonal_offer1 button {
+    position: relative; /* Ensures they stay above the image */
+    z-index: 1;
+}
+
+.seasonal_offer1 h4 {
+    font-size: 1.2em;
+    color: #4a2c2a;
+    /* z-index: 4; */
+    word-wrap: break-word;
+}
+
+.seasonal_offer1 button {
+    /* z-index: 4; */
+    background: #8B4513;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 1em;
+    border-radius: 5px;
+    width: auto;
+}
