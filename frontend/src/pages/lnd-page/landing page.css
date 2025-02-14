@@ -87,7 +87,7 @@ html body {
     width: clamp(100px, 20vw, 300px); /* Adjusts size based on screen width */
     object-fit: contain; /* Ensures the image is fully visible */
 }
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     .headboard{
         grid-template-columns: 1fr 1fr 1fr;
     }
@@ -114,7 +114,7 @@ html body {
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 520px) {
     .lnd_logo {
         width: 25vw; /* Adjust further for mobile */
     }
@@ -315,7 +315,7 @@ h1 {display: flex;
     display: none;
 }
 /* Mobile menu */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     .hamburger-menu {
         display: flex;
     }
@@ -400,7 +400,7 @@ h1 {display: flex;
         font-size: 0.5em;
     }
 }
-@media (min-width: 769px) {
+@media (min-width: 1024px) {
     .links-ham {
         display: none !important; /* Ensures menu stays hidden on larger screens */
     }
@@ -458,4 +458,61 @@ h1 {display: flex;
     font-size: 1em;
     border-radius: 5px;
     width: auto;
+}
+.menu {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 1fr 2fr 2fr;
+    grid-gap: 20px;
+    padding: 20px;
+    height : 70vh;
+}
+
+.menu h3 {
+    grid-column: 1 / -1; /* Span all columns */
+    text-align: center;
+    font-size: 1.5em;
+    color: #8B4513;
+}
+
+.menu-type {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Pushes text to the bottom */
+    align-items: center;
+    position: relative;
+    height: 90%;
+    padding: 1%;
+    text-align: center;
+    background: linear-gradient(to bottom, #f8e4c1, #d2a679);
+    overflow: hidden;
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.menu-type img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70%;
+    object-fit: cover;
+    z-index: 0; /* Keeps the image above the background but below text */
+    border-radius: 10px 10px 0 0; /* Ensures a rounded effect on top */
+}
+
+.menu-type span {
+    position: relative;
+    z-index: 1; /* Ensures text stays above the image */
+    background: rgba(255, 255, 255, 0.7); /* Slight background for readability */
+    padding: 10px;
+    border-radius: 0 0 10px 10px;
+    width: 100%;
+    text-align: center;
+}
+.menu a{
+    color: #8B4513;
+    text-decoration: none;
+    font-size: 1em;
+    padding: 10px;
 }

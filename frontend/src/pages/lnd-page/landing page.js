@@ -88,6 +88,17 @@ const LandingPage = () => {
                     <button>View Rota</button>
                 </Link>
             </div>
+            <div className="menu">
+                <h3>Our Food and Drink Menu</h3>
+                <Link to = "/menu" ><div className="menu-type"><img src={croissant} alt="Croissant" /><span>Pastries and Baked Goods</span></div></Link>
+                <Link to = "/menu" ><div className="menu-type"><img src={croissant} alt="Croissant" /><span>Seasonal Menu</span></div></Link>
+                <Link to = "/menu" ><div className="menu-type"><img src={croissant} alt="Croissant" /><span>Coffee and Hot Drinks</span></div></Link>
+                <Link to = "/menu" ><div className="menu-type"><img src={croissant} alt="Croissant" /><span>Hot Food</span></div></Link>
+                <Link to = "/menu" ><div className="menu-type"><img src={croissant} alt="Croissant" /><span>Cakes</span></div></Link>
+                <Link to = "/menu" ><div className="menu-type"><img src={croissant} alt="Croissant" /><span>Sandwiches and wraps</span></div></Link>
+                <Link to = "/menu" ><div className="menu-type"><img src={croissant} alt="Croissant" /><span>Fruit & Fruit pots</span></div></Link>
+                <Link to = "/menu" ><div className="menu-type"><img src={croissant} alt="Croissant" /><span>Cold Drinks</span></div></Link>
+            </div>
         </>
     )
 };

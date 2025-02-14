@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import "./signup.css";
-import coffee from "../components/4820120-uhd_4096_2160_25fps.mp4";
+// import coffee from "../components/";
 import logo from "../components/Bean and Brew.png";
 
 const Signup = ({ setUser, onError }) => {
@@ -14,10 +14,10 @@ const Signup = ({ setUser, onError }) => {
   function BackgroundVideo() {
     return (
       <div className="video-container">
-        <video autoPlay muted loop>
-          <source src={coffee} type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+        <video src="/videos/4820120-uhd_4096_2160_25fps.mp4" autoPlay loop muted preload="auto"/>
+          {/* <source src={coffee} type="video/mp4" /> */}
+          {/* Your browser does not support the video tag. */}
+        {/* </video> */}
       </div>
     );
   }
