@@ -248,6 +248,7 @@ h1 {display: flex;
     display: none;
     flex-direction: column;
     cursor: pointer;
+    padding-top: 40%;
     align-self: flex-start;
     margin-top: 3.6%;
     gap: 5px;
