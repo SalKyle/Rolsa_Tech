@@ -2,28 +2,34 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import "./signup.css";
-import coffee from "../components/4820120-uhd_4096_2160_25fps.mp4";
+// import coffee from "../components/";
 import logo from "../components/Bean and Brew.png";
 
-const Signup = ({ setUser, onError }) => {
+const Signup = ({ setUser, onError = (error) => console.error("Signup Error:", error) }) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [con_password, setcon_Password] = useState("");
 
+  const [successMessage, setSuccessMessage] = useState("");
+
+  
+
   function BackgroundVideo() {
     return (
       <div className="video-container">
-        <video autoPlay muted loop>
-          <source src={coffee} type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+        <video src="/videos/4820120-uhd_4096_2160_25fps.mp4" autoPlay loop muted preload="auto"/>
+          {/* <source src={coffee} type="video/mp4" /> */}
+          {/* Your browser does not support the video tag. */}
+        {/* </video> */}
       </div>
     );
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setSuccessMessage("");
+
     if (password !== con_password) {
       alert("Passwords do not match!");
       return;
@@ -45,11 +51,16 @@ const Signup = ({ setUser, onError }) => {
 
     const userData = { username, email, password };
     try {
-      const response = await axios.post(
-        "http://localhost:5000/api/auth/signup",
-        userData
-      );
+      const response = await axios.post("http://localhost:5000/api/auth/signup", userData);
       setUser(response.data);
+
+      // Show success message
+      setSuccessMessage("Signup successful! Redirecting...");
+      
+      // Optional: Redirect to login page after a delay
+      setTimeout(() => {
+        window.location.href = "/login";
+      }, 2000);
     } catch (error) {
       onError(error);
     }
@@ -105,6 +116,7 @@ const Signup = ({ setUser, onError }) => {
             required
           />
           <button type="submit">Sign Up</button>
+          {successMessage && <p className="success-message">{successMessage}</p>}
           <div className="signup-footer">
             <p>
               Already have an account?{" "}

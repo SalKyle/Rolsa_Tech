@@ -1,21 +1,22 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import "../signup/signup.css";
-import coffee from "../components/4820120-uhd_4096_2160_25fps.mp4";
+import "./login.css";
+// import coffee from "../components/4820120-uhd_4096_2160_25fps.mp4";
 import logo from "../components/Bean and Brew.png";
 
 const Login = ({ setUser, onError }) => {
+  onError = onError || ((error) => console.error("Login Error:", error));
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   function BackgroundVideo() {
     return (
       <div className="video-container">
-        <video autoPlay muted loop>
-          <source src={coffee} type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+        <video src="/videos/4820120-uhd_4096_2160_25fps.mp4" autoPlay loop muted preload="auto"/>
+          {/* <source src={coffee} type="video/mp4" /> */}
+          {/* Your browser does not support the video tag. */}
+        {/* </video> */}
       </div>
     );
   }

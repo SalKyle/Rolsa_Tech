@@ -1,8 +1,9 @@
 import React,{useState} from "react";
 import { Link } from "react-router-dom";
 import "./landing page.css";
-import coffee from "../components/mixkit-one-coffee-cup-in-a-sea-of-coffee-beans-43940-4k.mp4";
+// import coffee from "../components/mixkit-one-coffee-cup-in-a-sea-of-coffee-beans-43940-4k.mp4";
 import logo from "../components/Bean and Brew.png";
+import croissant from "../components/pexels-valeriiamiller-2974486.jpg";
 
 const LandingPage = () => {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -14,10 +15,10 @@ const LandingPage = () => {
         <>
             <div className="theme">
                 <div className="lnd-video-container">
-                    <video autoPlay muted loop>
-                        <source src={coffee} type="video/mp4" />
+                    <video src="/videos/mixkit-one-coffee-cup-in-a-sea-of-coffee-beans-43940-4k.mp4" autoPlay loop muted preload="auto"/>
+                        {/* <source src={coffee} type="video/mp4" />
                         Your browser does not support the video tag.
-                    </video>
+                    </video> */}
                 </div>
                 
                 <div className="headboard">
@@ -57,12 +58,46 @@ const LandingPage = () => {
                 </div>
             </div>
 
-            <div className="seasonal_offer">
-                
-                <h4>Try our new, seasonal drinks and pastries inspired by the joys of Christmas</h4>
-                <Link to="/signup">
-                    <button>Order Now</button>
+            <div className="seasonal_offer1">
+                <img src={croissant} alt="Croissant" />
+                <h4>Nourish Your Body, Lift Your Spirits</h4>
+                <p>Crafted with fresh, wholesome ingredients and bold flavours, our new menu is designed to make you feel good, every day. </p>
+                <Link to="/menu">
+                    <button>Discover our new menu</button>
                 </Link>
+            </div>
+            <div className="seasonal_offer">
+                <img src={croissant} alt="Croissant" />
+                <h4>Handmade. Hand delivered.</h4>
+                <p> Our freshly made food, delivered from our kitchen to your door.
+                
+                Made for important meetings, treating busy teams or entertaining friends and family at home. We deliver freshly made breakfast, lunch & sweet platters straight to your door. Order by 10am for same day delivery*.
+                
+                Pret Delivers is now available in even more shops near you.</p>
+                <Link to="/menu">
+                    <button>Find out more</button>
+                </Link>
+            </div>
+            <div className="seasonal_offer">
+                <img src={croissant} alt="Croissant" />
+                <h4>Our Seasonal Pastry Rota</h4>
+                <p>Pastries, wonderful pastres. Hearty, wholesome, light, bright – whatever sort you like, our famous Pastry Rota has pots packed with flavours sure to stir up your lunch.
+                
+                Spoons at the ready.</p>
+                <Link to="/menu">
+                    <button>View Rota</button>
+                </Link>
+            </div>
+            <div className="menu">
+                <h3>Our Food and Drink Menu</h3>
+                <Link to = "/menu" ><div className="menu-type"><img src={croissant} alt="Croissant" /><span>Pastries and Baked Goods</span></div></Link>
+                <Link to = "/menu" ><div className="menu-type"><img src={croissant} alt="Croissant" /><span>Seasonal Menu</span></div></Link>
+                <Link to = "/menu" ><div className="menu-type"><img src={croissant} alt="Croissant" /><span>Coffee and Hot Drinks</span></div></Link>
+                <Link to = "/menu" ><div className="menu-type"><img src={croissant} alt="Croissant" /><span>Hot Food</span></div></Link>
+                <Link to = "/menu" ><div className="menu-type"><img src={croissant} alt="Croissant" /><span>Cakes</span></div></Link>
+                <Link to = "/menu" ><div className="menu-type"><img src={croissant} alt="Croissant" /><span>Sandwiches and wraps</span></div></Link>
+                <Link to = "/menu" ><div className="menu-type"><img src={croissant} alt="Croissant" /><span>Fruit & Fruit pots</span></div></Link>
+                <Link to = "/menu" ><div className="menu-type"><img src={croissant} alt="Croissant" /><span>Cold Drinks</span></div></Link>
             </div>
         </>
     )
