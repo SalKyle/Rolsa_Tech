@@ -5,6 +5,20 @@ import "./signup.css";
 // import coffee from "../components/";
 import logo from "../components/Bean and Brew.png";
 
+
+const BackgroundVideo = () => {
+  return (
+    <div className="video-container">
+      <video
+        src="/videos/4820120-uhd_4096_2160_25fps.mp4"
+        autoPlay
+        loop
+        muted
+        preload="auto"
+      />
+    </div>
+  );
+};
 const Signup = ({ setUser, onError = (error) => console.error("Signup Error:", error) }) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -15,16 +29,16 @@ const Signup = ({ setUser, onError = (error) => console.error("Signup Error:", e
 
   
 
-  function BackgroundVideo() {
-    return (
-      <div className="video-container">
-        <video src="/videos/4820120-uhd_4096_2160_25fps.mp4" autoPlay loop muted preload="auto"/>
-          {/* <source src={coffee} type="video/mp4" /> */}
-          {/* Your browser does not support the video tag. */}
-        {/* </video> */}
-      </div>
-    );
-  }
+  // function BackgroundVideo() {
+  //   return (
+  //     <div className="video-container">
+  //       <video src="/videos/4820120-uhd_4096_2160_25fps.mp4" autoPlay loop muted preload="auto"/>
+  //         {/* <source src={coffee} type="video/mp4" /> */}
+  //         {/* Your browser does not support the video tag. */}
+  //       {/* </video> */}
+  //     </div>
+  //   );
+  // }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
