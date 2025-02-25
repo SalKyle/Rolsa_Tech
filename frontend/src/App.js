@@ -1,6 +1,5 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import LandingPage from "./pages/lnd-page/landing page";
 import Signup from "./pages/signup/signup";
 import Login from "./pages/login/login";
@@ -11,6 +10,7 @@ const App = () => {
   const [user, setUser] = useState(() => {
     return JSON.parse(localStorage.getItem("user")) || null;
   });
+
   useEffect(() => {
     if (user) {
       localStorage.setItem("user", JSON.stringify(user));
@@ -18,6 +18,7 @@ const App = () => {
       localStorage.removeItem("user");
     }
   }, [user]);
+
   // Error handler
   const onError = (error) => {
     console.error("Error:", error);
@@ -27,23 +28,13 @@ const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/landing" element={<LandingPage />} />
         <Route path="/signup" element={<Signup setUser={setUser} onError={onError} />} />
         <Route path="/login" element={<Login setUser={setUser} onError={onError} />} />
-        
-        {/* Conditionally render HomePg if user exists, otherwise redirect to login */}
+        <Route path="/landing" element={<LandingPage />} />
         <Route
           path="/"
-          element={user ? (
-            <>
-              <div>Welcome, {user.username}!</div>
-              <HomePg user={user} /> {/* Pass user prop to HomePg */}
-            </>
-          ) : (
-            <Login setUser={setUser} onError={onError} />
-          )}
+          element={user ? <HomePg user={user} /> : <Navigate to="/landing" />}
         />
-
       </Routes>
     </Router>
   );
