@@ -60,7 +60,7 @@ const login = (req, res) => {
       }
 
       // Generate JWT token
-      const token = jwt.sign({ id: user.id, email: user.email }, 'your_secret_key', { expiresIn: '1h' });
+      const token = jwt.sign({ id: user.id, email: user.email }, 'your_secret_key', { expiresIn: '3h' });
       res.status(200).json({ message: 'Login successful', token });
     });
   });

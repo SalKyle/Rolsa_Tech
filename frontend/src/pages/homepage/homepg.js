@@ -3,23 +3,42 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import "./homepg.css";
 import logo from "../components/Bean and Brew.png";
+import { useNavigate } from "react-router-dom";
 import croissant from "../components/pexels-valeriiamiller-2974486.jpg";
 
 const HomePg = ({ user }) => {
     const [userInfo, setUserInfo] = useState(null);
     const [menuOpen, setMenuOpen] = useState(false); // Fix: Added state for hamburger menu
 
+
+    const navigate = useNavigate();
+
+  // Logout function
+    const logout = () => {
+        localStorage.removeItem("user"); // Clear user data from localStorage
+        navigate("/landing"); // Redirect to the landing page
+    };
     useEffect(() => {
         const fetchUserInfo = async () => {
-            if (!user || !user.token) return; // Fix: Prevent fetching if user/token is missing
+            // Check if the token is available from the user prop
+            if (!user?.token) {
+                console.log("No user or token found, skipping fetch.");
+                return;
+            }
 
             try {
+                console.log("Fetching user info with token:", user.token);
                 const response = await axios.get("http://localhost:5000/api/user", {
-                    headers: { Authorization: `Bearer ${user.token}` },
+                    method: "GET",
+                    headers: { 
+                        "Authorization": `Bearer ${user.token}`,
+                        "Content-Type": "application/json"
+                    },
                 });
+                console.log("User Info Response:", response.data);
                 setUserInfo(response.data);
             } catch (error) {
-                console.error("Error fetching user info:", error);
+                console.error("Error fetching user info:", error.response?.data || error.message);
             }
         };
 
@@ -29,6 +48,10 @@ const HomePg = ({ user }) => {
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);
     };
+    
+    console.log(user);
+    console.log("User Info:", userInfo);
+    console.log("LocalStorage user:", localStorage.getItem("user"));
 
     return (
         <>
@@ -69,16 +92,15 @@ const HomePg = ({ user }) => {
                     </div>
 
                     <div className="nav">
-                    <h5>
-                        {userInfo ? (
-                            <Link to="/account-details" className="username-link">
-                            {userInfo.username}
-                            </Link>
-                        ) : (
-                            "Loading user data..."
-                        )}
+                        <h5>
+                            {userInfo ? (
+                                <Link to="/account-details" className="username-link">
+                                    {userInfo.username}
+                                </Link>
+                            ) : (
+                                "Loading user data..."
+                            )}
                         </h5>
-
                     </div>
                 </div>
             </div>
@@ -120,16 +142,7 @@ const HomePg = ({ user }) => {
 
             <div className="menu">
                 <h3>Our Food and Drink Menu</h3>
-                {[
-                    "Pastries and Baked Goods",
-                    "Seasonal Menu",
-                    "Coffee and Hot Drinks",
-                    "Hot Food",
-                    "Cakes",
-                    "Sandwiches and Wraps",
-                    "Fruit & Fruit Pots",
-                    "Cold Drinks"
-                ].map((item, index) => (
+                {[ "Pastries and Baked Goods", "Seasonal Menu", "Coffee and Hot Drinks", "Hot Food", "Cakes", "Sandwiches and Wraps", "Fruit & Fruit Pots", "Cold Drinks" ].map((item, index) => (
                     <Link to="/menu" key={index}>
                         <div className="menu-type">
                             <img src={croissant} alt="Croissant" />
@@ -137,6 +150,7 @@ const HomePg = ({ user }) => {
                         </div>
                     </Link>
                 ))}
+                <button onClick={logout}>Logout</button>
             </div>
         </>
     );
