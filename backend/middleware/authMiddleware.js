@@ -1,17 +1,30 @@
 const jwt = require('jsonwebtoken');
-const jwtConfig = require('../config/jwtConfig');
+const db = require('../config/db');
 
-const authMiddleware = (req, res, next) => {
-  const token = req.header('Authorization')?.split(' ')[1];
+const authMiddleware = async (req, res, next) => {
+  const authHeader = req.headers.authorization;
   
-  if (!token) return res.status(401).json({ message: 'No token provided' });
+  if (!authHeader || !authHeader.startsWith('Bearer ')) {
+    return res.status(401).json({ message: "No token, authorization denied" });
+  }
 
-  jwt.verify(token, jwtConfig.secret, (err, decoded) => {
-    if (err) return res.status(401).json({ message: 'Invalid token' });
+  const token = authHeader.split(' ')[1]; // Extract token correctly
 
-    req.user = decoded;
-    next();
-  });
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET); // Verify the extracted token
+
+    // Fetch user from DB using decoded user ID
+    const query = 'SELECT * FROM users WHERE id = ?';
+    db.get(query, [decoded.id], (err, user) => {
+      if (err) return res.status(500).json({ message: 'Database error' });
+      if (!user) return res.status(401).json({ message: 'User not found' });
+
+      req.user = user; // Attach user to request object
+      next();
+    });
+  } catch (error) {
+    res.status(401).json({ message: "Invalid token" });
+  }
 };
 
 module.exports = authMiddleware;

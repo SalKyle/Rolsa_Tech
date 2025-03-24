@@ -1,23 +1,37 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import "./homepg.css";
 import logo from "../components/Bean and Brew.png";
 import croissant from "../components/pexels-valeriiamiller-2974486.jpg";
 
 const HomePg = ({ user }) => {
     const [userInfo, setUserInfo] = useState(null);
-    const [menuOpen, setMenuOpen] = useState(false); // Fix: Added state for hamburger menu
+    const [menuOpen, setMenuOpen] = useState(false);
+    const navigate = useNavigate();
+
+    // Logout function
+    const logout = () => {
+        localStorage.removeItem("user"); // Clear user data from localStorage
+        navigate("/landing"); // Redirect to the landing page
+    };
 
     useEffect(() => {
         const fetchUserInfo = async () => {
-            if (!user || !user.token) return; // Fix: Prevent fetching if user/token is missing
-
             try {
-                const response = await axios.get("http://localhost:5000/api/user", {
-                    headers: { Authorization: `Bearer ${user.token}` },
+                const token = user?.token || (localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")).token : null);
+                if (!token) {
+                    console.error("No token found, user is not logged in.");
+                    return;
+                }
+
+                const response = await axios.get("http://localhost:5000/api/user/profile", {
+                    headers: {
+                        Authorization: `Bearer ${token}` // Send token in Authorization header
+                    }
                 });
-                setUserInfo(response.data);
+
+                setUserInfo(response.data.user);
             } catch (error) {
                 console.error("Error fetching user info:", error);
             }
@@ -40,9 +54,9 @@ const HomePg = ({ user }) => {
                 <div className="headboard">
                     {/* Hamburger Menu */}
                     <div className="hamburger-menu" onClick={toggleMenu}>
-                        <div className={`bar ${menuOpen ? "open" : ""}`}></div>
-                        <div className={`bar ${menuOpen ? "open" : ""}`}></div>
-                        <div className={`bar ${menuOpen ? "open" : ""}`}></div>
+                        {[...Array(3)].map((_, index) => (
+                            <div key={index} className={`bar ${menuOpen ? "open" : ""}`}></div>
+                        ))}
                     </div>
 
                     <div className={`links-ham ${menuOpen ? "show" : ""}`}>
@@ -78,58 +92,28 @@ const HomePg = ({ user }) => {
                             "Loading user data..."
                         )}
                         </h5>
-
                     </div>
                 </div>
             </div>
 
-            <div className="seasonal_offer1">
-                <img src={croissant} alt="Croissant" />
-                <h4>Nourish Your Body, Lift Your Spirits</h4>
-                <p>Crafted with fresh, wholesome ingredients and bold flavours, our new menu is designed to make you feel good, every day.</p>
-                <Link to="/menu">
-                    <button>Discover our new menu</button>
-                </Link>
-            </div>
-
-            <div className="seasonal_offer">
-                <img src={croissant} alt="Croissant" />
-                <h4>Handmade. Hand delivered.</h4>
-                <p>
-                    Our freshly made food, delivered from our kitchen to your door.
-                    Made for important meetings, treating busy teams or entertaining friends and family at home.
-                    We deliver freshly made breakfast, lunch & sweet platters straight to your door.
-                    Order by 10am for same-day delivery.
-                </p>
-                <Link to="/menu">
-                    <button>Find out more</button>
-                </Link>
-            </div>
-
-            <div className="seasonal_offer">
-                <img src={croissant} alt="Croissant" />
-                <h4>Our Seasonal Pastry Rota</h4>
-                <p>
-                    Pastries, wonderful pastries. Hearty, wholesome, light, bright – whatever sort you like, our famous Pastry Rota has pots packed with flavours sure to stir up your lunch.
-                    Spoons at the ready.
-                </p>
-                <Link to="/menu">
-                    <button>View Rota</button>
-                </Link>
-            </div>
+            {["Nourish Your Body, Lift Your Spirits", "Handmade. Hand delivered.", "Our Seasonal Pastry Rota"].map((title, index) => (
+                <div key={index} className="seasonal_offer">
+                    <img src={croissant} alt="Croissant" />
+                    <h4>{title}</h4>
+                    <p>{
+                        index === 0 ? "Crafted with fresh, wholesome ingredients and bold flavours, our new menu is designed to make you feel good, every day." :
+                        index === 1 ? "Our freshly made food, delivered from our kitchen to your door. Made for important meetings, treating busy teams or entertaining friends and family at home. We deliver freshly made breakfast, lunch & sweet platters straight to your door. Order by 10am for same-day delivery." :
+                        "Pastries, wonderful pastries. Hearty, wholesome, light, bright – whatever sort you like, our famous Pastry Rota has pots packed with flavours sure to stir up your lunch. Spoons at the ready."
+                    }</p>
+                    <Link to="/menu">
+                        <button>{index === 2 ? "View Rota" : "Find out more"}</button>
+                    </Link>
+                </div>
+            ))}
 
             <div className="menu">
                 <h3>Our Food and Drink Menu</h3>
-                {[
-                    "Pastries and Baked Goods",
-                    "Seasonal Menu",
-                    "Coffee and Hot Drinks",
-                    "Hot Food",
-                    "Cakes",
-                    "Sandwiches and Wraps",
-                    "Fruit & Fruit Pots",
-                    "Cold Drinks"
-                ].map((item, index) => (
+                {["Pastries and Baked Goods", "Seasonal Menu", "Coffee and Hot Drinks", "Hot Food", "Cakes", "Sandwiches and Wraps", "Fruit & Fruit Pots", "Cold Drinks"].map((item, index) => (
                     <Link to="/menu" key={index}>
                         <div className="menu-type">
                             <img src={croissant} alt="Croissant" />
@@ -137,6 +121,7 @@ const HomePg = ({ user }) => {
                         </div>
                     </Link>
                 ))}
+                <button onClick={logout}>Logout</button>
             </div>
         </>
     );
