@@ -1,27 +1,35 @@
 const jwt = require('jsonwebtoken');
-const jwtConfig = require('../config/jwtConfig');
+const db = require('../config/db');
 
-const authMiddleware = (req, res, next) => {
+const authMiddleware = async (req, res, next) => {
   try {
-    const authHeader = req.header('Authorization');
+    const authHeader = req.headers.authorization;
+    
     if (!authHeader || !authHeader.startsWith('Bearer ')) {
-      return res.status(401).json({ message: 'Unauthorized: No token provided' });
+      return res.status(401).json({ message: "No token, authorization denied" });
     }
 
-    const token = authHeader.split(' ')[1];
-    console.log('Token:', token); // Log the token to check if it's coming through
+    const token = authHeader.split(' ')[1]; // Extract token correctly
+    console.log('Received Token:', token); // Debugging log
 
-    jwt.verify(token, jwtConfig.secret, (err, decoded) => {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET); // Verify the extracted token
+
+    // Fetch user from DB using decoded user ID
+    const query = 'SELECT * FROM users WHERE id = ?';
+    db.get(query, [decoded.id], (err, user) => {
       if (err) {
-        return res.status(403).json({ message: 'Forbidden: Invalid or expired token' });
+        console.error('Database Error:', err); // Debugging log
+        return res.status(500).json({ message: 'Database error' });
       }
+      if (!user) return res.status(401).json({ message: 'User not found' });
 
-      req.user = decoded;
+      req.user = user; // Attach user to request object
       next();
     });
+
   } catch (error) {
-    console.error(error);  // Log the error for better debugging
-    return res.status(500).json({ message: 'Internal Server Error' });
+    console.error('Token Verification Error:', error); // Debugging log
+    return res.status(401).json({ message: "Invalid or expired token" });
   }
 };
 
