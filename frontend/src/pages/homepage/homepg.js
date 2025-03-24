@@ -69,11 +69,11 @@ const HomePg = ({ user }) => {
                     </div>
 
                     <div className={`links-ham ${menuOpen ? "show" : ""}`}>
-                        <Link to="/menu">Menu</Link>
-                        <Link to="/reservation">Reservations</Link>
-                        <Link to="/baking-lessons">Baking Lessons</Link>
-                        <Link to="/rate-my-cake">Rate my Cake</Link>
-                        <Link to="/contact">Contact</Link>
+                        <Link to="/menu">Home</Link>
+                        <Link to="/reservation">Products</Link>
+                        <Link to="/baking-lessons">Carbon FootPrint Calculator</Link>
+                        <Link to="/rate-my-cake">Energy Usage Tracker</Link>
+                        <Link to="/contact">Find an EV Charger</Link>
                     </div>
 
                     <div className="head-content">
@@ -83,11 +83,11 @@ const HomePg = ({ user }) => {
                         </header>
 
                         <div className="links">
-                            <Link to="/menu">Menu</Link>
-                            <Link to="/reservation">Reservations</Link>
-                            <Link to="/baking-lessons">Baking Lessons</Link>
-                            <Link to="/rate-my-cake">Rate my Cake</Link>
-                            <Link to="/contact">Contact</Link>
+                            <Link to="/menu">Home</Link>
+                            <Link to="/reservation">Products</Link>
+                            <Link to="/baking-lessons">Carbon FootPrint Calculator</Link>
+                            <Link to="/rate-my-cake">Energy Usage Tracker</Link>
+                            <Link to="/contact">Find an EV Charger</Link>
                         </div>
                     </div>
 

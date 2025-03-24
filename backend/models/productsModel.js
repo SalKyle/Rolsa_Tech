@@ -1,6 +1,8 @@
-const db = require('../config/db'); 
+const db = require('../config/db');
+const user = require('./userModel')
 
-db.run('DROP TABLE IF EXISTS users', (err) => {
+
+db.run('DROP TABLE IF EXISTS products', (err) => {
   if (err) {
     console.error('Error dropping table:', err);
   } else {
@@ -8,15 +10,12 @@ db.run('DROP TABLE IF EXISTS users', (err) => {
   }
 });
 
-
 db.run(`
-  CREATE TABLE IF NOT EXISTS users (
-    User_ID INTEGER PRIMARY KEY AUTOINCREMENT,
-    User_Name TEXT,
-    Phone_No TEXT,
-    Address TEXT,
-    Email TEXT UNIQUE,
-    Password TEXT
+  CREATE TABLE IF NOT EXISTS products (
+    Product_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    Product_Name TEXT,
+    Product_type TEXT,
+    Product_price REAL
   )
 `, (err) => {
   if (err) {
