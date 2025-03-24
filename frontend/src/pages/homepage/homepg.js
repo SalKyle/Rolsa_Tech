@@ -25,15 +25,17 @@ const HomePg = ({ user }) => {
                     return;
                 }
 
+                console.log("Fetching user info with token:", token);
                 const response = await axios.get("http://localhost:5000/api/user/profile", {
                     headers: {
                         Authorization: `Bearer ${token}` // Send token in Authorization header
                     }
                 });
 
+                console.log("User Info Response:", response.data);
                 setUserInfo(response.data.user);
             } catch (error) {
-                console.error("Error fetching user info:", error);
+                console.error("Error fetching user info:", error.response?.data || error.message);
             }
         };
 
@@ -43,6 +45,10 @@ const HomePg = ({ user }) => {
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);
     };
+    
+    console.log("User:", user);
+    console.log("User Info:", userInfo);
+    console.log("LocalStorage user:", localStorage.getItem("user"));
 
     return (
         <>
@@ -83,14 +89,14 @@ const HomePg = ({ user }) => {
                     </div>
 
                     <div className="nav">
-                    <h5>
-                        {userInfo ? (
-                            <Link to="/account-details" className="username-link">
-                            {userInfo.username}
-                            </Link>
-                        ) : (
-                            "Loading user data..."
-                        )}
+                        <h5>
+                            {userInfo ? (
+                                <Link to="/account-details" className="username-link">
+                                    {userInfo.username}
+                                </Link>
+                            ) : (
+                                "Loading user data..."
+                            )}
                         </h5>
                     </div>
                 </div>

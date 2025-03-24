@@ -8,7 +8,8 @@ import HomePg from "./pages/homepage/homepg";
 const App = () => {
   // State to manage user information
   const [user, setUser] = useState(() => {
-    return JSON.parse(localStorage.getItem("user")) || null;
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+    return storedUser?.token ? { token: storedUser.token } : null;
   });
 
   useEffect(() => {
@@ -31,6 +32,7 @@ const App = () => {
         <Route path="/signup" element={<Signup setUser={setUser} onError={onError} />} />
         <Route path="/login" element={<Login setUser={setUser} onError={onError} />} />
         <Route path="/landing" element={<LandingPage />} />
+        {/* Default route now redirects to Landing Page */}
         <Route
           path="/"
           element={user ? <HomePg user={user} /> : <Navigate to="/landing" />}
@@ -41,3 +43,4 @@ const App = () => {
 };
 
 export default App;
+

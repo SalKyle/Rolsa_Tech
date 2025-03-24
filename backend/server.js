@@ -15,6 +15,11 @@ const userRoutes = require('./routes/userRoutes');
 app.use('/api/auth', authRoutes);
 app.use('/api/user', userRoutes);
 
+
+app.get('/', (req, res) => {
+  res.send('Welcome to the server!');
+});
+
 // No need to call db() because db is the instance
 console.log('Database connected:', db !== null); // You can check if db is loaded
 
