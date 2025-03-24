@@ -1,7 +1,45 @@
-exports.login = async (req, res) => {
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+const sqlite3 = require('sqlite3').verbose();
+
+const SECRET_KEY = 'rolsa_secret_key';
+const db = new sqlite3.Database('./rolsa.db'); // or ':memory:' for testing
+
+
+const generateToken = (id, email) => {
+  return jwt.sign({ id, email }, SECRET_KEY, { expiresIn: '1d' });
+};
+
+
+const signup = async (req, res) => {
+  const { name, email, password } = req.body;
+
+  if (!name || !email || !password) {
+    return res.status(400).json({ message: 'Please provide name, email, and password' });
+  }
+
+  try {
+    const hashedPassword = await bcrypt.hash(password, 10);
+    db.run(
+      'INSERT INTO users (name, email, password) VALUES (?, ?, ?)',
+      [name, email, hashedPassword],
+      function (err) {
+        if (err) return res.status(400).json({ error: err.message });
+
+        const token = generateToken(this.lastID, email);
+        res.status(201).json({ message: 'User registered successfully', token });
+      }
+    );
+  } catch (error) {
+    console.error('Signup Error:', error.message);
+    res.status(500).json({ error: 'Signup failed' });
+  }
+};
+
+
+const login = async (req, res) => {
   const { email, password } = req.body;
 
-  // Validation
   if (!email || !password) {
     return res.status(400).json({ message: 'Please provide email and password' });
   }
@@ -23,7 +61,6 @@ exports.login = async (req, res) => {
       return res.status(401).json({ message: 'Invalid credentials' });
     }
 
-    // Use the consistent token generation method
     const token = generateToken(user.id, user.email);
     res.status(200).json({ message: 'Login successful', token });
 
@@ -31,4 +68,10 @@ exports.login = async (req, res) => {
     console.error('Login Error:', err.message);
     res.status(500).json({ error: 'Login failed' });
   }
+};
+
+
+module.exports = {
+  signup,
+  login,
 };

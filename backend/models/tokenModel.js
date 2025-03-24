@@ -12,6 +12,7 @@ db.run('DROP TABLE IF EXISTS Tokens', (err) => {
 
 db.run(`
     CREATE TABLE IF NOT EXISTS Tokens (
+      otp INTEGER,
       Reset_token TEXT PRIMARY KEY,
       User_ID INTEGER,
       FOREIGN KEY (User_ID) REFERENCES users(User_ID)
