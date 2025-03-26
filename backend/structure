@@ -1,0 +1,60 @@
+backend/
+│
+├── config/                  # Global configuration
+│   ├── db.js                # SQLite setup & export
+│   ├── jwtConfig.js         # JWT secret and expiry
+│   ├── googleApiConfig.js   # Google Maps & OAuth API keys
+│   └── smartDeviceConfig.js # Google Home or IoT setup
+│
+├── controllers/             # Route logic
+│   ├── authController.js            # Login, register, Google OAuth
+│   ├── userController.js            # Profile get/update
+│   ├── carbonController.js          # CO₂ calculation & result saving
+│   ├── energyController.js          # Smart device/energy input tracking
+│   ├── bookingController.js         # Handles appointment logic
+│   ├── evController.js              # EV charger locator APIs
+│   └── notificationController.js    # OTP/email alerts logic
+│
+├── models/                  # DB models
+│   ├── userModel.js
+│   ├── cf-calc-model.js
+│   ├── EnergyModel.js
+│   ├── bookingModel.js
+│   ├── productsModel.js
+│   ├── tokenModel.js
+│   ├── transactionsModel.js
+│   └── notificationModel.js        # OTP/email logs
+│
+├── routes/                  # Route layer
+│   ├── authRoutes.js              # /api/auth
+│   ├── userRoutes.js              # /api/user
+│   ├── carbonRoutes.js            # /api/carbon
+│   ├── energyRoutes.js            # /api/energy
+│   ├── bookingRoutes.js           # /api/bookings
+│   ├── evRoutes.js                # /api/ev
+│   └── notificationRoutes.js      # /api/notify
+│
+├── middleware/              # Middlewares
+│   ├── authMiddleware.js         # JWT protection
+│   ├── errorHandler.js           # Global error catcher
+│   ├── googleAuth.js             # Google OAuth with Passport
+│   └── logger.js                 # Custom logging (optional)
+│
+├── utils/                   # Helper logic
+│   ├── hashPassword.js           # Bcrypt hashing
+│   ├── generateToken.js          # JWT token creation
+│   ├── otpGenerator.js           # Generate OTPs
+│   ├── fetchEnergyData.js        # Get UK energy stats by address
+│   ├── calculatorLogic.js        # CO₂ pseudocode engine
+│   └── trendAnalysis.js          # Dashboard graphs processor
+│
+├── tests/                   # Unit tests
+│   ├── auth.test.js
+│   ├── user.test.js
+│   ├── carbon.test.js
+│   └── energy.test.js
+│
+├── Backend.env              # Environment variables
+├── server.js                # Entry point: Express config
+├── rolsa.db                 # Actual SQLite database
+└── package.json             # Dependencies and scripts
