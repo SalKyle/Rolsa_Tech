@@ -11,7 +11,11 @@ const handleCredentialResponse = (response) => {
   axios
     .post("http://localhost:5000/api/auth/google-login", { token: response.credential })
     .then((res) => {
-      console.log(res.data); // Handle the successful response from backend
+      console.log(res.data);
+      setTimeout(() => {
+        window.location.href = "/";
+      }, 2000);
+       // Handle the successful response from backend
     })
     .catch((error) => {
       console.error("Google Login Error:", error);
