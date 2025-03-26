@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import "./homepg.css";
-import logo from "../components/Bean and Brew.png";
-import croissant from "../components/pexels-valeriiamiller-2974486.jpg";
+import logo from "../components/media/Bean and Brew.png";
+import croissant from "../components/media/pexels-valeriiamiller-2974486.jpg";
 
 const HomePg = ({ user }) => {
     const [userInfo, setUserInfo] = useState(null);

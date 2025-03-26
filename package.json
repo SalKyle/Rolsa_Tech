@@ -22,7 +22,7 @@
   "devDependencies": {
     "nodemon": "^3.1.9"
   },
- "scripts": {
-  "start": "HOST=0.0.0.0 react-scripts start"
-}
+  "scripts": {
+    "start": "HOST=0.0.0.0 react-scripts start"
+  }
 }

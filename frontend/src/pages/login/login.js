@@ -4,7 +4,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import "./login.css";
 // import coffee from "../components/4820120-uhd_4096_2160_25fps.mp4";
-import logo from "../components/Bean and Brew.png";
+import logo from "../components/media/Bean and Brew.png";
 
 
 const BackgroundVideo = () => {
@@ -88,6 +88,8 @@ const Login = ({ setUser, onError }) => {
           />
           <button type="submit">Login</button>
           <div className="signup-footer">
+          <p>Or login with Google</p>
+          <button type="button">Continue with Google</button>
             <p>
               Don't have an account?{" "}
               <Link to="/signup">

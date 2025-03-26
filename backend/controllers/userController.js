@@ -14,7 +14,14 @@ exports.getUserProfile = async (req, res) => {
       return res.status(404).json({ message: 'User not found' });
     }
 
-    res.status(200).json({ user });
+    res.status(200).json({ 
+      user: { 
+        id: user.id, 
+        username: user.name,
+        email: user.email 
+      } 
+    });
+    
   } catch (err) {
     console.error('Error fetching user profile:', err.message);
     res.status(500).json({ error: 'Internal server error' });

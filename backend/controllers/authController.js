@@ -1,9 +1,10 @@
 const bcrypt = require('bcrypt');
+const e = require('cors');
 const jwt = require('jsonwebtoken');
 const sqlite3 = require('sqlite3').verbose();
 
 const SECRET_KEY = 'rolsa_secret_key';
-const db = new sqlite3.Database('./rolsa.db'); // or ':memory:' for testing
+const db = require('../config/db');
 
 
 const generateToken = (id, email) => {
@@ -13,6 +14,7 @@ const generateToken = (id, email) => {
 
 const signup = async (req, res) => {
   const { name, email, password } = req.body;
+  console.log('Incoming signup:', req.body);
 
   if (!name || !email || !password) {
     return res.status(400).json({ message: 'Please provide name, email, and password' });
@@ -20,11 +22,15 @@ const signup = async (req, res) => {
 
   try {
     const hashedPassword = await bcrypt.hash(password, 10);
+
     db.run(
       'INSERT INTO users (name, email, password) VALUES (?, ?, ?)',
-      [name, email, hashedPassword],
+      [name.trim(), email.trim(), hashedPassword],
       function (err) {
-        if (err) return res.status(400).json({ error: err.message });
+        if (err) {
+          console.error('DB Error on signup:', err.message); // 🔍 Log the actual error
+          return res.status(400).json({ error: err.message });
+        }
 
         const token = generateToken(this.lastID, email);
         res.status(201).json({ message: 'User registered successfully', token });
@@ -35,6 +41,7 @@ const signup = async (req, res) => {
     res.status(500).json({ error: 'Signup failed' });
   }
 };
+
 
 
 const login = async (req, res) => {

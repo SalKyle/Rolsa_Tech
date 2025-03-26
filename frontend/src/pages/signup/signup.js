@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import "./signup.css";
 // import coffee from "../components/";
-import logo from "../components/Bean and Brew.png";
+import logo from "../components/media/Bean and Brew.png";
 
 
 const BackgroundVideo = () => {
@@ -20,7 +20,7 @@ const BackgroundVideo = () => {
   );
 };
 const Signup = ({ setUser, onError = (error) => console.error("Signup Error:", error) }) => {
-  const [username, setUsername] = useState("");
+  const [name, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [con_password, setcon_Password] = useState("");
@@ -63,7 +63,8 @@ const Signup = ({ setUser, onError = (error) => console.error("Signup Error:", e
       return;
     }
 
-    const userData = { username, email, password };
+    const userData = { name, email, password };
+    console.log({ name, email, password });
     try {
       const response = await axios.post("http://localhost:5000/api/auth/signup", userData);
       setUser(response.data);
@@ -77,6 +78,7 @@ const Signup = ({ setUser, onError = (error) => console.error("Signup Error:", e
       }, 2000);
     } catch (error) {
       onError(error);
+      console.error("Signup Error:", error);
     }
   };
 
@@ -101,7 +103,7 @@ const Signup = ({ setUser, onError = (error) => console.error("Signup Error:", e
             type="text"
             className="signup_input"
             placeholder="Username"
-            value={username}
+            value={name}
             onChange={(e) => setUsername(e.target.value)}
             required
           />
