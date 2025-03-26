@@ -1,44 +1,60 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import "./signup.css";
-// import coffee from "../components/";
 import logo from "../components/media/Bean and Brew.png";
 
-
-const BackgroundVideo = () => {
-  return (
-    <div className="video-container">
-      <video
-        src="/videos/4820120-uhd_4096_2160_25fps.mp4"
-        autoPlay
-        loop
-        muted
-        preload="auto"
-      />
-    </div>
-  );
+// Google Sign-In Script
+const handleCredentialResponse = (response) => {
+  console.log("Encoded JWT ID token: " + response.credential);
+  // Send the token to your server for verification
+  axios
+    .post("http://localhost:5000/api/auth/google-login", { token: response.credential })
+    .then((res) => {
+      console.log(res.data); // Handle the successful response from backend
+    })
+    .catch((error) => {
+      console.error("Google Login Error:", error);
+    });
 };
+
 const Signup = ({ setUser, onError = (error) => console.error("Signup Error:", error) }) => {
   const [name, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [con_password, setcon_Password] = useState("");
-
   const [successMessage, setSuccessMessage] = useState("");
 
-  
+  useEffect(() => {
+    // Dynamically load the Google Sign-In script
+    const script = document.createElement("script");
+    script.src = "https://accounts.google.com/gsi/client";
+    script.async = true;
+    script.defer = true;
 
-  // function BackgroundVideo() {
-  //   return (
-  //     <div className="video-container">
-  //       <video src="/videos/4820120-uhd_4096_2160_25fps.mp4" autoPlay loop muted preload="auto"/>
-  //         {/* <source src={coffee} type="video/mp4" /> */}
-  //         {/* Your browser does not support the video tag. */}
-  //       {/* </video> */}
-  //     </div>
-  //   );
-  // }
+    // Define the callback function
+    script.onload = () => {
+      window.google.accounts.id.initialize({
+        client_id: "205487692902-fjbc0imr8k3ons2lnf1k2ku2msnsmmfm.apps.googleusercontent.com", // Replace with your actual Google Client ID
+        callback: handleCredentialResponse,
+      });
+
+      window.google.accounts.id.renderButton(document.getElementById("buttonDiv"), {
+        theme: "outline",
+        size: "large",
+      });
+
+      window.google.accounts.id.prompt(); // Show One Tap dialog as well
+    };
+
+    // Append the script to the document
+    document.body.appendChild(script);
+
+    // Cleanup: Remove the script when the component unmounts
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -57,22 +73,15 @@ const Signup = ({ setUser, onError = (error) => console.error("Signup Error:", e
 
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\W).+$/;
     if (!passwordRegex.test(password)) {
-      alert(
-        "Password must contain at least one lowercase letter, one uppercase letter, and one symbol."
-      );
+      alert("Password must contain at least one lowercase letter, one uppercase letter, and one symbol.");
       return;
     }
 
     const userData = { name, email, password };
-    console.log({ name, email, password });
     try {
       const response = await axios.post("http://localhost:5000/api/auth/signup", userData);
       setUser(response.data);
-
-      // Show success message
       setSuccessMessage("Signup successful! Redirecting...");
-      
-      // Optional: Redirect to login page after a delay
       setTimeout(() => {
         window.location.href = "/login";
       }, 2000);
@@ -84,16 +93,9 @@ const Signup = ({ setUser, onError = (error) => console.error("Signup Error:", e
 
   return (
     <>
-      {/* Include the Background Video */}
-      <BackgroundVideo />
-
       <header className="header">
-        
         <img src={logo} alt="Bean and Brew Cafe Logo" className="logo" />
-        
-        
         <h1>Bean and Brew Cafe</h1>
-        
       </header>
 
       <div className="input_container">
@@ -134,10 +136,9 @@ const Signup = ({ setUser, onError = (error) => console.error("Signup Error:", e
           <button type="submit">Sign Up</button>
           {successMessage && <p className="success-message">{successMessage}</p>}
           <div className="signup-footer">
-            <p>
-              Already have an account?{" "}
-              <Link to="/login" className = "login_link">Login</Link>
-            </p>
+            <p>Already have an account? <Link to="/login">Login</Link></p>
+            <p>Or sign up with Google</p>
+            <div id="buttonDiv"></div> {/* Google Sign-In Button */}
           </div>
         </form>
       </div>

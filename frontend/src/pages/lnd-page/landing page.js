@@ -15,7 +15,7 @@ const LandingPage = () => {
         <div className="hero-text">
           <h1>Rolsa</h1>
           <p>Drives Change</p>
-          <Link to="/register"><button className="hero-button">Register</button></Link>
+          <Link to="/signup"><button className="hero-button">Register</button></Link>
         </div>
       </div>
 

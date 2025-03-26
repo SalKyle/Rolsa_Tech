@@ -1,14 +1,12 @@
-// backend/routes/authRoutes.js
 const express = require('express');
 const router = express.Router();
-const authController = require('../controllers/authController');
+const { signup, login, googleLogin } = require('../controllers/authController'); // Import googleLogin
 
-// Validate that the controller functions exist
-if (!authController.signup || !authController.login) {
-  console.error("❌ Controller methods not found. Check your 'authController.js' exports.");
-} else {
-  router.post('/signup', authController.signup);
-  router.post('/login', authController.login);
-}
+// Sign Up and Login routes
+router.post('/signup', signup);
+router.post('/login', login);
+
+// Add the Google login route
+router.post('/google-login', googleLogin);  // This route will handle Google Sign-In
 
 module.exports = router;

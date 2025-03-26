@@ -1,24 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import "./login.css";
-// import coffee from "../components/4820120-uhd_4096_2160_25fps.mp4";
 import logo from "../components/media/Bean and Brew.png";
 
-
-const BackgroundVideo = () => {
-  return (
-    <div className="video-container">
-      <video
-        src="/videos/4820120-uhd_4096_2160_25fps.mp4"
-        autoPlay
-        loop
-        muted
-        preload="auto"
-      />
-    </div>
-  );
+// Google Sign-In Script
+const handleCredentialResponse = (response) => {
+  console.log("Encoded JWT ID token: " + response.credential);
+  // Send the token to your server for verification
+  axios
+    .post("http://localhost:5000/api/auth/google-login", { token: response.credential })
+    .then((res) => {
+      console.log(res.data); // Handle the successful response from backend
+    })
+    .catch((error) => {
+      console.error("Google Login Error:", error);
+    });
 };
 
 const Login = ({ setUser, onError }) => {
@@ -27,24 +25,11 @@ const Login = ({ setUser, onError }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  // function BackgroundVideo() {
-  //   return (
-  //     <div className="video-container">
-  //       <video src="/videos/4820120-uhd_4096_2160_25fps.mp4" autoPlay loop muted preload="auto"/>
-  //         {/* <source src={coffee} type="video/mp4" /> */}
-  //         {/* Your browser does not support the video tag. */}
-  //       {/* </video> */}
-  //     </div>
-  //   );
-  // }
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     const userData = { email, password };
     try {
       const response = await axios.post("http://localhost:5000/api/auth/login", userData);
-      
       if (response.data) {
         setUser(response.data); // Update user state
         console.log("Login Successful:", response.data);
@@ -57,11 +42,39 @@ const Login = ({ setUser, onError }) => {
     }
   };
 
+  useEffect(() => {
+    // Dynamically load the Google Sign-In script
+    const script = document.createElement("script");
+    script.src = "https://accounts.google.com/gsi/client";
+    script.async = true;
+    script.defer = true;
+
+    // Define the callback function
+    script.onload = () => {
+      window.google.accounts.id.initialize({
+        client_id: "205487692902-fjbc0imr8k3ons2lnf1k2ku2msnsmmfm.apps.googleusercontent.com", // Replace with your actual Google Client ID
+        callback: handleCredentialResponse,
+      });
+
+      window.google.accounts.id.renderButton(document.getElementById("buttonDiv"), {
+        theme: "outline",
+        size: "large",
+      });
+
+      window.google.accounts.id.prompt(); // Show One Tap dialog as well
+    };
+
+    // Append the script to the document
+    document.body.appendChild(script);
+
+    // Cleanup: Remove the script when the component unmounts
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
+
   return (
     <>
-      {/* Background Video */}
-      <BackgroundVideo />
-
       <header className="header">
         <img src={logo} alt="Bean and Brew Cafe Logo" className="logo" />
         <h1>Bean and Brew Cafe</h1>
@@ -88,13 +101,10 @@ const Login = ({ setUser, onError }) => {
           />
           <button type="submit">Login</button>
           <div className="signup-footer">
-          <p>Or login with Google</p>
-          <button type="button">Continue with Google</button>
+            <p>Or login with Google</p>
+            <div id="buttonDiv"></div> {/* Google Sign-In Button */}
             <p>
-              Don't have an account?{" "}
-              <Link to="/signup">
-                Signup
-              </Link>
+              Don't have an account? <Link to="/signup">Signup</Link>
             </p>
           </div>
         </form>
