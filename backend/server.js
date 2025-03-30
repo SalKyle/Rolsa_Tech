@@ -11,10 +11,12 @@ const app = express();
 dotenv.config();
 app.use(express.json());
 app.use(cors());
+app.use("/api/chargers", require("./routes/chargers"));
 
 
 const authRoutes = require('./routes/authRoutes');
 const userRoutes = require('./routes/userRoutes');
+
 
 app.use('/api/auth', authRoutes);
 app.use('/api/user', userRoutes);

@@ -4,6 +4,8 @@ import LandingPage from "./pages/lnd-page/landing page";
 import Signup from "./pages/signup/signup";
 import Login from "./pages/login/login";
 import HomePg from "./pages/homepage/homepg";
+import CfPage from "./pages/cf_page";
+import EVLocator from "./pages/EVLocator";
 
 const App = () => {
   // State to manage user information
@@ -32,6 +34,8 @@ const App = () => {
         <Route path="/signup" element={<Signup setUser={setUser} onError={onError} />} />
         <Route path="/login" element={<Login setUser={setUser} onError={onError} />} />
         <Route path="/landing" element={<LandingPage />} />
+        <Route path="/cf_page/*" element={<CfPage />} />
+        <Route path="/EVLocator" element={<EVLocator />} />
         {/* Default route now redirects to Landing Page */}
         <Route
           path="/"
