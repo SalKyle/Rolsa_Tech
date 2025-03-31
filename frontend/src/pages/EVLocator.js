@@ -3,6 +3,7 @@ import axios from "axios";
 import EVMap from "./components/EVMap";
 import SearchBar from "./components/SearchBar";
 import Filters from "./components/Filters";
+import Navbar from "./components/Navbar";
 
 
 export default function EVLocator() {
@@ -65,6 +66,7 @@ export default function EVLocator() {
 
   return (
     <div className="p-4 space-y-4">
+        <Navbar />
       <h1 className="text-2xl font-bold text-center">EV Charging Station Locator</h1>
       <SearchBar onSearch={handleSearch} />
       <Filters filters={filters} setFilters={setFilters} />

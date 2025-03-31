@@ -6,6 +6,7 @@ import Login from "./pages/login/login";
 import HomePg from "./pages/homepage/homepg";
 import CfPage from "./pages/cf_page";
 import EVLocator from "./pages/EVLocator";
+import EnergyTracker from "./pages/EnergyTracker";
 
 const App = () => {
   // State to manage user information
@@ -36,6 +37,7 @@ const App = () => {
         <Route path="/landing" element={<LandingPage />} />
         <Route path="/cf_page/*" element={<CfPage />} />
         <Route path="/EVLocator" element={<EVLocator />} />
+        <Route path="/EnergyTracker" element={<EnergyTracker />} />
         {/* Default route now redirects to Landing Page */}
         <Route
           path="/"

@@ -11,7 +11,7 @@ const Navbar = () => (
       <Link to="./DietPage">Products</Link>
       <Link to="../cf_page">Carbon Calculator</Link>
       <Link to="/booking">Consultations</Link>
-      <Link to="/energy">Energy Tracker</Link>
+      <Link to="../EnergyTracker">Energy Tracker</Link>
       <Link to="../EVLocator">EV Locator</Link>
     </div>
     <div className="nav-utilities">
