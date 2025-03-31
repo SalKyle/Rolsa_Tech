@@ -3,15 +3,21 @@ import React, { useState } from 'react';
 import ProgressTracker from './components/ProgressTracker';
 import dietCalculator from "../utils/dietCalculator"; // Adjust the import path as necessary
 import Navbar from './components/Navbar';
+import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+
 
 const DietPage = () => {
   const [restaurantSpending, setRestaurantSpending] = useState(0);
   const [foodWaste, setFoodWaste] = useState(0);
   const [localFood, setLocalFood] = useState(false);
+  const navigate = useNavigate();
+
 
   const handleCalculateDiet = () => {
     const diet = dietCalculator(restaurantSpending, foodWaste, localFood);
     console.log('Calculated Diet:', diet);
+    navigate('/transport');
   };
 
   return (

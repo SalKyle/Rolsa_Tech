@@ -43,14 +43,23 @@ export default function EVLocator() {
           place
         )}&key=AIzaSyA-hFSro0RB1gH1DxebmTCt7ndsCxFMeAI`
       );
-      const loc = geoRes.data.results[0].geometry.location;
+  
+      const results = geoRes?.data?.results;
+      if (!results || results.length === 0) {
+        alert("❌ Location not found. Please enter a valid postcode or city.");
+        return;
+      }
+  
+      const loc = results[0].geometry.location;
       const coords = [loc.lat, loc.lng];
       setUserLocation(coords);
       fetchStations(coords);
     } catch (err) {
       console.error("Search error:", err.message);
+      alert("Something went wrong while searching. Try again.");
     }
   };
+  
 
   const filteredStations = stations.filter((s) => {
     const matchConnector = filters.connector
