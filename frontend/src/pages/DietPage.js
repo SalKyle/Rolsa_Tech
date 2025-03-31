@@ -17,7 +17,7 @@ const DietPage = () => {
   const handleCalculateDiet = () => {
     const diet = dietCalculator(restaurantSpending, foodWaste, localFood);
     console.log('Calculated Diet:', diet);
-    navigate('/transport');
+    navigate('./transport', { state: { diet } });
   };
 
   return (

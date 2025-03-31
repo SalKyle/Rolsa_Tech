@@ -72,13 +72,24 @@ const login = async (req, res) => {
     }
 
     const token = generateToken(user.id, user.email);
-    res.status(200).json({ message: 'Login successful', token });
 
+    // Updated response: return both token and user details
+    res.status(200).json({ 
+      message: 'Login successful', 
+      token, 
+      user: {
+        id: user.id,
+        email: user.email,
+        // add more fields if needed, e.g. name, role, etc.
+      }
+    });
+    
   } catch (err) {
     console.error('Login Error:', err.message);
     res.status(500).json({ error: 'Login failed' });
   }
 };
+
 
 
 // Google login handler

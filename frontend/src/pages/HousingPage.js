@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import calculateHousing from '../utils/housingCalculator';
 import ProgressTracker from './components/ProgressTracker';
 import Navbar from './components/Navbar';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useLocation } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
 
@@ -15,6 +15,9 @@ const HousingPage = () => {
   const [winterTemp, setWinterTemp] = useState(18);
   const [energyEfficiency, setEnergyEfficiency] = useState(0);
   const navigate = useNavigate();
+  const location = useLocation();
+  const { diet, transport } = location.state || {};
+
   const handleCalculate = () => {
     const data = {
       houseTypeFactor,
@@ -27,7 +30,13 @@ const HousingPage = () => {
     };
     const result = calculateHousing(data);
     console.log("Calculated Housing:", result);
-    navigate('/consumption');
+    navigate('../consumption', {
+        state: {
+          diet,
+          transport,
+          housing: result,
+        },
+  });
   };
 
   return (

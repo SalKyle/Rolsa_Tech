@@ -15,7 +15,7 @@ const handleCredentialResponse = (response) => {
       console.log(res.data);
       setTimeout(() => {
         window.location.href = "/";
-      }, 2000); // Handle the successful response from backend
+      }, 2000); 
     })
     .catch((error) => {
       console.error("Google Login Error:", error);
@@ -34,7 +34,17 @@ const Login = ({ setUser, onError }) => {
     try {
       const response = await axios.post("http://localhost:5000/api/auth/login", userData);
       if (response.data) {
-        setUser(response.data); // Update user state
+        const { token, user } = response.data;
+
+        const fullUser = {
+          id: user.id,
+          email: user.email,
+          token,
+        };
+
+        setUser(fullUser);
+        localStorage.setItem("user", JSON.stringify(fullUser));
+
         console.log("Login Successful:", response.data);
         navigate("/"); // Redirect to home page
       } else {
