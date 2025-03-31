@@ -4,6 +4,7 @@ import { useNavigate, Link } from "react-router-dom";
 import "./homepg.css";
 import logo from "../components/media/Bean and Brew.png";
 import croissant from "../components/media/pexels-valeriiamiller-2974486.jpg";
+import Navbar from "../components/Navbar";
 
 const HomePg = ({ user }) => {
     const [userInfo, setUserInfo] = useState(null);
@@ -56,7 +57,7 @@ const HomePg = ({ user }) => {
                 <div className="lnd-video-container">
                     <video src="/videos/mixkit-one-coffee-cup-in-a-sea-of-coffee-beans-43940-4k.mp4" autoPlay loop muted preload="auto" />
                 </div>
-
+                <Navbar />
                 <div className="headboard">
                     {/* Hamburger Menu */}
                     <div className="hamburger-menu" onClick={toggleMenu}>

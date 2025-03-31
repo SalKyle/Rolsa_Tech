@@ -1,8 +1,16 @@
 import React from "react";
 import Navbar from "./components/Navbar";
 import ProgressTracker from "./components/ProgressTracker";
+import { useLocation } from 'react-router-dom';
 
-const ResultsPage = ({ diet, transport, housing, consumption }) => {
+const ResultsPage = () => {
+  const location = useLocation();
+  const {
+    diet = 0,
+    transport = 0,
+    housing = 0,
+    consumption = 0,
+  } = location.state || {};
   const totalFootprint = diet + transport + housing + consumption;
 
   // Example national average benchmark (UK ~10-15 tonnes)

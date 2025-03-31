@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import calculateConsumption from '../utils/consumptionCalculator';
 import ProgressTracker from './components/ProgressTracker';
 import Navbar from './components/Navbar';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useLocation } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
 
@@ -15,6 +15,8 @@ const ConsumptionPage = () => {
   const [entertainmentSpending, setEntertainmentSpending] = useState(0);
   const [recyclingScore, setRecyclingScore] = useState(0);
   const navigate = useNavigate();
+  const location = useLocation();
+  const { diet, transport, housing } = location.state || {};
 
   const handleCalculate = () => {
     const data = {
@@ -28,7 +30,14 @@ const ConsumptionPage = () => {
     };
     const result = calculateConsumption(data);
     console.log("Calculated Consumption:", result);
-    navigate('/results');
+    navigate('../results', {
+        state: {
+          diet,
+          transport,
+          housing,
+          consumption: result,
+        },
+      });
   };
 
   return (
