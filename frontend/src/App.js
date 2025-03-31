@@ -7,12 +7,15 @@ import HomePg from "./pages/homepage/homepg";
 import CfPage from "./pages/cf_page";
 import EVLocator from "./pages/EVLocator";
 import EnergyTracker from "./pages/EnergyTracker";
+import BookingPage from "./pages/BookingPage";
+import { AuthContext } from "./context/AuthContext"; 
 
 const App = () => {
   // State to manage user information
   const [user, setUser] = useState(() => {
     const storedUser = JSON.parse(localStorage.getItem("user"));
-    return storedUser?.token ? { token: storedUser.token } : null;
+    // return storedUser?.token ? storedUser : null;
+    return storedUser || null;
   });
 
   useEffect(() => {
@@ -30,6 +33,7 @@ const App = () => {
   };
 
   return (
+  <AuthContext.Provider value={{ currentUser: user, setCurrentUser: setUser }}>
     <Router>
       <Routes>
         <Route path="/signup" element={<Signup setUser={setUser} onError={onError} />} />
@@ -37,14 +41,16 @@ const App = () => {
         <Route path="/landing" element={<LandingPage />} />
         <Route path="/cf_page/*" element={<CfPage />} />
         <Route path="/EVLocator" element={<EVLocator />} />
+        <Route path="/BookingPage" element={<BookingPage />} />
         <Route path="/EnergyTracker" element={<EnergyTracker />} />
-        {/* Default route now redirects to Landing Page */}
+        
         <Route
           path="/"
           element={user ? <HomePg user={user} /> : <Navigate to="/landing" />}
         />
       </Routes>
     </Router>
+  </AuthContext.Provider>
   );
 };
 

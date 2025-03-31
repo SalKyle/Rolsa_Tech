@@ -4,6 +4,7 @@ import ProgressTracker from './components/ProgressTracker';
 import Navbar from './components/Navbar';
 import { Navigate } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 
 const TransportPage = () => {
@@ -12,8 +13,10 @@ const TransportPage = () => {
   const [flightsUK, setFlightsUK] = useState(0);
   const [flightsEurope, setFlightsEurope] = useState(0);
   const [flightsNonEurope, setFlightsNonEurope] = useState(0);
-  const [flightOffsetPercent, setFlightOffsetPercent] = useState(0); // e.g., 0.2 for 20%
+  const [flightOffsetPercent, setFlightOffsetPercent] = useState(0); 
   const navigate = useNavigate();
+  const location = useLocation();
+  const prevDiet = location.state?.diet;
 
   const handleCalculate = () => {
     const data = {
@@ -26,7 +29,12 @@ const TransportPage = () => {
     };
     const result = calculateTransport(data);
     console.log("Calculated Transport:", result);
-    navigate('/housing');
+    navigate('../housing', {
+        state: {
+          diet: prevDiet,
+          transport: result,
+        },
+    });
   };
 
   return (

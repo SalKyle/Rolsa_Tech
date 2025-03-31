@@ -13,6 +13,7 @@ app.use(express.json());
 app.use(cors());
 app.use("/api/chargers", require("./routes/chargers"));
 app.use("/api/energy", require("./routes/energy"));
+app.use("/api/bookings", require("./routes/booking"));
 
 
 const authRoutes = require('./routes/authRoutes');
