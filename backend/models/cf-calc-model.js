@@ -1,27 +1,42 @@
-const db = require('../config/db');
-const user = require('./userModel')
-
-
-db.run('DROP TABLE IF EXISTS cf_calc', (err) => {
-  if (err) {
-    console.error('Error dropping table:', err);
-  } else {
-    console.log('Table dropped');
-  }
-});
+// models/cf-calc-model.js
+const db = require("../config/db");
 
 db.run(`
-    CREATE TABLE IF NOT EXISTS cf_calc (
-      Cf_score_id INTEGER PRIMARY KEY AUTOINCREMENT,
-      Cf_score REAL,
-      Date_of_calc TEXT,
-      User_ID INTEGER,
-      FOREIGN KEY (User_ID) REFERENCES users(User_ID)
-    )
-`, (err) => {
-  if (err) {
-    console.error('Error creating table:', err.message);
-  } else {
-    console.log('Table created or already exists');
-  }
-});
+  CREATE TABLE IF NOT EXISTS cf_results (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER NOT NULL,
+    diet REAL,
+    transport REAL,
+    housing REAL,
+    consumption REAL,
+    total REAL,
+    date TEXT NOT NULL
+)
+`);
+
+const CFModel = {
+  saveResult: ({ userId, diet, transport, housing, consumption, total, date }) => {
+    return new Promise((resolve, reject) => {
+      db.run(
+        `INSERT INTO cf_results (user_id, diet, transport, housing, consumption, total, date)
+         VALUES (?, ?, ?, ?, ?, ?, ?)`,
+        [userId, diet, transport, housing, consumption, total, date],
+        function (err) {
+          if (err) reject(err);
+          else resolve({ id: this.lastID });
+        }
+      );
+    });
+  },
+
+  getByUser: (userId) => {
+    return new Promise((resolve, reject) => {
+      db.all(`SELECT * FROM cf_results WHERE user_id = ? ORDER BY date ASC`, [userId], (err, rows) => {
+        if (err) reject(err);
+        else resolve(rows);
+      });
+    });
+  },
+};
+
+module.exports = CFModel;

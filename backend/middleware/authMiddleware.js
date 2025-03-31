@@ -12,8 +12,8 @@ const authMiddleware = async (req, res, next) => {
     }
 
     const token = authHeader.split(' ')[1]; // Extract token correctly
-    console.log('Received Token:', token); // Debugging log
-    console.log('🧾 JWT_SECRET in middleware:', process.env.JWT_SECRET);
+    // console.log('Received Token:', token); // Debugging log
+    // console.log('🧾 JWT_SECRET in middleware:', process.env.JWT_SECRET);
 
     const decoded = jwt.verify(token, process.env.JWT_SECRET); // Verify the extracted token
 

@@ -67,7 +67,7 @@ const HomePg = ({ user }) => {
                     </div>
 
                     <div className={`links-ham ${menuOpen ? "show" : ""}`}>
-                        <Link to="/menu">Home</Link>
+                        <Link to="/Dashboard">Home</Link>
                         <Link to="/reservation">Products</Link>
                         <Link to="/baking-lessons">Carbon FootPrint Calculator</Link>
                         <Link to="/rate-my-cake">Energy Usage Tracker</Link>
@@ -81,7 +81,7 @@ const HomePg = ({ user }) => {
                         </header>
 
                         <div className="links">
-                            <Link to="/menu">Home</Link>
+                            <Link to="/Dashboard">Home</Link>
                             <Link to="/reservation">Products</Link>
                             <Link to="/baking-lessons">Carbon FootPrint Calculator</Link>
                             <Link to="/rate-my-cake">Energy Usage Tracker</Link>

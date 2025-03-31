@@ -1,22 +1,43 @@
-import React from "react";
+import React, { useEffect } from "react";
+import axios from "axios";
+import { useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import ProgressTracker from "./components/ProgressTracker";
-import { useLocation } from 'react-router-dom';
+import { useAuth } from "../context/AuthContext"; // 👈 import context
 
 const ResultsPage = () => {
   const location = useLocation();
+  const { currentUser } = useAuth(); // 👈 grab current user
+
   const {
     diet = 0,
     transport = 0,
     housing = 0,
     consumption = 0,
   } = location.state || {};
+
   const totalFootprint = diet + transport + housing + consumption;
 
-  // Example national average benchmark (UK ~10-15 tonnes)
+  // Save to DB if user exists
+  useEffect(() => {
+    if (currentUser?.id) {
+      axios
+        .post("http://localhost:5000/api/cf", {
+          userId: currentUser.id,
+          diet,
+          transport,
+          housing,
+          consumption,
+          total: totalFootprint,
+          date: new Date().toISOString(),
+        })
+        .then(() => console.log("✅ CF data saved"))
+        .catch((err) => console.error("❌ CF save failed:", err));
+    }
+  }, [currentUser, diet, transport, housing, consumption, totalFootprint]);
+
   const averageUK = 12500;
   const percentageOfAverage = ((totalFootprint / averageUK) * 100).toFixed(1);
-
   const formatScore = (score) => score.toFixed(1);
 
   const tips = {
@@ -30,7 +51,6 @@ const ResultsPage = () => {
     <div className="p-6 max-w-3xl mx-auto">
       <Navbar />
       <h1 className="text-3xl font-bold mb-4 text-center">🌍 Your Carbon Footprint Results</h1>
-
       <ProgressTracker progress={100} />
 
       <div className="bg-white shadow-md rounded-lg p-6 mb-6">
@@ -44,29 +64,18 @@ const ResultsPage = () => {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-        <div className="bg-gray-100 p-4 rounded-lg">
-          <h3 className="font-semibold text-lg">🥗 Diet</h3>
-          <p className="text-green-800 font-bold">{formatScore(diet)} kg CO₂</p>
-          <p className="text-sm text-gray-700 mt-1">{tips.diet}</p>
-        </div>
-
-        <div className="bg-gray-100 p-4 rounded-lg">
-          <h3 className="font-semibold text-lg">🚗 Transport</h3>
-          <p className="text-green-800 font-bold">{formatScore(transport)} kg CO₂</p>
-          <p className="text-sm text-gray-700 mt-1">{tips.transport}</p>
-        </div>
-
-        <div className="bg-gray-100 p-4 rounded-lg">
-          <h3 className="font-semibold text-lg">🏠 Housing</h3>
-          <p className="text-green-800 font-bold">{formatScore(housing)} kg CO₂</p>
-          <p className="text-sm text-gray-700 mt-1">{tips.housing}</p>
-        </div>
-
-        <div className="bg-gray-100 p-4 rounded-lg">
-          <h3 className="font-semibold text-lg">🛍️ Consumption</h3>
-          <p className="text-green-800 font-bold">{formatScore(consumption)} kg CO₂</p>
-          <p className="text-sm text-gray-700 mt-1">{tips.consumption}</p>
-        </div>
+        {["diet", "transport", "housing", "consumption"].map((key) => (
+          <div key={key} className="bg-gray-100 p-4 rounded-lg">
+            <h3 className="font-semibold text-lg">
+              {key === "diet" && "🥗 Diet"}
+              {key === "transport" && "🚗 Transport"}
+              {key === "housing" && "🏠 Housing"}
+              {key === "consumption" && "🛍️ Consumption"}
+            </h3>
+            <p className="text-green-800 font-bold">{formatScore(eval(key))} kg CO₂</p>
+            <p className="text-sm text-gray-700 mt-1">{tips[key]}</p>
+          </div>
+        ))}
       </div>
 
       <div className="text-center">

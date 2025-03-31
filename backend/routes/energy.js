@@ -4,15 +4,16 @@ const db = require("../config/db");
 const EnergyModel = require("../models/EnergyModel");
 
 // GET all energy entries
-router.get("/", async (req, res) => {
-  try {
-    const data = await EnergyModel.getAllEntries(); // use model
-    res.json(data);
-  } catch (err) {
-    console.error("Error fetching energy data:", err);
-    res.status(500).json({ error: "Server error" });
+router.get("/:userId", async (req, res) => {
+  try{
+    const data = await EnergyModel.getByUser(req.params.userId);
+    res.json(data);}
+  catch (err) {
+    res.status(500).json({ error: "Failed to fetch energy data" });
   }
+  
 });
+
 
 // POST new energy entry
 router.post("/", async (req, res) => {
