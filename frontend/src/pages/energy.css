@@ -1,0 +1,68 @@
+/* General Container */
+.energy-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: #ffffff;
+    border: 2px solid #2421fa;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+  }
+  
+  /* Title */
+  .energy-title {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #2421fa;
+  }
+  
+  /* Form Styles */
+  .energy-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+  }
+  
+  .energy-form input {
+    padding: 0.6rem 1rem;
+    border: 2px solid #2421fa;
+    border-radius: 6px;
+    font-size: 1rem;
+    background-color: #f9f9f9;
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  .energy-form input:focus {
+    outline: none;
+    border-color: #1a17d6;
+  }
+  
+  /* Button */
+  .energy-form button {
+    padding: 0.6rem 1.5rem;
+    background-color: #2421fa;
+    color: white;
+    font-weight: 600;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .energy-form button:hover {
+    background-color: #1a17d6;
+  }
+  
+  .energy-form button:active {
+    background-color: #0f0cbf;
+  }
+  
+  /* Chart Container */
+  .energy-chart-container {
+    margin-top: 2rem;
+  }
+  

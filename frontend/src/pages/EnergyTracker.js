@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import EnergyChart from "./components/EnergyChart";
 import { useAuth } from "../context/AuthContext"; 
+import Navbar from "./components/Navbar";
+import "./energy.css"
 
 
 
@@ -39,23 +41,23 @@ export default function EnergyTracker() {
   };
 
   return (
-    <div className="p-4 max-w-xl mx-auto">
-      <h1 className="text-2xl font-bold mb-4 text-center">Energy Usage Tracker</h1>
+    <><Navbar />
+      <div className="energy-container">
+      <h1 className="energy-title">⚡ Energy Usage Tracker</h1>
 
-      <form onSubmit={handleSubmit} className="flex items-center gap-4 mb-6">
+      <form onSubmit={handleSubmit} className="energy-form">
         <input
           type="number"
-          className="border p-2 w-full rounded"
           placeholder="Enter usage in kWh"
           value={input}
-          onChange={(e) => setInput(e.target.value)}
-        />
-        <button className="bg-green-600 text-white px-4 py-2 rounded" type="submit">
-          Add
-        </button>
+          onChange={(e) => setInput(e.target.value)} />
+        <button type="submit">Add</button>
       </form>
 
-      <EnergyChart data={entries} />
-    </div>
+      <div className="energy-chart-container">
+        <EnergyChart data={entries} />
+      </div>
+    </div></>
   );
+  
 }

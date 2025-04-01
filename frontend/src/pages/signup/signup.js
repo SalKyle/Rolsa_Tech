@@ -2,7 +2,9 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import "./signup.css";
-import logo from "../components/media/Bean and Brew.png";
+import Solar from "../components/media/solar-panel-169439.jpg";
+
+// import logo from "../components/media/Bean and Brew.png";
 
 // Google Sign-In Script
 const handleCredentialResponse = (response) => {
@@ -97,9 +99,12 @@ const Signup = ({ setUser, onError = (error) => console.error("Signup Error:", e
 
   return (
     <>
+      <div className="bg-container">
+        <img src={Solar} alt="Solar Panel" className="bg" />
+      </div>
       <header className="header">
-        <img src={logo} alt="Bean and Brew Cafe Logo" className="logo" />
-        <h1>Bean and Brew Cafe</h1>
+        {/* <img src={logo} alt="Bean and Brew Cafe Logo" className="logo" /> */}
+        <div className="logo"><Link to="/" >ROLSA <br /><span>TECHNOLOGIES</span></Link></div>
       </header>
 
       <div className="input_container">

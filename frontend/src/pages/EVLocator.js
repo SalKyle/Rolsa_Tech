@@ -4,6 +4,7 @@ import EVMap from "./components/EVMap";
 import SearchBar from "./components/SearchBar";
 import Filters from "./components/Filters";
 import Navbar from "./components/Navbar";
+import "./evlocator.css";
 
 
 export default function EVLocator() {
@@ -74,12 +75,25 @@ export default function EVLocator() {
   });
 
   return (
-    <div className="p-4 space-y-4">
-        <Navbar />
-      <h1 className="text-2xl font-bold text-center">EV Charging Station Locator</h1>
-      <SearchBar onSearch={handleSearch} />
-      <Filters filters={filters} setFilters={setFilters} />
-      <EVMap userLocation={userLocation} stations={filteredStations} />
-    </div>
+    <>
+      <Navbar />
+      <div className="ev-page-wrapper">
+        <div className="ev-container">
+          <h1 className="ev-title">EV Charging Station Locator</h1>
+
+          <div className="ev-controls">
+            <SearchBar onSearch={handleSearch} />
+            <Filters filters={filters} setFilters={setFilters} />
+          </div>
+        </div>
+
+        <div className="ev-map-container">
+          <EVMap userLocation={userLocation} stations={filteredStations} />
+        </div>
+      </div>
+
+
+    </>
   );
+  
 }

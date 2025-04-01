@@ -4,7 +4,7 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const db = require('./config/db'); 
 require('./models/userModel');
-
+require('./config/initDB');
 
 
 const app = express();
@@ -14,6 +14,8 @@ app.use(cors());
 app.use("/api/chargers", require("./routes/chargers"));
 app.use("/api/energy", require("./routes/energy"));
 app.use("/api/bookings", require("./routes/booking"));
+app.use("/api/cf", require("./routes/cf"));
+
 
 
 const authRoutes = require('./routes/authRoutes');

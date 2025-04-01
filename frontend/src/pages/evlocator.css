@@ -1,0 +1,466 @@
+/* === General Container === */
+.ev-locator-container {
+    max-width: 1100px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: #ffffff;
+    border: 2px solid #2421fa;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+  }
+  
+  /* === Title === */
+  .ev-locator-title {
+    font-size: 2rem;
+    text-align: center;
+    color: #2421fa;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* === Search Bar === */
+  .ev-searchbar {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  .ev-searchbar input {
+    padding: 0.6rem 1rem;
+    border: 2px solid #2421fa;
+    border-radius: 6px;
+    background: #f9f9f9;
+    font-size: 1rem;
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  .ev-searchbar button {
+    background-color: #2421fa;
+    color: white;
+    padding: 0.6rem 1.2rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .ev-searchbar button:hover {
+    background-color: #1a17d6;
+  }
+  
+  /* === Filter Dropdowns === */
+  .ev-filters {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+  }
+  
+  .ev-filters select {
+    padding: 0.5rem 1rem;
+    border: 2px solid #2421fa;
+    border-radius: 6px;
+    font-size: 1rem;
+    background-color: #f0f0f0;
+  }
+  
+  /* === Map === */
+  .ev-map {
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #dcdcdc;
+    margin-top: 1rem;
+  }
+/* === EV Locator Wrapper Styling === */
+.ev-container {
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 2rem;
+    border: 2px solid #2421fa;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  /* === Title === */
+  .ev-title {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    color: #2421fa;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* === Search Bar === */
+  .ev-search-bar {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .ev-search-input {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border: 2px solid #2421fa;
+    border-radius: 8px;
+    font-size: 1rem;
+    background: #f9f9f9;
+  }
+  
+  .ev-search-input:focus {
+    outline: none;
+    background: #fff;
+    border-color: #1a17d6;
+  }
+  
+  .ev-search-button {
+    background: #2421fa;
+    color: white;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+  
+  .ev-search-button:hover {
+    background: #1a17d6;
+  }
+  
+  /* === Filters === */
+  .ev-filters {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+  
+  .ev-filter-group {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .ev-filter-group label {
+    font-weight: 600;
+    color: #2421fa;
+    margin-bottom: 0.4rem;
+  }
+  
+  .ev-filter-group select {
+    padding: 0.6rem 1rem;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    background: #f9f9f9;
+    font-size: 1rem;
+    min-width: 200px;
+    transition: border-color 0.2s;
+  }
+  
+  .ev-filter-group select:focus {
+    outline: none;
+    border-color: #1a17d6;
+    background: #fff;
+  }
+  .ev-search-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: 2px solid #2421fa;
+    border-radius: 8px;
+    padding: 0.5rem;
+    background: #f9f9f9;
+    max-width: 100%;
+  }
+  
+  .ev-search-input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    outline: none;
+    font-size: 1rem;
+    padding: 0.4rem 0.5rem;
+    color: #2421fa;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .ev-search-button {
+    background: #2421fa;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+  
+  .ev-search-button:hover {
+    background: #1a17d6;
+  }
+/* === Container === */
+.ev-container {
+    max-width: 1100px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: #ffffff;
+    border: 2px solid #2421fa;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  /* === Title === */
+  .ev-title {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #2421fa;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  /* === Controls Group === */
+  .ev-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* === Search Bar === */
+  .ev-search-bar {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .ev-search-input {
+    flex: 1;
+    max-width: 500px;
+    padding: 0.75rem 1rem;
+    border: 2px solid #2421fa;
+    border-radius: 8px 0 0 8px;
+    font-size: 1rem;
+    background: #f9f9f9;
+  }
+  
+  .ev-search-button {
+    padding: 0.75rem 1rem;
+    background: #2421fa;
+    color: white;
+    border: 2px solid #2421fa;
+    border-left: none;
+    border-radius: 0 8px 8px 0;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .ev-search-button:hover {
+    background: #1a17d6;
+  }
+  
+  /* === Filters === */
+  .ev-filters {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  
+  .ev-filter-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #2421fa;
+  }
+  
+  .ev-filter-group select {
+    padding: 0.6rem 1rem;
+    border: 2px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    background: #f0f0f0;
+    min-width: 200px;
+  }
+  
+  /* === Map Container === */
+  .ev-map {
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    height: 70vh;
+  }
+  .ev-search-wrapper {
+    display: flex;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    border: 2px solid #2421fa;
+    border-radius: 8px;
+    background: #f9f9f9;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+  }
+  
+  .ev-search-input {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border: none;
+    font-size: 1rem;
+    background: transparent;
+    color: #2421fa;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .ev-search-input::placeholder {
+    color: #888;
+  }
+  
+  .ev-search-input:focus {
+    outline: none;
+    background-color: #fff;
+  }
+  
+  .ev-search-button {
+    padding: 0 1rem;
+    background: #2421fa;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .ev-search-button:hover {
+    background: #1a17d6;
+  }
+  
+  .search-icon {
+    width: 20px;
+    height: 20px;
+  }
+/* === Main Container with Flex === */
+.ev-page-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    background: #f3f6fc;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  /* === Locator Card === */
+  .ev-container {
+    width: 100%;
+    max-width: 1300px;
+    background: #ffffff;
+    border: 2px solid #2421fa;
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.07);
+    margin-bottom: 2rem;
+  }
+  
+  /* === Title === */
+  .ev-title {
+    font-size: 2.2rem;
+    text-align: center;
+    color: #2421fa;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* === Controls Wrapper (search + filters) === */
+  .ev-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+    align-items: center;
+  }
+  
+  /* === Search Bar === */
+  .ev-search-wrapper {
+    display: flex;
+    width: 100%;
+    max-width: 600px;
+    border: 2px solid #2421fa;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #f9f9f9;
+  }
+  
+  .ev-search-input {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border: none;
+    background: transparent;
+    font-size: 1rem;
+    color: #2421fa;
+  }
+  
+  .ev-search-input::placeholder {
+    color: #888;
+  }
+  
+  .ev-search-button {
+    padding: 0 1rem;
+    background: #2421fa;
+    color: white;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .ev-search-button:hover {
+    background: #1a17d6;
+  }
+  
+  /* === Filters === */
+  .ev-filters {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .ev-filter-group label {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-weight: 600;
+    color: #2421fa;
+  }
+  
+  .ev-filter-group select {
+    padding: 0.6rem 1rem;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    background: #f0f0f0;
+    font-size: 1rem;
+    min-width: 180px;
+    transition: border-color 0.2s;
+  }
+  
+  .ev-filter-group select:focus {
+    border-color: #1a17d6;
+    background-color: #fff;
+  }
+  
+  /* === Leaflet Map Styling === */
+  .ev-map-container {
+    width: 100%;
+    max-width: 1300px;
+    height: 75vh;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 2px solid #ccc;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+  }
+  
