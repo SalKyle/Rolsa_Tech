@@ -1,0 +1,58 @@
+.feature-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    width: 100%;
+    max-width: 300px;
+    height: 300px;
+    margin: 1rem;
+    text-align: center;
+  }
+  
+  .feature-card:hover {
+    transform: translateY(-10px);
+  }
+  
+  .feature-card h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #000;
+    margin-bottom: 1rem;
+    line-height: 1.4;
+  }
+  
+  .feature-card p {
+    font-size: 0.95rem;
+    color: #444;
+    margin-bottom: 1.5rem;
+    line-height: 1.4;
+  }
+  
+  .feature-card button {
+    background: #162573;
+    color: #fff;
+    border: none;
+    width: auto;
+    padding: 0.5rem 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .feature-card button:hover {
+    background: #0e1b57;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .feature-card {
+      width: 100%;
+      max-width: 90%;
+    }
+  }
+  

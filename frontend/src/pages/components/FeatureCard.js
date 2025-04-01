@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-// import './FeatureCard.css';
+import './FeatureCard.css';
 
 const FeatureCard = ({ title, description, to }) => (
   <div className="feature-card">

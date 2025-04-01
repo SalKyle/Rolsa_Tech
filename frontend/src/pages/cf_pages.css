@@ -1,0 +1,115 @@
+/* === General === */
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    width: 100%;
+    background-color: #f3f6fc;
+  }
+  
+  /* === Card Container === */
+  .cf-card {
+    width: 95%;
+    max-width: 700px;
+    margin: 2rem auto;
+    padding: 2.5rem 2rem;
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .cf-card:hover {
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* === Input Group === */
+  .cf-input {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+    position: relative;
+  }
+  
+  .cf-input label {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #1a1a40;
+    font-size: 1rem;
+  }
+  
+  .cf-input input[type="number"],
+  .cf-input input[type="text"],
+  .cf-input input[type="checkbox"] {
+    padding: 0.75rem 1rem;
+    border: 2px solid #e0e5f2;
+    border-radius: 10px;
+    background-color: #f9fafe;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+  }
+  
+  .cf-input input:focus {
+    border-color: #4b5cfa;
+    background-color: #ffffff;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(75, 92, 250, 0.15);
+  }
+  
+  .cf-input small {
+    margin-top: 0.3rem;
+    color: #7a7a9d;
+    font-size: 0.85rem;
+  }
+  
+  /* === Button === */
+  .cf-button,
+  .cf-input button {
+    margin-top: 1.5rem;
+    padding: 0.75rem 2rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 30px;
+    background: linear-gradient(135deg, #3a3dfb, #5052f7);
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(58, 61, 251, 0.3);
+    transition: all 0.3s ease;
+    align-self: center;
+  }
+  
+  .cf-button:hover,
+  .cf-input button:hover {
+    background: linear-gradient(135deg, #2e30da, #3a3cf0);
+    transform: translateY(-2px);
+  }
+  
+  .cf-button:active,
+  .cf-input button:active {
+    transform: scale(0.98);
+    background: #2421fa;
+  }
+  
+  /* === Headings === */
+  .cf-title,
+  h2 {
+    text-align: center;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #1b1c3a;
+    margin-bottom: 2rem;
+  }
+  
+  /* === Responsive === */
+  @media (max-width: 768px) {
+    .cf-card {
+      padding: 2rem 1rem;
+    }
+  
+    .cf-input input,
+    .cf-button {
+      width: 100%;
+    }
+  }
+  

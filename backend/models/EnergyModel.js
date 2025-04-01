@@ -44,6 +44,21 @@ const EnergyModel = {
       );
     });
   },
+
+
+  getByUser: (userId) => {
+    return new Promise((resolve, reject) => {
+      db.all(
+        "SELECT * FROM energy_entries WHERE user_id = ? ORDER BY date ASC",
+        [userId],
+        (err, rows) => {
+          if (err) reject(err);
+          else resolve(rows);
+        }
+      );
+    });
+  }
 };
+
 
 module.exports = EnergyModel;

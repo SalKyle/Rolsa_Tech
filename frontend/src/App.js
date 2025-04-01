@@ -8,7 +8,7 @@ import CfPage from "./pages/cf_page";
 import EVLocator from "./pages/EVLocator";
 import EnergyTracker from "./pages/EnergyTracker";
 import BookingPage from "./pages/BookingPage";
-import Dashboard from "./pages/Dashboard";
+import Dashboard from "../src/pages/components/Dashboard";
 import { AuthContext } from "./context/AuthContext"; 
 
 const App = () => {
@@ -44,7 +44,7 @@ const App = () => {
         <Route path="/EVLocator" element={<EVLocator />} />
         <Route path="/BookingPage" element={<BookingPage />} />
         <Route path="/EnergyTracker" element={<EnergyTracker />} />
-        <Route path="/Dashboard" element={<Dashboard />} />
+        {/* <Route path="/Dashboard" element={<Dashboard />} /> */}
         
         <Route
           path="/"
