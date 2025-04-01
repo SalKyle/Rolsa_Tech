@@ -4,7 +4,7 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const db = require('./config/db'); 
 require('./models/userModel');
-
+require('./config/initDB');
 
 
 const app = express();
