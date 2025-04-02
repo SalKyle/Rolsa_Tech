@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-// import ThemeToggle from './ThemeToggle';
+import ThemeToggle from './ThemeToggle';
 // import LanguageSelector from './LanguageSelector';
 import './Navbar.css';
 
@@ -16,7 +16,7 @@ const Navbar = () => (
     </div>
     <div className="nav-utilities">
       {/* <LanguageSelector /> */}
-      {/* <ThemeToggle /> */}
+      <ThemeToggle />
     </div>
   </nav>
 );

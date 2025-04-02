@@ -193,4 +193,7 @@ button[type="submit"]:active {
     width: 100%;
     object-fit: cover;
   }
-  
+  :root {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+  }

@@ -1,28 +1,81 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400&family=Quicksand:wght@500&display=swap');
 
+:root {
+  --bg-color: #f3f6fc;
+  --text-color: #000;
+  --card-bg: #fff;
+  --primary: #2421fa;
+  --footer-bg: #3409cc;
+  --header-logo: #fff;
+  --hover-accent: #4ade80;
+}
+
+[data-theme="dark"] {
+  --bg-color: #121212;
+  --text-color: #eee;
+  --card-bg: #1f1f1f;
+  --primary: #6c63ff;
+  --card-section:#1c1c3f;
+  --footer-bg: #1c1c3f;
+  --header-logo: #ddd;
+  --hover-accent: #90ee90;
+}
+
+/* === Base === */
 html, body, #root {
   font-family: 'Poppins', sans-serif;
   height: 100%;
   margin: 0;
   padding: 0;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* === App Layout === */
 .app-container {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background-color: var(--bg-color);
+  color: var(--text-color);
 }
 
 .app-content {
   flex: 1;
 }
 
+/* === Footer === */
 footer {
-  background-color: #3409cc;
-  color: white;
+  background-color: var(--footer-bg);
+  color: var(--text-color);
   text-align: center;
   padding: 1rem;
   font-size: 0.9rem;
   backdrop-filter: blur(5px);
-  opacity: 0.5;
+  opacity: 0.8;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* === Optional global card styling === */
+.card, .input_container, .cf-card, .energy-container {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* === Link + hover helpers === */
+a {
+  color: var(--primary);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--hover-accent);
+}
+
+/* === Button reset if needed === */
+button {
+  transition: background-color 0.3s ease, color 0.3s ease;
 }

@@ -178,3 +178,7 @@ button[type="submit"]:active {
   display: flex;
   justify-content: center;
 }
+:root {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+}

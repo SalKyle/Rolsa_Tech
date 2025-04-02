@@ -135,4 +135,8 @@
       align-items: center;
     }
   }
+  :root {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+  }
   

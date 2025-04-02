@@ -167,4 +167,7 @@
     font-size: 0.85rem;
     padding: 0.5rem 0;
   }
-  
+  :root {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+  }

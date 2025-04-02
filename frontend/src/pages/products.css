@@ -133,4 +133,7 @@
   .product-card-footer a:hover {
     text-decoration: underline;
   }
-  
+  :root {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+  }

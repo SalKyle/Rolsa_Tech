@@ -65,4 +65,7 @@
   .energy-chart-container {
     margin-top: 2rem;
   }
-  
+  :root {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+  }
