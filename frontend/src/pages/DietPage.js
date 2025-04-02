@@ -1,19 +1,16 @@
-// pages/DietPage.js
 import React, { useState } from 'react';
 import ProgressTracker from './components/ProgressTracker';
-import dietCalculator from "../utils/dietCalculator"; // Adjust the import path as necessary
-// import Navbar from './components/Navbar';
-import { Navigate } from 'react-router-dom';
+import dietCalculator from "../utils/dietCalculator";
 import { useNavigate } from 'react-router-dom';
-import './cf_pages.css'
-
+import { useTranslation } from 'react-i18next'; // ✅
+import './cf_pages.css';
 
 const DietPage = () => {
+  const { t } = useTranslation(); // ✅
   const [restaurantSpending, setRestaurantSpending] = useState(0);
   const [foodWaste, setFoodWaste] = useState(0);
   const [localFood, setLocalFood] = useState(false);
   const navigate = useNavigate();
-
 
   const handleCalculateDiet = () => {
     const diet = dietCalculator(restaurantSpending, foodWaste, localFood);
@@ -22,47 +19,46 @@ const DietPage = () => {
   };
 
   return (
-    
-    <div >
-      
-      <h2>Diet</h2>
+    <div>
+      <h2>{t("diet.header", "Diet")}</h2>
       <ProgressTracker progress={25} />
+
       <div className='cf-card'>
         <div className='cf-input'>
-          <label>💳 Monthly restaurant/fast food spending (£):</label>
+          <label>{t("diet.restaurant_spending_label", "💳 Monthly restaurant/fast food spending (£):")}</label>
           <input 
             type="number" 
             value={restaurantSpending} 
             onChange={(e) => setRestaurantSpending(e.target.value)} 
-            placeholder="e.g. 100"
+            placeholder={t("diet.restaurant_spending_placeholder", "e.g. 100")}
           />
         </div>
 
         <div className='cf-input'>
-          <label>🍽️ Estimated percentage of food wasted (%):</label>
+          <label>{t("diet.food_waste_label", "🍽️ Estimated percentage of food wasted (%):")}</label>
           <input 
             type="number" 
             value={foodWaste} 
             onChange={(e) => setFoodWaste(e.target.value)} 
-            placeholder="e.g. 20"
+            placeholder={t("diet.food_waste_placeholder", "e.g. 20")}
           />
-          <small>Tip: Average households waste 20–30% of food</small>
+          <small>{t("diet.food_waste_tip", "Tip: Average households waste 20–30% of food")}</small>
         </div>
 
         <div className='cf-input'>
-          <label>🌱 Do you buy local or seasonal produce?</label>
+          <label>{t("diet.local_food_label", "🌱 Do you buy local or seasonal produce?")}</label>
           <input 
             type="checkbox" 
             checked={localFood} 
             onChange={(e) => setLocalFood(e.target.checked)} 
           />
-          <small>This reduces transportation emissions</small>
-          <button onClick={handleCalculateDiet}>Next</button>
+          <small>{t("diet.local_food_tip", "This reduces transportation emissions")}</small>
+          <button onClick={handleCalculateDiet}>
+            {t("diet.next_button", "Next")}
+          </button>
         </div>
       </div>
-
-        
-      </div>
+    </div>
   );
 };
 
