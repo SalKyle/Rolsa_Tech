@@ -1,9 +1,11 @@
 .site-footer {
-    background-color: #2421fa;
+    background-color: #3409cc;
     color: #ffffff;
     font-family: 'Poppins', sans-serif;
     padding: 2rem 1.5rem 1rem;
     margin-top: 4rem;
+    backdrop-filter: blur(5px);
+    opacity: 0.5;;
   }
   
   .footer-container {
@@ -16,7 +18,7 @@
   }
   
   .footer-brand h3 {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Poppins', sans-serif;
     font-size: 1.8rem;
     margin-bottom: 0.5rem;
   }
