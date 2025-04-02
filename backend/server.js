@@ -16,6 +16,8 @@ app.use("/api/energy", require("./routes/energy"));
 app.use("/api/bookings", require("./routes/booking"));
 app.use("/api/transactions", require("./routes/transactions"));
 app.use("/api/cf", require("./routes/cf"));
+app.use(require('./routes/user'));
+
 
 
 

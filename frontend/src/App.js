@@ -12,6 +12,7 @@ import Products from "./pages/ProductsPage";
 import { AuthContext } from "./context/AuthContext";
 import Footer from "./pages/components/Footer";
 import { ThemeProvider } from "./context/ThemeContext";
+import AccountSettings from "./pages/AccountSettings";
 import "./App.css";
 
 
@@ -46,6 +47,7 @@ const App = () => {
                 <Route path="/landing" element={<LandingPage />} />
                 <Route path="/cf_page/*" element={<CfPage />} />
                 <Route path="/Products" element={<Products />} />
+                <Route path="/AccountSettings" element={<AccountSettings />} />
                 <Route path="/EVLocator" element={<EVLocator />} />
                 <Route path="/BookingPage" element={<BookingPage />} />
                 <Route path="/EnergyTracker" element={<EnergyTracker />} />

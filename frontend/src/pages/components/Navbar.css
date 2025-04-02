@@ -55,3 +55,29 @@ nav.navbar {
     border: none;
   }
   
+  .icon-button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0.25rem;
+    display: flex;
+    align-items: center;
+    color: inherit;
+  }
+  
+  .icon-button svg {
+    stroke: currentColor;
+    fill: none;
+    transition: stroke 0.3s ease;
+  }
+  
+  .icon-button:hover svg {
+    stroke: var(--hover-accent, #4ade80);
+  }
+  nav .nav-utilities{
+    grid-column: 3;
+    padding-right: 7%;
+    justify-content: flex-end;
+    justify-items: flex-end;
+    display: flex;
+  }
