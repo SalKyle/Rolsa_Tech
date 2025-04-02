@@ -1,6 +1,7 @@
 import React from 'react';
 import { useCart } from '../../context/CartContext';
 import axios from 'axios';
+import './CartSidebar.css';
 
 export default function CartSidebar() {
   const { cartItems, removeFromCart, clearCart } = useCart();
@@ -12,28 +13,28 @@ export default function CartSidebar() {
         total: cartItems.reduce((sum, item) => sum + item.price, 0),
         timestamp: new Date().toISOString()
       });
-      alert("✅ Transaction saved!");
+      alert("Transaction saved!");
       clearCart();
     } catch (error) {
-      console.error("❌ Checkout failed:", error);
+      console.error("Checkout failed:", error);
       alert("Checkout failed. Try again.");
     }
   };
 
   return (
-    <div className="bg-gray-50 p-4 border-l w-full md:w-1/3">
-      <h2 className="text-xl font-bold mb-4">🛒 Cart</h2>
+    <div className="cart-sidebar">
+      <h2 className="cart-title">🛒 Cart</h2>
       {cartItems.length === 0 ? (
-        <p className="text-gray-500">Your cart is empty.</p>
+        <p className="cart-empty">Your cart is empty.</p>
       ) : (
         <>
-          <ul className="space-y-2">
+          <ul className="cart-list">
             {cartItems.map((item, index) => (
-              <li key={index} className="flex justify-between items-center">
+              <li key={index} className="cart-item">
                 <span>{item.name}</span>
                 <button
                   onClick={() => removeFromCart(item.id)}
-                  className="text-red-500 hover:underline text-sm"
+                  className="cart-remove-btn"
                 >
                   Remove
                 </button>
@@ -42,7 +43,7 @@ export default function CartSidebar() {
           </ul>
           <button
             onClick={handleCheckout}
-            className="mt-4 w-full bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+            className="cart-checkout-btn"
           >
             Checkout
           </button>

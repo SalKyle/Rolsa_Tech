@@ -11,6 +11,7 @@ import BookingPage from "./pages/BookingPage";
 import Dashboard from "../src/pages/components/Dashboard";
 import Products from "./pages/ProductsPage";
 import { AuthContext } from "./context/AuthContext"; 
+import Footer from "./pages/components/Footer";
 
 const App = () => {
   // State to manage user information
@@ -35,26 +36,29 @@ const App = () => {
   };
 
   return (
-  <AuthContext.Provider value={{ currentUser: user, setCurrentUser: setUser }}>
-    <Router>
-      <Routes>
-        <Route path="/signup" element={<Signup setUser={setUser} onError={onError} />} />
-        <Route path="/login" element={<Login setUser={setUser} onError={onError} />} />
-        <Route path="/landing" element={<LandingPage />} />
-        <Route path="/cf_page/*" element={<CfPage />} />
-        <Route path="/Products" element={<Products />} />
-        <Route path="/EVLocator" element={<EVLocator />} />
-        <Route path="/BookingPage" element={<BookingPage />} />
-        <Route path="/EnergyTracker" element={<EnergyTracker />} />
-        {/* <Route path="/Dashboard" element={<Dashboard />} /> */}
-        
-        <Route
-          path="/"
-          element={user ? <HomePg user={user} /> : <Navigate to="/landing" />}
-        />
-      </Routes>
-    </Router>
-  </AuthContext.Provider>
+    <div>
+      <AuthContext.Provider value={{ currentUser: user, setCurrentUser: setUser }}>
+        <Router>
+          <Routes>
+            <Route path="/signup" element={<Signup setUser={setUser} onError={onError} />} />
+            <Route path="/login" element={<Login setUser={setUser} onError={onError} />} />
+            <Route path="/landing" element={<LandingPage />} />
+            <Route path="/cf_page/*" element={<CfPage />} />
+            <Route path="/Products" element={<Products />} />
+            <Route path="/EVLocator" element={<EVLocator />} />
+            <Route path="/BookingPage" element={<BookingPage />} />
+            <Route path="/EnergyTracker" element={<EnergyTracker />} />
+            {/* <Route path="/Dashboard" element={<Dashboard />} /> */}
+            
+            <Route
+              path="/"
+              element={user ? <HomePg user={user} /> : <Navigate to="/landing" />}
+            />
+          </Routes>
+        </Router>
+      </AuthContext.Provider>
+      <Footer />
+    </div>
   );
 };
 

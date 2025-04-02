@@ -1,0 +1,136 @@
+/* === Layout === */
+.products-page {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 1rem;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .products-title {
+    text-align: center;
+    font-size: 2.2rem;
+    color: #2421fa;
+    margin-bottom: 2rem;
+  }
+  
+  .products-layout {
+    display: flex;
+    gap: 2rem;
+  }
+  
+  .products-content {
+    flex: 2;
+  }
+  
+  .product-section {
+    margin-bottom: 3rem;
+  }
+  
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  .section-header h2 {
+    font-size: 1.6rem;
+    color: #2421fa;
+  }
+  
+  .see-more-btn {
+    background: transparent;
+    border: 2px solid #2421fa;
+    color: #2421fa;
+    font-weight: 600;
+    padding: 0.4rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .see-more-btn:hover {
+    background: #2421fa;
+    color: #fff;
+  }
+  
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  /* === Product Card === */
+  .product-card {
+    border: 1px solid #dcdcdc;
+    border-radius: 10px;
+    background: #fff;
+    padding: 1rem;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .product-card:hover {
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.08);
+  }
+  
+  .product-img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 0.8rem;
+  }
+  
+  .product-card h3 {
+    font-size: 1.1rem;
+    color: #1a1a40;
+    margin-bottom: 0.3rem;
+  }
+  
+  .product-specs {
+    font-size: 0.9rem;
+    color: #777;
+    margin-bottom: 0.5rem;
+  }
+  
+  .product-price {
+    font-weight: bold;
+    color: #2e7d32;
+    margin-bottom: 0.8rem;
+  }
+  
+  .product-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .product-card-footer button {
+    background: none;
+    border: 1px solid #2421fa;
+    color: #2421fa;
+    /* border: none; */
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+
+    cursor: pointer;
+    font-weight: 500;
+    transition: background 0.2s ease;
+  }
+  
+  .product-card-footer button:hover {
+    background: #5406d1;
+    color: white;
+  }
+  
+  .product-card-footer a {
+    font-size: 0.9rem;
+    color: #2421fa;
+    text-decoration: none;
+  }
+  
+  .product-card-footer a:hover {
+    text-decoration: underline;
+  }
+  

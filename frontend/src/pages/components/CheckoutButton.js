@@ -1,6 +1,7 @@
-// File: components/CheckoutButton.js
+
 import axios from 'axios';
-import { useCart } from '../pages/ProductsPageWithCart'; // Adjust if you move it
+import { useCart } from '../ProductsPage'; 
+import './CheckoutButton.css';
 
 export default function CheckoutButton() {
   const { cartItems, clearCart } = useCart();
@@ -14,18 +15,18 @@ export default function CheckoutButton() {
 
     try {
       await axios.post('http://localhost:5000/api/transactions', payload);
-      alert('✅ Transaction saved!');
-      clearCart(); // Clear after successful submission
+      alert('Transaction saved!');
+      clearCart();
     } catch (err) {
       console.error('Checkout error:', err);
-      alert('❌ Failed to save transaction.');
+      alert('Failed to save transaction.');
     }
   };
 
   return (
     <button
       onClick={handleCheckout}
-      className="mt-4 w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
+      className="checkout-btn"
     >
       Checkout
     </button>

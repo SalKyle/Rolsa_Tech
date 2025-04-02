@@ -45,7 +45,7 @@ export default function Dashboard() {
   return (
     <div className="slider">
       
-      <h1 className="slider-text">📊 Dashboard</h1>
+      <h1 className="slider-text">Dashboard</h1>
 
       {/* Slider Switch */}
       <div className="switch">
@@ -61,7 +61,7 @@ export default function Dashboard() {
               : "text-gray-700 hover:bg-gray-300"}
             `}
           >
-            {option === "carbon" ? "🌍 Carbon" : option === "energy" ? "⚡ Energy" : "📅 Bookings"}
+            {option === "carbon" ? "Carbon" : option === "energy" ? "Energy" : "Bookings"}
           </div>
         ))}
       </div>
@@ -70,7 +70,7 @@ export default function Dashboard() {
       {/* === View Panels === */}
       {view === "carbon" && (
         <div className="cahrt-cont">
-          <h2 className="text-xl font-semibold mb-4">🌍 Carbon Footprint Trend</h2>
+          <h2 className="text-xl font-semibold mb-4">Carbon Footprint Trend</h2>
           {carbonData.length > 0 ? (
             <ResponsiveContainer width="100%" height={300}>
               <LineChart data={carbonData}>
@@ -89,7 +89,7 @@ export default function Dashboard() {
 
       {view === "energy" && (
         <div className="chart-cont">
-          <h2 className="text-xl font-semibold mb-4">⚡ Energy Usage Over Time</h2>
+          <h2 className="text-xl font-semibold mb-4">Energy Usage Over Time</h2>
           {energyData.length > 0 ? (
             <ResponsiveContainer width="100%" height={300}>
               <AreaChart data={energyData}>

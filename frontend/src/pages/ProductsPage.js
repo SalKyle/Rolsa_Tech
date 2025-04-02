@@ -2,25 +2,52 @@ import React from 'react';
 import ProductCard from './components/ProductCard';
 import CartSidebar from './components/CartSidebar';
 import { CartProvider } from '../context/CartContext';
+import Navbar from './components/Navbar';
+import './products.css';
 
-// 🧪 Dummy Product Data
 const products = [
-  { id: 1, name: 'Solar Panel Pro', price: 499, img: 'https://via.placeholder.com/300x180' },
-  { id: 2, name: 'EV Charger X', price: 299, img: 'https://via.placeholder.com/300x180' },
-  { id: 3, name: 'Smart Energy Hub', price: 699, img: 'https://via.placeholder.com/300x180' },
+  // Solar
+  { id: 1, name: 'Solar Panel Pro', category: 'Solar', price: 499, img: 'https://via.placeholder.com/300x180', specs: '400W, Monocrystalline, 25-year warranty' },
+  { id: 2, name: 'Solar Inverter Max', category: 'Solar', price: 350, img: 'https://via.placeholder.com/300x180', specs: '3kW inverter, Wi-Fi Monitoring' },
+
+  // EV
+  { id: 3, name: 'EV Charger X', category: 'EV', price: 299, img: 'https://via.placeholder.com/300x180', specs: '7kW, Type 2 Connector, App-controlled' },
+  { id: 4, name: 'EV FastCharge 22kW', category: 'EV', price: 549, img: 'https://via.placeholder.com/300x180', specs: '22kW, Dual port, Smart scheduling' },
+
+  // Other
+  { id: 5, name: 'Smart Energy Hub', category: 'Other', price: 699, img: 'https://via.placeholder.com/300x180', specs: 'Battery backup, energy analytics' },
+  { id: 6, name: 'Smart Thermostat', category: 'Other', price: 149, img: 'https://via.placeholder.com/300x180', specs: 'Voice control, auto-scheduling' },
 ];
 
 export default function ProductsPage() {
+  const renderSection = (title, category) => {
+    const filtered = products.filter((p) => p.category === category);
+    return (
+      <section className="product-section">
+        <div className="section-header">
+          <h2>{title}</h2>
+          <button className="see-more-btn">See more</button>
+        </div>
+        <div className="product-grid">
+          {filtered.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
+        </div>
+      </section>
+    );
+  };
+
   return (
     <CartProvider>
-      <div className="max-w-6xl mx-auto p-6 font-[Poppins]">
-        <h1 className="text-3xl font-bold text-center mb-8 text-blue-700">Our Products</h1>
-
-        <div className="flex flex-col md:flex-row gap-6">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 flex-1">
-            {products.map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
+      <Navbar />
+      <div className="products-page">
+        
+        <h1 className="products-title">Our Products</h1>
+        <div className="products-layout">
+          <div className="products-content">
+            {renderSection(' Solar Products', 'Solar')}
+            {renderSection('EV Chargers', 'EV')}
+            {renderSection('Other Products', 'Other')}
           </div>
           <CartSidebar />
         </div>

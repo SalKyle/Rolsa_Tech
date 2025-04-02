@@ -1,16 +1,14 @@
-// routes/transactions.js
+// routes/transactions.js (example)
 const express = require('express');
 const router = express.Router();
-const { saveTransaction } = require('../controllers/transactions');
+const db = require('../config/db');
 
 router.post('/', (req, res) => {
   const { items, total, timestamp } = req.body;
-
-  if (!items || !total) return res.status(400).json({ error: 'Missing data' });
-
-  saveTransaction({ items, total, timestamp: timestamp || new Date().toISOString() }, (err, result) => {
-    if (err) return res.status(500).json({ error: 'Failed to save transaction' });
-    res.status(201).json(result);
+  const stmt = db.prepare('INSERT INTO transactions (items, total, timestamp) VALUES (?, ?, ?)');
+  stmt.run(JSON.stringify(items), total, timestamp, function (err) {
+    if (err) return res.status(500).json({ error: err.message });
+    res.json({ id: this.lastID, message: 'Transaction saved' });
   });
 });
 
