@@ -2,13 +2,14 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useAuth } from "../../context/AuthContext";
 import { LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer, AreaChart, Area } from "recharts";
-// import Navbar from "./Navbar";
+import { useTranslation } from "react-i18next"; // ✅ Add this
 import './Dashboard.css';
 
 export default function Dashboard() {
   const { currentUser } = useAuth();
+  const { t } = useTranslation(); // ✅ Add this
 
-  const [view, setView] = useState("carbon"); // "carbon", "energy", "bookings"
+  const [view, setView] = useState("carbon");
   const [cfData, setCfData] = useState([]);
   const [energyEntries, setEnergyEntries] = useState([]);
   const [bookings, setBookings] = useState([]);
@@ -44,8 +45,7 @@ export default function Dashboard() {
 
   return (
     <div className="slider">
-      
-      <h1 className="slider-text">Dashboard</h1>
+      <h1 className="slider-text">{t("dashboard.header", "Dashboard")}</h1>
 
       {/* Slider Switch */}
       <div className="switch">
@@ -53,24 +53,24 @@ export default function Dashboard() {
           <div
             key={option}
             onClick={() => setView(option)}
-            className={`options
-              ${view === option ? 
+            className={`options ${
+              view === option ? 
                 option === "carbon" ? "bg-green-600 text-white" : 
                 option === "energy" ? "bg-blue-600 text-white" : 
                 "bg-purple-600 text-white" 
-              : "text-gray-700 hover:bg-gray-300"}
-            `}
+              : "text-gray-700 hover:bg-gray-300"}`}
           >
-            {option === "carbon" ? "Carbon" : option === "energy" ? "Energy" : "Bookings"}
+            {t(`dashboard.${option}`, option)}
           </div>
         ))}
       </div>
 
-
       {/* === View Panels === */}
       {view === "carbon" && (
         <div className="cahrt-cont">
-          <h2 className="text-xl font-semibold mb-4">Carbon Footprint Trend</h2>
+          <h2 className="text-xl font-semibold mb-4">
+            {t("dashboard.carbon_chart_title", "Carbon Footprint Trend")}
+          </h2>
           {carbonData.length > 0 ? (
             <ResponsiveContainer width="100%" height={300}>
               <LineChart data={carbonData}>
@@ -82,14 +82,16 @@ export default function Dashboard() {
               </LineChart>
             </ResponsiveContainer>
           ) : (
-            <p className="text-gray-500">No footprint data yet.</p>
+            <p className="text-gray-500">{t("dashboard.no_data", "No footprint data yet.")}</p>
           )}
         </div>
       )}
 
       {view === "energy" && (
         <div className="chart-cont">
-          <h2 className="text-xl font-semibold mb-4">Energy Usage Over Time</h2>
+          <h2 className="text-xl font-semibold mb-4">
+            {t("dashboard.energy_chart_title", "Energy Usage Over Time")}
+          </h2>
           {energyData.length > 0 ? (
             <ResponsiveContainer width="100%" height={300}>
               <AreaChart data={energyData}>
@@ -101,24 +103,24 @@ export default function Dashboard() {
               </AreaChart>
             </ResponsiveContainer>
           ) : (
-            <p className="text-gray-500">No energy data available yet.</p>
+            <p className="text-gray-500">{t("dashboard.no_data", "No energy data available yet.")}</p>
           )}
         </div>
       )}
 
       {view === "bookings" && (
         <div className="g-white p-6 rounded shadow booking-section">
-          <h2 className="text-xl font-semibold mb-4">📅 Upcoming Bookings</h2>
+          <h2 className="text-xl font-semibold mb-4">📅 {t("dashboard.upcoming_bookings", "Upcoming Bookings")}</h2>
           {bookings.length > 0 ? (
             <ul className="list-disc ml-5">
               {bookings.map((b) => (
                 <li key={b.id}>
-                  <strong>{b.service}</strong> on {b.date} at {b.time}
+                  <strong>{b.service}</strong> {t("dashboard.on", "on")} {b.date} {t("dashboard.at", "at")} {b.time}
                 </li>
               ))}
             </ul>
           ) : (
-            <p className="text-gray-500">No upcoming bookings.</p>
+            <p className="text-gray-500">{t("dashboard.no_data", "No upcoming bookings.")}</p>
           )}
         </div>
       )}

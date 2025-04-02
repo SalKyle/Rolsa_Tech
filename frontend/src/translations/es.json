@@ -1,0 +1,161 @@
+{
+    "navbar": {
+      "home": "Hogar",
+      "products": "Productos",
+      "consultations": "Consultas",
+      "carbon_calculator": "Calculadora de carbono",
+      "energy_tracker": "Rastreador de energía",
+      "ev_locator": "Localizador de EV",
+      "account": "Cuenta"
+    },
+    "footer": {
+      "quick_links": "Enlaces rápidos",
+      "account": "Cuenta",
+      "login": "Acceso",
+      "signup": "Inscribirse",
+      "settings": "Ajustes",
+      "copy_right": "© {Year} Rolsa Technologies. "
+    },
+    "landing": {
+      "title": "Rolsa impulsa el cambio",
+      "register_button": "Registro",
+      "feature_card_1": {
+        "title": "Revise su huella de carbono",
+        "description": "Comprenda su impacto ambiental y descubra formas de reducir las emisiones con nuestra calculadora inteligente."
+      },
+      "feature_card_2": {
+        "title": "Reserve una consulta hoy",
+        "description": "Obtenga asesoramiento experto sobre soluciones de energía y energía sostenibles adaptadas a sus necesidades."
+      },
+      "feature_card_3": {
+        "title": "Verifique su uso de energía",
+        "description": "Registre, rastree y visualice el consumo de energía de su hogar o comercial en tiempo real."
+      }
+    },
+    "signup": {
+      "header": "Inscribirse",
+      "username": "Nombre de usuario",
+      "email": "Correo electrónico",
+      "password": "Contraseña",
+      "confirm_password": "confirmar Contraseña",
+      "sign_up_button": "Inscribirse",
+      "already_have_account": "¿Ya tienes una cuenta? ",
+      "google_sign_in": "O regístrese con Google"
+    },
+    "login": {
+      "header": "Acceso",
+      "email": "Correo electrónico",
+      "password": "Contraseña",
+      "login_button": "Acceso",
+      "google_sign_in": "O iniciar sesión con Google",
+      "no_account": "¿No tienes una cuenta? "
+    },
+    "dashboard": {
+      "header": "Panel",
+      "carbon_footprint": "Huella de carbono",
+      "energy_usage": "Uso de energía",
+      "upcoming_bookings": "Próximas reservas",
+      "carbon_chart_title": "Tendencia de huella de carbono",
+      "energy_chart_title": "Uso de energía con el tiempo",
+      "no_data": "No hay datos disponibles todavía."
+    },
+    "cart": {
+      "cart_title": "🛒 carro",
+      "empty_cart": "Tu carro está vacío.",
+      "checkout_button": "Verificar",
+      "remove_button": "Eliminar"
+    },
+    "account_settings": {
+      "header": "Configuraciones de la cuenta",
+      "username": "Nombre de usuario",
+      "email": "Correo electrónico",
+      "new_password": "Nueva contraseña",
+      "update_button": "Cuenta de actualización",
+      "logout_button": "Cierre de sesión",
+      "success_message": "Cuenta actualizada con éxito.",
+      "error_message": "No se pudo actualizar la cuenta."
+    },
+    "theme": {
+      "light_mode": "Modo de luz",
+      "dark_mode": "Modo oscuro"
+    },
+    "filters": {
+      "connector_type": "Tipo de conector",
+      "network": "Red"
+    },
+    "transport_page": {
+      "title": "Transporte",
+      "transport_mode_factor_label": "🚗 Factor de emisión del método de viaje diario:",
+      "train_hours_label": "🚆 Horas promedio pasadas en trenes por semana:",
+      "flights_uk_label": "✈️ Vuelos dentro del Reino Unido por año:",
+      "flights_europe_label": "✈️ Vuelos a Europa por año:",
+      "flights_non_europe_label": "🌍 Vuelos de larga distancia (no europea) por año:",
+      "flight_offset_label": "♻️ Efectos de compensación de vuelo (%):",
+      "next_button": "Próximo"
+    },
+    "results_page": {
+      "title": "🌍 Resultados de su huella de carbono",
+      "total_footprint_label": "Huella total",
+      "kg_per_year": "kg co₂ / año",
+      "percentage_of_average": "Eso es aproximadamente {porcentaje}% del promedio nacional del Reino Unido",
+      "tips_section": {
+        "diet": "Coma más comidas a base de plantas y reduzca el desperdicio de alimentos.",
+        "transport": "Use el transporte público, la bicicleta más y reduzca los vuelos.",
+        "housing": "Mejorar el aislamiento y usar aranceles de energía renovable.",
+        "consumption": "Compre menos, recicle más y evite la moda rápida."
+      },
+      "see_tips_button": "🌱 Vea consejos para reducir su huella"
+    },
+    "cart_sidebar": {
+      "cart_title": "🛒 carro",
+      "empty_cart_message": "Tu carro está vacío.",
+      "checkout_button": "Verificar",
+      "remove_button": "Eliminar"
+    },
+    "booking": {
+      "header": "📅 Reserve una consulta",
+      "service_label": "¿Para qué servicio estás reservando?",
+      "date_label": "Elija una fecha:",
+      "time_label": "Elija una ranura de tiempo:",
+      "finalize_button": "✅ Finalizar la reserva",
+      "no_bookings": "No hay reservas próximas."
+    },
+    "consumption": {
+      "header": "Consumo",
+      "electronics_purchase_label": "📱 Compras electrónicas (anualmente £)",
+      "clothes_spending_label": "👗 Gasto de ropa (£ mensual)",
+      "pets_spending_label": "🐶 Gasto relacionado con mascotas (£ mensual)",
+      "health_beauty_spending_label": "💅 Salud y belleza (£ mensual)",
+      "communication_spending_label": "📞 Comunicación (£ mensual)",
+      "entertainment_spending_label": "🎮 Entretenimiento (£ mensual)",
+      "recycling_score_label": "♻️ Puntuación de reciclaje (0–1)",
+      "finish_button": "Finalizar"
+    },
+    "diet": {
+      "header": "Dieta",
+      "restaurant_spending_label": "💳 gastos mensuales de restaurante/comida rápida (£):",
+      "food_waste_label": "🍽️ Porcentaje estimado de alimentos desperdiciados (%):",
+      "local_food_label": "🌱 ¿Compra productos locales o estacionales?",
+      "next_button": "Próximo"
+    },
+    "energy_tracker": {
+      "header": "⚡ rastreador de uso de energía",
+      "usage_input_placeholder": "Ingrese el uso en KWH",
+      "add_button": "Agregar"
+    },
+    "ev_locator": {
+      "header": "Localizador de la estación de carga EV",
+      "search_placeholder": "Buscar una ubicación",
+      "connector_type": "Tipo de conector",
+      "network": "Red"
+    },
+    "google_sign_in": {
+      "error": "Error de inicio de sesión de Google:",
+      "success": "Google Iniciar sesión exitosa"
+    },
+    "validation": {
+      "password_min_length": "La contraseña debe ser al menos {MinLength} caracteres de largo.",
+      "password_format": "La contraseña debe contener al menos una letra minúscula, una letra mayúscula y un símbolo.",
+      "fields_required": "Se requieren todos los campos."
+    }
+  }

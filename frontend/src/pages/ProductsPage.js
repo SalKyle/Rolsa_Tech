@@ -3,6 +3,7 @@ import ProductCard from './components/ProductCard';
 import CartSidebar from './components/CartSidebar';
 import { CartProvider } from '../context/CartContext';
 import Navbar from './components/Navbar';
+import { useTranslation } from 'react-i18next'; // ✅ Add this
 import './products.css';
 
 const products = [
@@ -20,13 +21,15 @@ const products = [
 ];
 
 export default function ProductsPage() {
-  const renderSection = (title, category) => {
+  const { t } = useTranslation(); // ✅ Add this
+
+  const renderSection = (titleKey, category) => {
     const filtered = products.filter((p) => p.category === category);
     return (
       <section className="product-section">
         <div className="section-header">
-          <h2>{title}</h2>
-          <button className="see-more-btn">See more</button>
+          <h2>{t(`products.section_titles.${category}`, titleKey)}</h2>
+          <button className="see-more-btn">{t('products.see_more', 'See more')}</button>
         </div>
         <div className="product-grid">
           {filtered.map((product) => (
@@ -41,11 +44,10 @@ export default function ProductsPage() {
     <CartProvider>
       <Navbar />
       <div className="products-page">
-        
-        <h1 className="products-title">Our Products</h1>
+        <h1 className="products-title">{t('products.title', 'Our Products')}</h1>
         <div className="products-layout">
           <div className="products-content">
-            {renderSection(' Solar Products', 'Solar')}
+            {renderSection('Solar Products', 'Solar')}
             {renderSection('EV Chargers', 'EV')}
             {renderSection('Other Products', 'Other')}
           </div>

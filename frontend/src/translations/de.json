@@ -1,0 +1,161 @@
+{
+    "navbar": {
+      "home": "Heim",
+      "products": "Produkte",
+      "consultations": "Konsultationen",
+      "carbon_calculator": "Kohlenstoffrechner",
+      "energy_tracker": "Energy Tracker",
+      "ev_locator": "EV -Locator",
+      "account": "Konto"
+    },
+    "footer": {
+      "quick_links": "Schnelle Links",
+      "account": "Konto",
+      "login": "Login",
+      "signup": "Melden Sie sich an",
+      "settings": "Einstellungen",
+      "copy_right": "© {Jahr} Rolsa Technologies. "
+    },
+    "landing": {
+      "title": "Rolsa fährt Veränderungen an",
+      "register_button": "Registrieren",
+      "feature_card_1": {
+        "title": "Überprüfen Sie Ihren CO2 -Fußabdruck",
+        "description": "Verstehen Sie Ihre Umweltauswirkungen und entdecken Sie Möglichkeiten, um die Emissionen mit unserem Smart Calculator zu verringern."
+      },
+      "feature_card_2": {
+        "title": "Buchen Sie noch heute eine Beratung",
+        "description": "Holen Sie sich fachkundige Beratung zu nachhaltigen Lebens- und Energielösungen, die auf Ihre Bedürfnisse zugeschnitten sind."
+      },
+      "feature_card_3": {
+        "title": "Überprüfen Sie Ihren Energieverbrauch",
+        "description": "Logieren, verfolgen und visualisieren Sie Ihren Haus- oder Geschäftsenergieverbrauch in Echtzeit."
+      }
+    },
+    "signup": {
+      "header": "Melden Sie sich an",
+      "username": "Benutzername",
+      "email": "E-Mail",
+      "password": "Passwort",
+      "confirm_password": "Passwort bestätigen",
+      "sign_up_button": "Melden Sie sich an",
+      "already_have_account": "Haben Sie bereits ein Konto? ",
+      "google_sign_in": "Oder melden Sie sich bei Google an"
+    },
+    "login": {
+      "header": "Login",
+      "email": "E-Mail",
+      "password": "Passwort",
+      "login_button": "Login",
+      "google_sign_in": "Oder melden Sie sich bei Google an",
+      "no_account": "Sie haben kein Konto? "
+    },
+    "dashboard": {
+      "header": "Armaturenbrett",
+      "carbon_footprint": "CO2 -Fußabdruck",
+      "energy_usage": "Energieverbrauch",
+      "upcoming_bookings": "Begleite Buchungen",
+      "carbon_chart_title": "CO2 -Fußabdruck Trend",
+      "energy_chart_title": "Energieverbrauch im Laufe der Zeit",
+      "no_data": "Noch keine Daten verfügbar."
+    },
+    "cart": {
+      "cart_title": "🛒 Warenkorb",
+      "empty_cart": "Ihr Wagen ist leer.",
+      "checkout_button": "Kasse",
+      "remove_button": "Entfernen"
+    },
+    "account_settings": {
+      "header": "Kontoeinstellungen",
+      "username": "Benutzername",
+      "email": "E-Mail",
+      "new_password": "Neues Passwort",
+      "update_button": "Konto aktualisieren",
+      "logout_button": "Abmelden",
+      "success_message": "Konto erfolgreich aktualisiert.",
+      "error_message": "Das Konto nicht aktualisiert."
+    },
+    "theme": {
+      "light_mode": "Lichtmodus",
+      "dark_mode": "Dunkler Modus"
+    },
+    "filters": {
+      "connector_type": "Anschlusstyp",
+      "network": "Netzwerk"
+    },
+    "transport_page": {
+      "title": "Transport",
+      "transport_mode_factor_label": "🚗 Emissionsfaktor der täglichen Reisemethode:",
+      "train_hours_label": "🚆 Durchschnittliche Stunden für Züge pro Woche:",
+      "flights_uk_label": "✈️ Flüge in Großbritannien pro Jahr:",
+      "flights_europe_label": "✈️ Flüge nach Europa pro Jahr:",
+      "flights_non_europe_label": "🌍 Langstreckenflüge (Nicht-Europa) pro Jahr:",
+      "flight_offset_label": "♻️ Flugversetzbemühungen (%):",
+      "next_button": "Nächste"
+    },
+    "results_page": {
+      "title": "🌍 Ihr CO2 -Fußabdruck zu Ergebnissen",
+      "total_footprint_label": "Totaler Fußabdruck",
+      "kg_per_year": "kg co₂ / Jahr",
+      "percentage_of_average": "Das ist ungefähr {Prozentsatz}% des britischen nationalen Durchschnitts",
+      "tips_section": {
+        "diet": "Essen Sie mehr Mahlzeiten auf pflanzlicher Basis und reduzieren Sie Lebensmittelabfälle.",
+        "transport": "Nutzen Sie öffentliche Verkehrsmittel, Fahrrad mehr und reduzieren Sie Flüge.",
+        "housing": "Verbesserung der Isolierung und nutzen Sie Tarife für erneuerbare Energien.",
+        "consumption": "Kaufen Sie weniger, recyceln Sie mehr und vermeiden Sie schnelle Mode."
+      },
+      "see_tips_button": "🌱 Sehen Sie Tipps, um Ihren Fußabdruck zu reduzieren"
+    },
+    "cart_sidebar": {
+      "cart_title": "🛒 Warenkorb",
+      "empty_cart_message": "Ihr Wagen ist leer.",
+      "checkout_button": "Kasse",
+      "remove_button": "Entfernen"
+    },
+    "booking": {
+      "header": "📅 Buchen Sie eine Beratung",
+      "service_label": "Für welchen Service buchen Sie?",
+      "date_label": "Wählen Sie ein Date aus:",
+      "time_label": "Wählen Sie einen Zeitfenster:",
+      "finalize_button": "✅ Buchung abschließen",
+      "no_bookings": "Keine bevorstehenden Buchungen."
+    },
+    "consumption": {
+      "header": "Verbrauch",
+      "electronics_purchase_label": "📱 Elektronikkäufe (jährlich £)",
+      "clothes_spending_label": "👗 Kleidungsausgaben (monatlich £)",
+      "pets_spending_label": "🐶 PET-bezogene Ausgaben (monatlich £)",
+      "health_beauty_spending_label": "💅 Gesundheit & Schönheit (monatlich £)",
+      "communication_spending_label": "📞 Kommunikation (monatlich £)",
+      "entertainment_spending_label": "🎮 Unterhaltung (monatlich £)",
+      "recycling_score_label": "♻️ Recycling Score (0–1)",
+      "finish_button": "Beenden"
+    },
+    "diet": {
+      "header": "Diät",
+      "restaurant_spending_label": "💳 Monatliche Restaurant-/Fast -Food -Ausgaben (£):",
+      "food_waste_label": "🍽️ Schätzungsprozent an Lebensmitteln verschwendet (%):",
+      "local_food_label": "🌱 Kaufen Sie lokale oder saisonale Produkte?",
+      "next_button": "Nächste"
+    },
+    "energy_tracker": {
+      "header": "⚡ Energieverbrauchs -Tracker",
+      "usage_input_placeholder": "Geben Sie die Verwendung in kWh ein",
+      "add_button": "Hinzufügen"
+    },
+    "ev_locator": {
+      "header": "EV -Ladestation Ort",
+      "search_placeholder": "Suche nach einem Ort",
+      "connector_type": "Anschlusstyp",
+      "network": "Netzwerk"
+    },
+    "google_sign_in": {
+      "error": "Google -Anmeldefehler:",
+      "success": "Google Anmelden erfolgreich"
+    },
+    "validation": {
+      "password_min_length": "Das Passwort muss mindestens {minLength} Zeichen lang sein.",
+      "password_format": "Das Passwort muss mindestens einen Kleinbuchstaben, einen Großbuchstaben und ein Symbol enthalten.",
+      "fields_required": "Alle Felder sind erforderlich."
+    }
+  }

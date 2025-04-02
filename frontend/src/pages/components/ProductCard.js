@@ -1,10 +1,12 @@
 import React from 'react';
 import { useCart } from '../../context/CartContext';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next'; // ✅ Add this
 import "../products.css"
 
 export default function ProductCard({ product }) {
   const { addToCart } = useCart();
+  const { t } = useTranslation(); // ✅ Hook
 
   return (
     <div className="product-card">
@@ -13,8 +15,12 @@ export default function ProductCard({ product }) {
       <p className="product-specs">{product.specs}</p>
       <p className="product-price">£{product.price}</p>
       <div className="product-card-footer">
-        <button onClick={() => addToCart(product)}>Add to Cart</button>
-        <Link to={`/product/${product.id}`}>More info</Link>
+        <button onClick={() => addToCart(product)}>
+          {t('product_card.add_to_cart', 'Add to Cart')}
+        </button>
+        <Link to={`/product/${product.id}`}>
+          {t('product_card.more_info', 'More info')}
+        </Link>
       </div>
     </div>
   );

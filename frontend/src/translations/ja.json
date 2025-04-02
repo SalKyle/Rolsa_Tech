@@ -1,0 +1,161 @@
+{
+    "navbar": {
+      "home": "家",
+      "products": "製品",
+      "consultations": "相談",
+      "carbon_calculator": "炭素計算機",
+      "energy_tracker": "エネルギートラッカー",
+      "ev_locator": "EVロケーター",
+      "account": "アカウント"
+    },
+    "footer": {
+      "quick_links": "クイックリンク",
+      "account": "アカウント",
+      "login": "ログイン",
+      "signup": "サインアップ",
+      "settings": "設定",
+      "copy_right": "©{year} Rolsa Technologies。"
+    },
+    "landing": {
+      "title": "Rolsaは変更をドライブします",
+      "register_button": "登録する",
+      "feature_card_1": {
+        "title": "二酸化炭素排出量を確認してください",
+        "description": "環境への影響を理解し、スマート計算機で排出量を削減する方法を発見してください。"
+      },
+      "feature_card_2": {
+        "title": "今日相談を予約してください",
+        "description": "あなたのニーズに合わせた持続可能な生活とエネルギーのソリューションに関する専門家のアドバイスを受けてください。"
+      },
+      "feature_card_3": {
+        "title": "エネルギーの使用量を確認してください",
+        "description": "家庭またはビジネスのエネルギー消費をリアルタイムでログ、追跡、視覚化します。"
+      }
+    },
+    "signup": {
+      "header": "サインアップ",
+      "username": "ユーザー名",
+      "email": "メール",
+      "password": "パスワード",
+      "confirm_password": "パスワードを認証する",
+      "sign_up_button": "サインアップ",
+      "already_have_account": "すでにアカウントを持っていますか？",
+      "google_sign_in": "またはGoogleにサインアップしてください"
+    },
+    "login": {
+      "header": "ログイン",
+      "email": "メール",
+      "password": "パスワード",
+      "login_button": "ログイン",
+      "google_sign_in": "またはGoogleでログインします",
+      "no_account": "アカウントを持っていませんか？"
+    },
+    "dashboard": {
+      "header": "ダッシュボード",
+      "carbon_footprint": "二酸化炭素排出量",
+      "energy_usage": "エネルギーの使用",
+      "upcoming_bookings": "今後の予約",
+      "carbon_chart_title": "二酸化炭素排出量の傾向",
+      "energy_chart_title": "時間の経過に伴うエネルギーの使用",
+      "no_data": "まだ利用可能なデータはありません。"
+    },
+    "cart": {
+      "cart_title": "🛒カート",
+      "empty_cart": "あなたのカートは空です。",
+      "checkout_button": "チェックアウト",
+      "remove_button": "取り除く"
+    },
+    "account_settings": {
+      "header": "アカウント設定",
+      "username": "ユーザー名",
+      "email": "メール",
+      "new_password": "新しいパスワード",
+      "update_button": "アカウントを更新します",
+      "logout_button": "ログアウト",
+      "success_message": "アカウントが正常に更新されました。",
+      "error_message": "アカウントの更新に失敗しました。"
+    },
+    "theme": {
+      "light_mode": "ライトモード",
+      "dark_mode": "ダークモード"
+    },
+    "filters": {
+      "connector_type": "コネクタタイプ",
+      "network": "ネットワーク"
+    },
+    "transport_page": {
+      "title": "輸送",
+      "transport_mode_factor_label": "🚗毎日の旅行方法排出係数：",
+      "train_hours_label": "cor週あたりの電車に費やされる平均時間：",
+      "flights_uk_label": "✈イギリス内の1年間のフライト：",
+      "flights_europe_label": "✈§年間ヨーロッパへのフライト：",
+      "flights_non_europe_label": "🌍年間長距離便（非ヨーロッパ）：",
+      "flight_offset_label": "hight§フライトオフセットの取り組み（％）：",
+      "next_button": "次"
+    },
+    "results_page": {
+      "title": "carbon排出量の結果",
+      "total_footprint_label": "総フットプリント",
+      "kg_per_year": "kgco₂ / year",
+      "percentage_of_average": "これは、英国の全国平均の約{パーセンテージ}％です",
+      "tips_section": {
+        "diet": "より多くの植物ベースの食事を食べ、食品廃棄物を減らします。",
+        "transport": "公共交通機関を使用し、より自転車に乗って、フライトを減らします。",
+        "housing": "断熱を改善し、再生可能エネルギーの関税を使用します。",
+        "consumption": "より少ない購入、より多くのリサイクル、そしてファストファッションを避けてください。"
+      },
+      "see_tips_button": "footprintを減らすためのヒントをご覧ください"
+    },
+    "cart_sidebar": {
+      "cart_title": "🛒カート",
+      "empty_cart_message": "あなたのカートは空です。",
+      "checkout_button": "チェックアウト",
+      "remove_button": "取り除く"
+    },
+    "booking": {
+      "header": "📅相談を予約してください",
+      "service_label": "どのサービスを予約していますか？",
+      "date_label": "日付を選ぶ：",
+      "time_label": "タイムスロットを選択してください：",
+      "finalize_button": "booking予約を完了します",
+      "no_bookings": "今後の予約はありません。"
+    },
+    "consumption": {
+      "header": "消費",
+      "electronics_purchase_label": "📱エレクトロニクス購入（毎年£）",
+      "clothes_spending_label": "👗衣類支出（毎月£）",
+      "pets_spending_label": "🐶ペット関連の支出（毎月£）",
+      "health_beauty_spending_label": "💅健康と美しさ（毎月£）",
+      "communication_spending_label": "📞通信（毎月£）",
+      "entertainment_spending_label": "🎮エンターテイメント（毎月£）",
+      "recycling_score_label": "♻️リサイクルスコア（0–1）",
+      "finish_button": "仕上げる"
+    },
+    "diet": {
+      "header": "ダイエット",
+      "restaurant_spending_label": "💳毎月のレストラン/ファーストフード支出（£）：",
+      "food_waste_label": "devertayted食品の推定割合を無駄にする（％）：",
+      "local_food_label": "local地元または季節の農産物を購入しますか？",
+      "next_button": "次"
+    },
+    "energy_tracker": {
+      "header": "Energy Energy Usage Tracker",
+      "usage_input_placeholder": "kwhに使用法を入力します",
+      "add_button": "追加"
+    },
+    "ev_locator": {
+      "header": "EV充電ステーションロケーター",
+      "search_placeholder": "場所を検索します",
+      "connector_type": "コネクタタイプ",
+      "network": "ネットワーク"
+    },
+    "google_sign_in": {
+      "error": "Googleログインエラー：",
+      "success": "Googleサインインが成功しました"
+    },
+    "validation": {
+      "password_min_length": "パスワードは、少なくとも{minlength}文字の長さでなければなりません。",
+      "password_format": "パスワードには、少なくとも1つの小文字、1つの大文字、1つのシンボルが含まれている必要があります。",
+      "fields_required": "すべてのフィールドが必要です。"
+    }
+  }

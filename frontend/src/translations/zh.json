@@ -1,0 +1,161 @@
+{
+    "navbar": {
+      "home": "家",
+      "products": "产品",
+      "consultations": "咨询",
+      "carbon_calculator": "碳计算器",
+      "energy_tracker": "能量跟踪器",
+      "ev_locator": "EV定位器",
+      "account": "帐户"
+    },
+    "footer": {
+      "quick_links": "快速链接",
+      "account": "帐户",
+      "login": "登录",
+      "signup": "报名",
+      "settings": "设置",
+      "copy_right": "©{年} Rolsa Technologies。"
+    },
+    "landing": {
+      "title": "Rolsa驱动变化",
+      "register_button": "登记",
+      "feature_card_1": {
+        "title": "检查您的碳足迹",
+        "description": "了解您的环境影响，并发现使用智能计算器减少排放的方法。"
+      },
+      "feature_card_2": {
+        "title": "立即预订咨询",
+        "description": "获取有关根据您的需求量身定制的可持续生活和能源解决方案的专家建议。"
+      },
+      "feature_card_3": {
+        "title": "检查您的能源使用情况",
+        "description": "实时登录，跟踪和可视化您的房屋或业务能源消耗。"
+      }
+    },
+    "signup": {
+      "header": "报名",
+      "username": "用户名",
+      "email": "电子邮件",
+      "password": "密码",
+      "confirm_password": "确认密码",
+      "sign_up_button": "报名",
+      "already_have_account": "已经有一个帐户？",
+      "google_sign_in": "或与Google注册"
+    },
+    "login": {
+      "header": "登录",
+      "email": "电子邮件",
+      "password": "密码",
+      "login_button": "登录",
+      "google_sign_in": "或使用Google登录",
+      "no_account": "没有帐户？"
+    },
+    "dashboard": {
+      "header": "仪表板",
+      "carbon_footprint": "碳足迹",
+      "energy_usage": "能源使用",
+      "upcoming_bookings": "即将预订",
+      "carbon_chart_title": "碳足迹趋势",
+      "energy_chart_title": "随着时间的推移能量使用",
+      "no_data": "尚无可用数据。"
+    },
+    "cart": {
+      "cart_title": "🛒购物车",
+      "empty_cart": "您的购物车是空的。",
+      "checkout_button": "查看",
+      "remove_button": "消除"
+    },
+    "account_settings": {
+      "header": "帐户设置",
+      "username": "用户名",
+      "email": "电子邮件",
+      "new_password": "新密码",
+      "update_button": "更新帐户",
+      "logout_button": "注销",
+      "success_message": "帐户成功更新。",
+      "error_message": "无法更新帐户。"
+    },
+    "theme": {
+      "light_mode": "光模式",
+      "dark_mode": "黑暗模式"
+    },
+    "filters": {
+      "connector_type": "连接器类型",
+      "network": "网络"
+    },
+    "transport_page": {
+      "title": "运输",
+      "transport_mode_factor_label": "🚗每日旅行方法排放因素：",
+      "train_hours_label": "🚆平均每周在火车上花费的时间：",
+      "flights_uk_label": "✈️每年在英国境内飞行：",
+      "flights_europe_label": "✈️每年飞往欧洲的航班：",
+      "flights_non_europe_label": "🌍每年长途飞行（非欧洲）：",
+      "flight_offset_label": "♻️飞行偏移工作（％）：",
+      "next_button": "下一个"
+    },
+    "results_page": {
+      "title": "🌍您的碳足迹结果",
+      "total_footprint_label": "总足迹",
+      "kg_per_year": "kgco₂ /年",
+      "percentage_of_average": "这大约是英国全国平均水平的{百分比}％",
+      "tips_section": {
+        "diet": "多吃植物性的餐食并减少食物浪费。",
+        "transport": "使用公共交通工具，更多骑自行车并减少航班。",
+        "housing": "改善绝缘材料并使用可再生能源关税。",
+        "consumption": "少买，回收更多，避免快速时尚。"
+      },
+      "see_tips_button": "🌱请参阅减少足迹的技巧"
+    },
+    "cart_sidebar": {
+      "cart_title": "🛒购物车",
+      "empty_cart_message": "您的购物车是空的。",
+      "checkout_button": "查看",
+      "remove_button": "消除"
+    },
+    "booking": {
+      "header": "📅预订咨询",
+      "service_label": "您要预订哪种服务？",
+      "date_label": "选择一个日期：",
+      "time_label": "选择一个时间插槽：",
+      "finalize_button": "✅最终预订",
+      "no_bookings": "没有即将进行的预订。"
+    },
+    "consumption": {
+      "header": "消耗",
+      "electronics_purchase_label": "📱电子购买（每年£）",
+      "clothes_spending_label": "👗服装支出（每月£）",
+      "pets_spending_label": "🐶与宠物有关的支出（每月£）",
+      "health_beauty_spending_label": "💅健康与美容（每月£）",
+      "communication_spending_label": "📞沟通（每月£）",
+      "entertainment_spending_label": "🎮娱乐（每月£）",
+      "recycling_score_label": "♻️回收分数（0-1）",
+      "finish_button": "结束"
+    },
+    "diet": {
+      "header": "饮食",
+      "restaurant_spending_label": "💳每月餐厅/快餐支出（£）：",
+      "food_waste_label": "🍽️估计浪费的食物百分比（％）：",
+      "local_food_label": "🌱您购买当地或季节性农产品吗？",
+      "next_button": "下一个"
+    },
+    "energy_tracker": {
+      "header": "⚡能源使用跟踪器",
+      "usage_input_placeholder": "输入kwh",
+      "add_button": "添加"
+    },
+    "ev_locator": {
+      "header": "电动汽车充电站定位器",
+      "search_placeholder": "搜索位置",
+      "connector_type": "连接器类型",
+      "network": "网络"
+    },
+    "google_sign_in": {
+      "error": "Google登录错误：",
+      "success": "Google登录成功"
+    },
+    "validation": {
+      "password_min_length": "密码必须至少{minLength}字符长。",
+      "password_format": "密码必须至少包含一个小写字母，一个大写字母和一个符号。",
+      "fields_required": "所有字段都是必需的。"
+    }
+  }

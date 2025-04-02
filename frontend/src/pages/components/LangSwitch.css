@@ -1,0 +1,42 @@
+.lang-switch {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .lang-button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+  }
+  
+  .lang-icon {
+    color: var(--icon-color, #000);
+  }
+  
+  .lang-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+  }
+  
+  .lang-option {
+    padding: 8px 12px;
+    width: 100%;
+    text-align: left;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: #000;
+    font-size: 14px;
+  }
+  
+  .lang-option:hover {
+    background-color: #f0f0f0;
+  }
+  

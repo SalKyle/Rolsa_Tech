@@ -5,9 +5,11 @@ import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import './booking.css';
 import Navbar from './components/Navbar';
+import { useTranslation } from "react-i18next"; // ✅
 
 export default function BookingPage() {
   const { currentUser } = useAuth();
+  const { t } = useTranslation(); // ✅
 
   const [service, setService] = useState("");
   const [date, setDate] = useState(new Date());
@@ -35,7 +37,7 @@ export default function BookingPage() {
   }, [service, date]);
 
   const handleBooking = async () => {
-    if (!service || !date || !time) return alert("Fill all fields");
+    if (!service || !date || !time) return alert(t("booking.fill_all_fields", "Fill all fields"));
 
     try {
       const payload = {
@@ -48,13 +50,12 @@ export default function BookingPage() {
 
       await axios.post("http://localhost:5000/api/bookings", payload);
 
-      // Reset + refresh
       setTime("");
       const updated = await axios.get(`http://localhost:5000/api/bookings/user/${currentUser.id}`);
       setUserBookings(updated.data);
     } catch (err) {
       console.error("Booking failed:", err);
-      alert("❌ Booking failed");
+      alert(t("booking.failed", "❌ Booking failed"));
     }
   };
 
@@ -62,11 +63,11 @@ export default function BookingPage() {
     <>
       <Navbar />
       <div className="booking-container">
-        <h1 className="booking-title">📅 Book a Consultation</h1>
+        <h1 className="booking-title">{t("booking.header", "Book a Consultation")}</h1>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <p className="booking-label">Which service are you booking for?</p>
+            <p className="booking-label">{t("booking.service_label", "Which service are you booking for?")}</p>
             <div className="service-options">
               {["Solar Panel", "EV Chargers", "Smart Home Energy Systems"].map((s) => (
                 <button
@@ -74,13 +75,13 @@ export default function BookingPage() {
                   onClick={() => setService(s)}
                   className={`service-btn ${service === s ? "selected" : ""}`}
                 >
-                  {s}
+                  {t(`booking.services.${s}`, s)}
                 </button>
               ))}
             </div>
 
             <div className="mt-6">
-              <p className="booking-label">Pick a Date:</p>
+              <p className="booking-label">{t("booking.date_label", "Pick a Date:")}</p>
               <div className="calendar-wrapper">
                 <Calendar value={date} onChange={setDate} minDate={new Date()} />
               </div>
@@ -88,7 +89,7 @@ export default function BookingPage() {
           </div>
 
           <div>
-            <p className="booking-label mt-6">Choose a Time Slot:</p>
+            <p className="booking-label mt-6">{t("booking.time_label", "Choose a Time Slot:")}</p>
             <div className="slot-options">
               {["10:00", "11:00", "12:00", "14:00", "16:00"].map((slot) => {
                 const isUnavailable = unavailableSlots.includes(slot);
@@ -108,16 +109,16 @@ export default function BookingPage() {
         </div>
 
         <button onClick={handleBooking} className="booking-submit-btn">
-          ✅ Finalise Booking
+          ✅ {t("booking.finalize_button", "Finalise Booking")}
         </button>
 
         {userBookings.length > 0 && (
           <div className="booking-history">
-            <h2>Your Bookings</h2>
+            <h2>{t("booking.your_bookings", "Your Bookings")}</h2>
             <ul>
               {userBookings.map((b) => (
                 <li key={b.id}>
-                  {b.service} on {b.date} at {b.time}
+                  {b.service} {t("booking.on", "on")} {b.date} {t("booking.at", "at")} {b.time}
                 </li>
               ))}
             </ul>

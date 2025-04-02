@@ -1,0 +1,168 @@
+{
+    "navbar": {
+      "home": "Home",
+      "products": "Products",
+      "consultations": "Consultations",
+      "carbon_calculator": "Carbon Calculator",
+      "energy_tracker": "Energy Tracker",
+      "ev_locator": "EV Locator",
+      "account": "Account"
+    },
+    "footer": {
+      "quick_links": "Quick Links",
+      "account": "Account",
+      "login": "Login",
+      "signup": "Sign Up",
+      "settings": "Settings",
+      "copy_right": "© {year} Rolsa Technologies. All rights reserved."
+    },
+    "landing": {
+      "title": "Rolsa Drives Change",
+      "register_button": "Register",
+      "feature_card_1": {
+        "title": "Check your Carbon Footprint",
+        "description": "Understand your environmental impact and discover ways to reduce emissions with our smart calculator."
+      },
+      "feature_card_2": {
+        "title": "Book a Consultation Today",
+        "description": "Get expert advice on sustainable living and energy solutions tailored to your needs."
+      },
+      "feature_card_3": {
+        "title": "Check your Energy Usage",
+        "description": "Log, track, and visualize your home or business energy consumption in real-time."
+      }
+    },
+    "signup": {
+      "header": "Signup",
+      "username": "Username",
+      "email": "Email",
+      "password": "Password",
+      "confirm_password": "Confirm Password",
+      "sign_up_button": "Sign Up",
+      "already_have_account": "Already have an account? Login",
+      "google_sign_in": "Or sign up with Google"
+    },
+    "login": {
+      "header": "Login",
+      "email": "Email",
+      "password": "Password",
+      "login_button": "Login",
+      "google_sign_in": "Or login with Google",
+      "no_account": "Don't have an account? Signup"
+    },
+    "dashboard": {
+      "header": "Dashboard",
+      "carbon_footprint": "Carbon Footprint",
+      "energy_usage": "Energy Usage",
+      "upcoming_bookings": "Upcoming Bookings",
+      "carbon_chart_title": "Carbon Footprint Trend",
+      "energy_chart_title": "Energy Usage Over Time",
+      "no_data": "No data available yet.",
+      "header": "Dashboard",
+      "carbon": "Carbon",
+      "energy": "Energy",
+      "bookings": "Bookings",
+      "on": "on",
+      "at": "at"
+    },
+    "cart": {
+      "cart_title": "🛒 Cart",
+      "empty_cart": "Your cart is empty.",
+      "checkout_button": "Checkout",
+      "remove_button": "Remove"
+    },
+    "account_settings": {
+      "header": "Account Settings",
+      "username": "Username",
+      "email": "Email",
+      "new_password": "New Password",
+      "update_button": "Update Account",
+      "logout_button": "Logout",
+      "success_message": "Account updated successfully.",
+      "error_message": "Failed to update account."
+    },
+    "theme": {
+      "light_mode": "Light Mode",
+      "dark_mode": "Dark Mode"
+    },
+    "filters": {
+      "connector_type": "Connector Type",
+      "network": "Network"
+    },
+    "transport_page": {
+      "title": "Transport",
+      "transport_mode_factor_label": "🚗 Daily travel method emission factor:",
+      "train_hours_label": "🚆 Average hours spent on trains per week:",
+      "flights_uk_label": "✈️ Flights within the UK per year:",
+      "flights_europe_label": "✈️ Flights to Europe per year:",
+      "flights_non_europe_label": "🌍 Long-haul flights (non-Europe) per year:",
+      "flight_offset_label": "♻️ Flight offset efforts (%):",
+      "next_button": "Next"
+    },
+    "results_page": {
+      "title": "🌍 Your Carbon Footprint Results",
+      "total_footprint_label": "Total Footprint",
+      "kg_per_year": "kg CO₂ / year",
+      "percentage_of_average": "That's about {percentage}% of the UK national average",
+      "tips_section": {
+        "diet": "Eat more plant-based meals and reduce food waste.",
+        "transport": "Use public transport, bike more, and reduce flights.",
+        "housing": "Improve insulation and use renewable energy tariffs.",
+        "consumption": "Buy less, recycle more, and avoid fast fashion."
+      },
+      "see_tips_button": "🌱 See tips to reduce your footprint"
+    },
+    "cart_sidebar": {
+      "cart_title": "🛒 Cart",
+      "empty_cart_message": "Your cart is empty.",
+      "checkout_button": "Checkout",
+      "remove_button": "Remove"
+    },
+    "booking": {
+      "header": "📅 Book a Consultation",
+      "service_label": "Which service are you booking for?",
+      "date_label": "Pick a Date:",
+      "time_label": "Choose a Time Slot:",
+      "finalize_button": "✅ Finalize Booking",
+      "no_bookings": "No upcoming bookings."
+    },
+    "consumption": {
+      "header": "Consumption",
+      "electronics_purchase_label": "📱 Electronics Purchases (yearly £)",
+      "clothes_spending_label": "👗 Clothing Spending (monthly £)",
+      "pets_spending_label": "🐶 Pet-related Spending (monthly £)",
+      "health_beauty_spending_label": "💅 Health & Beauty (monthly £)",
+      "communication_spending_label": "📞 Communication (monthly £)",
+      "entertainment_spending_label": "🎮 Entertainment (monthly £)",
+      "recycling_score_label": "♻️ Recycling Score (0–1)",
+      "finish_button": "Finish"
+    },
+    "diet": {
+      "header": "Diet",
+      "restaurant_spending_label": "💳 Monthly restaurant/fast food spending (£):",
+      "food_waste_label": "🍽️ Estimated percentage of food wasted (%):",
+      "local_food_label": "🌱 Do you buy local or seasonal produce?",
+      "next_button": "Next"
+    },
+    "energy_tracker": {
+      "header": "⚡ Energy Usage Tracker",
+      "usage_input_placeholder": "Enter usage in kWh",
+      "add_button": "Add"
+    },
+    "ev_locator": {
+      "header": "EV Charging Station Locator",
+      "search_placeholder": "Search for a location",
+      "connector_type": "Connector Type",
+      "network": "Network"
+    },
+    "google_sign_in": {
+      "error": "Google Login Error:",
+      "success": "Google Sign-In Successful"
+    },
+    "validation": {
+      "password_min_length": "Password must be at least {minLength} characters long.",
+      "password_format": "Password must contain at least one lowercase letter, one uppercase letter, and one symbol.",
+      "fields_required": "All fields are required."
+    }
+  }
+  
