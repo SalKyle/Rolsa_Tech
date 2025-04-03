@@ -92,7 +92,7 @@ const login = async (req, res) => {
 
 
 
-// Google login handler
+// Google login 
 const googleLogin = async (req, res) => {
   const { token } = req.body; 
 

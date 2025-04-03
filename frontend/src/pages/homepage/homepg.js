@@ -37,19 +37,19 @@ const LandingPage = () => {
           title={t("landing.feature_card_1.title", "Check your Carbon Footprint")} 
           description={t("landing.feature_card_1.description", 
             "Understand your environmental impact and discover ways to reduce emissions with our smart calculator.")} 
-          to="/signup" 
+          to="/cf_page" 
         />
         <FeatureCard 
           title={t("landing.feature_card_2.title", "Book a Consultation Today")} 
           description={t("landing.feature_card_2.description", 
             "Get expert advice on sustainable living and energy solutions tailored to your needs.")} 
-          to="/signup" 
+          to="/BookingPage" 
         />
         <FeatureCard 
           title={t("landing.feature_card_3.title", "Check your Energy Usage")} 
           description={t("landing.feature_card_3.description", 
             "Log, track, and visualize your home or business energy consumption in real-time.")} 
-          to="/signup" 
+          to="/EnergyTracker" 
         />
       </div>
 
