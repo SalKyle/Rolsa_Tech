@@ -1,7 +1,7 @@
-// src/components/LangSwitch.js
 import React, { useState, useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Globe } from 'lucide-react';
+
 import './LangSwitch.css';
 
 const languages = [

@@ -21,7 +21,7 @@
   --hover-accent: #90ee90;
 }
 
-/* === Base === */
+
 html, body, #root {
   font-family: 'Poppins', sans-serif;
   height: 100%;
@@ -32,7 +32,7 @@ html, body, #root {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* === App Layout === */
+
 .app-container {
   min-height: 100vh;
   display: flex;
@@ -45,7 +45,7 @@ html, body, #root {
   flex: 1;
 }
 
-/* === Footer === */
+
 footer {
   background-color: var(--footer-bg);
   color: var(--text-color);
@@ -57,14 +57,14 @@ footer {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* === Optional global card styling === */
+
 .card, .input_container, .cf-card, .energy-container {
   background-color: var(--card-bg);
   color: var(--text-color);
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* === Link + hover helpers === */
+
 a {
   color: var(--primary);
   text-decoration: none;
@@ -75,7 +75,7 @@ a:hover {
   color: var(--hover-accent);
 }
 
-/* === Button reset if needed === */
+
 button {
   transition: background-color 0.3s ease, color 0.3s ease;
 }

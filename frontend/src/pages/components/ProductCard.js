@@ -1,12 +1,12 @@
 import React from 'react';
 import { useCart } from '../../context/CartContext';
 import { Link } from 'react-router-dom';
-import { useTranslation } from 'react-i18next'; // ✅ Add this
+import { useTranslation } from 'react-i18next'; 
 import "../products.css"
 
 export default function ProductCard({ product }) {
   const { addToCart } = useCart();
-  const { t } = useTranslation(); // ✅ Hook
+  const { t } = useTranslation();
 
   return (
     <div className="product-card">

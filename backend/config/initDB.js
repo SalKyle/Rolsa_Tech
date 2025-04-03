@@ -1,4 +1,4 @@
-// config/initDB.js
+
 const db = require('./db');
 
 db.serialize(() => {
@@ -11,9 +11,9 @@ db.serialize(() => {
     )
   `, (err) => {
     if (err) {
-      console.error("❌ Error creating transactions table:", err.message);
+      console.error("Error creating transactions table:", err.message);
     } else {
-      console.log("✅ Transactions table ready.");
+      console.log("Transactions table ready.");
     }
   });
 });

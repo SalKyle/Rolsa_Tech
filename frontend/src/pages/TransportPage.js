@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import calculateTransport from '../utils/transportCalculator';
 import ProgressTracker from './components/ProgressTracker';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { useTranslation } from 'react-i18next'; // ✅
+import { useTranslation } from 'react-i18next'; 
 import './cf_pages.css';
 
 const TransportPage = () => {
-  const { t } = useTranslation(); // ✅
+  const { t } = useTranslation(); 
   const [transportModeFactor, setTransportModeFactor] = useState(0);
   const [trainHours, setTrainHours] = useState(0);
   const [flightsUK, setFlightsUK] = useState(0);
@@ -43,7 +43,7 @@ const TransportPage = () => {
 
       <div className='cf-card'>
         <div className='cf-input'>
-          <label>{t("transport_page.transport_mode_factor_label", "🚗 Daily travel method emission factor:")}</label>
+          <label>{t("transport_page.transport_mode_factor_label", "Daily travel method emission factor:")}</label>
           <input
             type="number"
             value={transportModeFactor}
@@ -54,7 +54,7 @@ const TransportPage = () => {
         </div>
 
         <div className='cf-input'>
-          <label>{t("transport_page.train_hours_label", "🚆 Average hours spent on trains per week:")}</label>
+          <label>{t("transport_page.train_hours_label", "Average hours spent on trains per week:")}</label>
           <input
             type="number"
             value={trainHours}
@@ -64,7 +64,7 @@ const TransportPage = () => {
         </div>
 
         <div className='cf-input'>
-          <label>{t("transport_page.flights_uk_label", "✈️ Flights within the UK per year:")}</label>
+          <label>{t("transport_page.flights_uk_label", "Flights within the UK per year:")}</label>
           <input
             type="number"
             value={flightsUK}
@@ -74,7 +74,7 @@ const TransportPage = () => {
         </div>
 
         <div className='cf-input'>
-          <label>{t("transport_page.flights_europe_label", "✈️ Flights to Europe per year:")}</label>
+          <label>{t("transport_page.flights_europe_label", "Flights to Europe per year:")}</label>
           <input
             type="number"
             value={flightsEurope}
@@ -84,7 +84,7 @@ const TransportPage = () => {
         </div>
 
         <div className='cf-input'>
-          <label>{t("transport_page.flights_non_europe_label", "🌍 Long-haul flights (non-Europe) per year:")}</label>
+          <label>{t("transport_page.flights_non_europe_label", "Long-haul flights (non-Europe) per year:")}</label>
           <input
             type="number"
             value={flightsNonEurope}
@@ -94,7 +94,7 @@ const TransportPage = () => {
         </div>
 
         <div className='cf-input'>
-          <label>{t("transport_page.flight_offset_label", "♻️ Flight offset efforts (%):")}</label>
+          <label>{t("transport_page.flight_offset_label", "Flight offset efforts (%):")}</label>
           <input
             type="number"
             step="0.01"

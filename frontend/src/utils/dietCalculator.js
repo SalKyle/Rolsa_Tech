@@ -1,4 +1,4 @@
-// utils/dietCalculator.js
+
 const k1 = 0.3; // Coefficient for restaurant spending
 const k2 = 0.2; // Coefficient for food waste percentage
 const k3 = 0.1; // Coefficient for local food indicator

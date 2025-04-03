@@ -1,4 +1,4 @@
-// models/cf-calc-model.js
+
 const db = require("../config/db");
 
 db.run(`

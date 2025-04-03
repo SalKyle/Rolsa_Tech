@@ -28,7 +28,7 @@ exports.getUserProfile = async (req, res) => {
   }
 };
 
-// UPDATE user profile
+
 exports.updateUser = async (req, res) => {
   const { name, email } = req.body;
 

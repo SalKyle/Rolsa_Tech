@@ -5,7 +5,7 @@ import axios from "axios";
 import "./accountsettings.css";
 
 const AccountSettings = () => {
-  const { currentUser, setCurrentUser } = useContext(AuthContext);
+  const { currentUser, setCurrentUser } = useContext(AuthContext);//wasn't able to finish the reset password logic in the login page so i substituted it with the account settings page
   const navigate = useNavigate();
 
   const [name, setName] = useState(currentUser?.name || "");

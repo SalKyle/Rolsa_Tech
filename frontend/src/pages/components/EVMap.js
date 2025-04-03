@@ -8,7 +8,7 @@ import markerIcon2x from "leaflet/dist/images/marker-icon-2x.png";
 import markerIcon from "leaflet/dist/images/marker-icon.png";
 import markerShadow from "leaflet/dist/images/marker-shadow.png";
 
-// Fix leaflet's default icon issue
+
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: markerIcon2x,
@@ -25,7 +25,7 @@ function RecenterMap({ coords }) {
 }
 
 export default function EVMap({ userLocation, stations }) {
-  console.log("📍 Station data:", stations);
+  console.log("Station data:", stations);//For debugging purposes
   
   return (
     <MapContainer center={userLocation} zoom={13} style={{ height: "75vh", width: "100%" }}>
@@ -43,8 +43,8 @@ export default function EVMap({ userLocation, stations }) {
         const lat = station?.AddressInfo?.Latitude;
         const lon = station?.AddressInfo?.Longitude;
 
-        // Log each station's coords
-        console.log(`📌 Station ${i}:`, lat, lon);
+        // Logging each station's coords to check sth
+        console.log(`Station ${i}:`, lat, lon);//For debugging purposes
 
         if (!lat || !lon) return null;
 

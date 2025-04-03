@@ -1,9 +1,9 @@
-// routes/user.js
+//for the acc settings page
 const express = require("express");
 const router = express.Router();
 const db = require("../config/db");
 
-// ✅ UPDATE user info
+
 router.put("/api/users/:id", (req, res) => {
   const { id } = req.params;
   const { name, email, password } = req.body;
@@ -26,7 +26,7 @@ router.put("/api/users/:id", (req, res) => {
     values.push(password);
   }
 
-  values.push(id); // For WHERE clause
+  values.push(id); 
 
   if (fields.length === 0) {
     return res.status(400).json({ message: "No fields to update." });

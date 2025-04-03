@@ -2,11 +2,11 @@ import React, { useEffect } from "react";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
-import { useTranslation } from "react-i18next"; // ✅
+import { useTranslation } from "react-i18next"; 
 import "./ResultsPage.css";
 
 const ResultsPage = () => {
-  const { t } = useTranslation(); // ✅
+  const { t } = useTranslation(); 
   const location = useLocation();
   const { currentUser } = useAuth();
 
@@ -31,8 +31,8 @@ const ResultsPage = () => {
           total: totalFootprint,
           date: new Date().toISOString(),
         })
-        .then(() => console.log("✅ CF data saved"))
-        .catch((err) => console.error("❌ CF save failed:", err));
+        .then(() => console.log("CF data saved"))
+        .catch((err) => console.error("CF save failed:", err));
     }
   }, [currentUser, diet, transport, housing, consumption, totalFootprint]);
 
@@ -43,7 +43,7 @@ const ResultsPage = () => {
   return (
     <div className="results-container">
       <h1 className="results-title">
-        {t("results.header", "🌍 Your Carbon Footprint Results")}
+        {t("results.header", "Your Carbon Footprint Results")}
       </h1>
 
       <div className="total-summary">
@@ -74,7 +74,7 @@ const ResultsPage = () => {
 
       <div className="text-center">
         <button className="results-button">
-          {t("results.see_tips_button", "🌱 See tips to reduce your footprint")}
+          {t("results.see_tips_button", "See tips to reduce your footprint")}
         </button>
       </div>
     </div>

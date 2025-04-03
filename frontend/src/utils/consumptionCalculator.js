@@ -1,4 +1,4 @@
-// utils/consumptionCalculator.js
+
 const c1 = 0.2; // Electronics purchase factor
 const c2 = 0.3; // Clothes spending factor
 const c3 = 0.1; // Pets spending factor

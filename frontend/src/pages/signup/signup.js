@@ -6,10 +6,10 @@ import Solar from "../components/media/solar-panel-169439.jpg";
 
 // import logo from "../components/media/Bean and Brew.png";
 
-// Google Sign-In Script
+// Google Sign-In logic
 const handleCredentialResponse = (response) => {
   console.log("Encoded JWT ID token: " + response.credential);
-  // Send the token to your server for verification
+  // Send the token to the server for verification
   axios
     .post("http://localhost:5000/api/auth/google-login", { token: response.credential })
     .then((res) => {
@@ -17,7 +17,7 @@ const handleCredentialResponse = (response) => {
       setTimeout(() => {
         window.location.href = "/";
       }, 2000);
-       // Handle the successful response from backend
+       
     })
     .catch((error) => {
       console.error("Google Login Error:", error);
@@ -32,16 +32,16 @@ const Signup = ({ setUser, onError = (error) => console.error("Signup Error:", e
   const [successMessage, setSuccessMessage] = useState("");
 
   useEffect(() => {
-    // Dynamically load the Google Sign-In script
+    
     const script = document.createElement("script");
     script.src = "https://accounts.google.com/gsi/client";
     script.async = true;
     script.defer = true;
 
-    // Define the callback function
+    
     script.onload = () => {
       window.google.accounts.id.initialize({
-        client_id: "205487692902-fjbc0imr8k3ons2lnf1k2ku2msnsmmfm.apps.googleusercontent.com", // Replace with your actual Google Client ID
+        client_id: "205487692902-fjbc0imr8k3ons2lnf1k2ku2msnsmmfm.apps.googleusercontent.com", 
         callback: handleCredentialResponse,
       });
 
@@ -50,13 +50,13 @@ const Signup = ({ setUser, onError = (error) => console.error("Signup Error:", e
         size: "large",
       });
 
-      window.google.accounts.id.prompt(); // Show One Tap dialog as well
+      window.google.accounts.id.prompt(); 
     };
 
-    // Append the script to the document
+    
     document.body.appendChild(script);
 
-    // Cleanup: Remove the script when the component unmounts
+    
     return () => {
       document.body.removeChild(script);
     };

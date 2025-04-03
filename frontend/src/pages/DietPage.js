@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import ProgressTracker from './components/ProgressTracker';
 import dietCalculator from "../utils/dietCalculator";
 import { useNavigate } from 'react-router-dom';
-import { useTranslation } from 'react-i18next'; // ✅
+import { useTranslation } from 'react-i18next'; 
 import './cf_pages.css';
 
 const DietPage = () => {
-  const { t } = useTranslation(); // ✅
+  const { t } = useTranslation(); 
   const [restaurantSpending, setRestaurantSpending] = useState(0);
   const [foodWaste, setFoodWaste] = useState(0);
   const [localFood, setLocalFood] = useState(false);
@@ -25,7 +25,7 @@ const DietPage = () => {
 
       <div className='cf-card'>
         <div className='cf-input'>
-          <label>{t("diet.restaurant_spending_label", "💳 Monthly restaurant/fast food spending (£):")}</label>
+          <label>{t("diet.restaurant_spending_label", "Monthly restaurant/fast food spending (£):")}</label>
           <input 
             type="number" 
             value={restaurantSpending} 
@@ -35,7 +35,7 @@ const DietPage = () => {
         </div>
 
         <div className='cf-input'>
-          <label>{t("diet.food_waste_label", "🍽️ Estimated percentage of food wasted (%):")}</label>
+          <label>{t("diet.food_waste_label", "Estimated percentage of food wasted (%):")}</label>
           <input 
             type="number" 
             value={foodWaste} 
@@ -46,7 +46,7 @@ const DietPage = () => {
         </div>
 
         <div className='cf-input'>
-          <label>{t("diet.local_food_label", "🌱 Do you buy local or seasonal produce?")}</label>
+          <label>{t("diet.local_food_label", "Do you buy local or seasonal produce?")}</label>
           <input 
             type="checkbox" 
             checked={localFood} 

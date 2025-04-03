@@ -1,10 +1,10 @@
 import { LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer } from "recharts";
 
 export default function EnergyChart({ data }) {
-  // Sort entries by date
+
   const sorted = [...data].sort((a, b) => new Date(a.date) - new Date(b.date));
 
-  // Format data for the chart
+
   const chartData = sorted.map((entry) => ({
     name: new Date(entry.date).toLocaleDateString("en-UK", { month: "short", year: "2-digit" }),
     usage: entry.usage,

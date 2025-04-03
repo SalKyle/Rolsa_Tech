@@ -14,7 +14,7 @@
       "login": "Login",
       "signup": "Sign Up",
       "settings": "Settings",
-      "copy_right": "© {year} Rolsa Technologies. All rights reserved."
+      "copy_right": "Rolsa Technologies. All rights reserved."
     },
     "landing": {
       "title": "Rolsa Drives Change",
@@ -66,7 +66,7 @@
       "at": "at"
     },
     "cart": {
-      "cart_title": "🛒 Cart",
+      "cart_title": "Cart",
       "empty_cart": "Your cart is empty.",
       "checkout_button": "Checkout",
       "remove_button": "Remove"
@@ -91,16 +91,16 @@
     },
     "transport_page": {
       "title": "Transport",
-      "transport_mode_factor_label": "🚗 Daily travel method emission factor:",
-      "train_hours_label": "🚆 Average hours spent on trains per week:",
-      "flights_uk_label": "✈️ Flights within the UK per year:",
-      "flights_europe_label": "✈️ Flights to Europe per year:",
-      "flights_non_europe_label": "🌍 Long-haul flights (non-Europe) per year:",
-      "flight_offset_label": "♻️ Flight offset efforts (%):",
+      "transport_mode_factor_label": "Daily travel method emission factor:",
+      "train_hours_label": "Average hours spent on trains per week:",
+      "flights_uk_label": "Flights within the UK per year:",
+      "flights_europe_label": "Flights to Europe per year:",
+      "flights_non_europe_label": "Long-haul flights (non-Europe) per year:",
+      "flight_offset_label": "Flight offset efforts (%):",
       "next_button": "Next"
     },
     "results_page": {
-      "title": "🌍 Your Carbon Footprint Results",
+      "title": "Your Carbon Footprint Results",
       "total_footprint_label": "Total Footprint",
       "kg_per_year": "kg CO₂ / year",
       "percentage_of_average": "That's about {percentage}% of the UK national average",
@@ -110,42 +110,42 @@
         "housing": "Improve insulation and use renewable energy tariffs.",
         "consumption": "Buy less, recycle more, and avoid fast fashion."
       },
-      "see_tips_button": "🌱 See tips to reduce your footprint"
+      "see_tips_button": "See tips to reduce your footprint"
     },
     "cart_sidebar": {
-      "cart_title": "🛒 Cart",
+      "cart_title": "Cart",
       "empty_cart_message": "Your cart is empty.",
       "checkout_button": "Checkout",
       "remove_button": "Remove"
     },
     "booking": {
-      "header": "📅 Book a Consultation",
+      "header": "Book a Consultation",
       "service_label": "Which service are you booking for?",
       "date_label": "Pick a Date:",
       "time_label": "Choose a Time Slot:",
-      "finalize_button": "✅ Finalize Booking",
+      "finalize_button": "Finalize Booking",
       "no_bookings": "No upcoming bookings."
     },
     "consumption": {
       "header": "Consumption",
-      "electronics_purchase_label": "📱 Electronics Purchases (yearly £)",
-      "clothes_spending_label": "👗 Clothing Spending (monthly £)",
-      "pets_spending_label": "🐶 Pet-related Spending (monthly £)",
-      "health_beauty_spending_label": "💅 Health & Beauty (monthly £)",
-      "communication_spending_label": "📞 Communication (monthly £)",
-      "entertainment_spending_label": "🎮 Entertainment (monthly £)",
-      "recycling_score_label": "♻️ Recycling Score (0–1)",
+      "electronics_purchase_label": "Electronics Purchases (yearly £)",
+      "clothes_spending_label": "Clothing Spending (monthly £)",
+      "pets_spending_label": "Pet-related Spending (monthly £)",
+      "health_beauty_spending_label": "Health & Beauty (monthly £)",
+      "communication_spending_label": "Communication (monthly £)",
+      "entertainment_spending_label": "Entertainment (monthly £)",
+      "recycling_score_label": "Recycling Score (0–1)",
       "finish_button": "Finish"
     },
     "diet": {
       "header": "Diet",
-      "restaurant_spending_label": "💳 Monthly restaurant/fast food spending (£):",
-      "food_waste_label": "🍽️ Estimated percentage of food wasted (%):",
-      "local_food_label": "🌱 Do you buy local or seasonal produce?",
+      "restaurant_spending_label": "Monthly restaurant/fast food spending (£):",
+      "food_waste_label": "Estimated percentage of food wasted (%):",
+      "local_food_label": "Do you buy local or seasonal produce?",
       "next_button": "Next"
     },
     "energy_tracker": {
-      "header": "⚡ Energy Usage Tracker",
+      "header": " Energy Usage Tracker",
       "usage_input_placeholder": "Enter usage in kWh",
       "add_button": "Add"
     },

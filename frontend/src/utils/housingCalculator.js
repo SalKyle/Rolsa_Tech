@@ -1,4 +1,4 @@
-// utils/housingCalculator.js
+
 const h1 = 0.8; // House type factor
 const h2 = 0.1; // Number of bedrooms factor
 const h3 = 0.5; // Heating fuel factor

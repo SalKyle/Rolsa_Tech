@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useTranslation } from 'react-i18next'; // ✅ Add this
+import { useTranslation } from 'react-i18next';
 import './Footer.css';
 
 export default function Footer() {
-  const { t } = useTranslation(); // ✅ Add this
+  const { t } = useTranslation();
 
   return (
     <footer className="site-footer">

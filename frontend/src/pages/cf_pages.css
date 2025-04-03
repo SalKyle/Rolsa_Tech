@@ -1,4 +1,4 @@
-/* === General === */
+
 body, html {
     height: 100%;
     margin: 0;
@@ -8,7 +8,7 @@ body, html {
     background-color: #f3f6fc;
   }
   
-  /* === Card Container === */
+  
   .cf-card {
     width: 95%;
     max-width: 700px;
@@ -24,7 +24,7 @@ body, html {
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
   }
   
-  /* === Input Group === */
+  
   .cf-input {
     display: flex;
     flex-direction: column;
@@ -63,7 +63,7 @@ body, html {
     font-size: 0.85rem;
   }
   
-  /* === Button === */
+ 
   .cf-button,
   .cf-input button {
     margin-top: 1.5rem;
@@ -91,7 +91,7 @@ body, html {
     background: #2421fa;
   }
   
-  /* === Headings === */
+  
   .cf-title,
   h2 {
     text-align: center;
@@ -101,7 +101,7 @@ body, html {
     margin-bottom: 2rem;
   }
   
-  /* === Responsive === */
+  
   @media (max-width: 768px) {
     .cf-card {
       padding: 2rem 1rem;

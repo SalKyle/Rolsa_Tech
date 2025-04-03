@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
-import { useTranslation } from 'react-i18next'; // ✅ NEW
+import { useTranslation } from 'react-i18next';
 import Navbar from '../components/Navbar';
 import FeatureCard from '../components/FeatureCard';
 import Dashboard from '../components/Dashboard';
@@ -9,19 +9,19 @@ import './homepg.css';
 import background from '../components/media/solar-panel-4716640.jpg';
 
 const LandingPage = () => {
-  const { t } = useTranslation(); // ✅ NEW
-  const { setCurrentUser } = useContext(AuthContext);
+  const { t } = useTranslation();
+  const { setCurrentUser } = useContext(AuthContext);//setCurrentUser is used to set the current user in the AuthContext
   const navigate = useNavigate();
 
   const handleSignOut = () => {
-    setCurrentUser(null);
+    setCurrentUser(null);//signout logic(used in dev)
     localStorage.removeItem("user");
     navigate('/landing');
   };
 
   return (
     <div className="landing-container">
-      {/* Background & Overlay */}
+      
       <div className="image-overlay">
         <img src={background} alt="Background" className="bg-image" />
       </div>

@@ -1,6 +1,6 @@
-/** Landing Page Styles - landingPage.css */
+
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400&family=Quicksand:wght@500&display=swap');
-/* === General Reset === */
+
 * {
     margin: 0;
     padding: 0;
@@ -14,11 +14,11 @@
     background-color: #dee3e7 !important;
   }
   
-  /* === Background Video === */
+  
   .landing-container {
     position: relative;
     width: 100vw;
-    min-height: 100vh; /* allow page to scroll */
+    min-height: 100vh; 
     overflow-x: hidden;
     overflow-y: auto;
   }
@@ -39,7 +39,7 @@
   }
   
   
-  /* === Header Section === */
+  
   
   .hero-text {
     position: relative;
@@ -120,7 +120,7 @@
 }
 
   
-  /* === Responsive === */
+  
   @media (max-width: 768px) {
     .navbar {
       flex-direction: column;

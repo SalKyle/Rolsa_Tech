@@ -5,11 +5,11 @@ import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import './booking.css';
 import Navbar from './components/Navbar';
-import { useTranslation } from "react-i18next"; // ✅
+import { useTranslation } from "react-i18next"; 
 
 export default function BookingPage() {
   const { currentUser } = useAuth();
-  const { t } = useTranslation(); // ✅
+  const { t } = useTranslation(); 
 
   const [service, setService] = useState("");
   const [date, setDate] = useState(new Date());
@@ -20,7 +20,7 @@ export default function BookingPage() {
   useEffect(() => {
     if (currentUser?.id) {
       axios
-        .get(`http://localhost:5000/api/bookings/user/${currentUser.id}`)
+        .get(`http://localhost:5000/api/bookings/user/${currentUser.id}`)//gets the bookings for the current user
         .then((res) => setUserBookings(res.data))
         .catch((err) => console.error("Booking fetch error", err));
     }
@@ -30,7 +30,7 @@ export default function BookingPage() {
     if (service && date) {
       const formattedDate = date.toISOString().split("T")[0];
       axios
-        .get(`http://localhost:5000/api/bookings/availability?date=${formattedDate}&service=${service}`)
+        .get(`http://localhost:5000/api/bookings/availability?date=${formattedDate}&service=${service}`)//gets the available slots for the selected date and service1
         .then((res) => setUnavailableSlots(res.data))
         .catch((err) => console.error("Availability fetch error", err));
     }
@@ -48,14 +48,14 @@ export default function BookingPage() {
         email: currentUser?.email
       };
 
-      await axios.post("http://localhost:5000/api/bookings", payload);
+      await axios.post("http://localhost:5000/api/bookings", payload);//sends tthe fianlise dbooking
 
       setTime("");
-      const updated = await axios.get(`http://localhost:5000/api/bookings/user/${currentUser.id}`);
+      const updated = await axios.get(`http://localhost:5000/api/bookings/user/${currentUser.id}`);//gets the updated bookings
       setUserBookings(updated.data);
     } catch (err) {
       console.error("Booking failed:", err);
-      alert(t("booking.failed", "❌ Booking failed"));
+      alert(t("booking.failed", "Booking failed"));
     }
   };
 
@@ -109,7 +109,7 @@ export default function BookingPage() {
         </div>
 
         <button onClick={handleBooking} className="booking-submit-btn">
-          ✅ {t("booking.finalize_button", "Finalise Booking")}
+          {t("booking.finalize_button", "Finalise Booking")}
         </button>
 
         {userBookings.length > 0 && (

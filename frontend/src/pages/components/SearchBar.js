@@ -13,7 +13,7 @@ export default function SearchBar({ onSearch }) {
       <input
         className="ev-search-input"
         type="text"
-        placeholder="🔍 Search city or postcode..."
+        placeholder="Search city or postcode..."
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         onKeyDown={handleKeyDown}

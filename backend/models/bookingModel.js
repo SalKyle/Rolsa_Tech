@@ -11,7 +11,7 @@ db.serialize(() => {
     )
   `, (err) => {
     if (err) console.error('Error creating bookings table:', err.message);
-    else console.log('✅ Bookings table created or already exists');
+    else console.log('Bookings table created or already exists');
   });
 });
 

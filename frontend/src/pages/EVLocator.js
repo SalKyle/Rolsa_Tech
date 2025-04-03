@@ -4,12 +4,12 @@ import EVMap from "./components/EVMap";
 import SearchBar from "./components/SearchBar";
 import Filters from "./components/Filters";
 import Navbar from "./components/Navbar";
-import { useTranslation } from "react-i18next"; // ✅
+import { useTranslation } from "react-i18next"; 
 import "./evlocator.css";
 
 export default function EVLocator() {
-  const { t } = useTranslation(); // ✅
-  const [userLocation, setUserLocation] = useState([51.5074, -0.1278]); // London fallback
+  const { t } = useTranslation();
+  const [userLocation, setUserLocation] = useState([51.5074, -0.1278]); // defaults to London as a base
   const [stations, setStations] = useState([]);
   const [filters, setFilters] = useState({ connector: "", network: "" });
 
@@ -48,7 +48,7 @@ export default function EVLocator() {
 
       const results = geoRes?.data?.results;
       if (!results || results.length === 0) {
-        alert(t("ev_locator.not_found", "❌ Location not found. Please enter a valid postcode or city."));
+        alert(t("ev_locator.not_found", "Location not found. Please enter a valid postcode or city."));
         return;
       }
 

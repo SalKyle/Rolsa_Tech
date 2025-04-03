@@ -14,7 +14,7 @@
       "login": "Login",
       "signup": "Melden Sie sich an",
       "settings": "Einstellungen",
-      "copy_right": "© {Jahr} Rolsa Technologies. "
+      "copy_right": "Rolsa Technologies. "
     },
     "landing": {
       "title": "Rolsa fährt Veränderungen an",
@@ -60,7 +60,7 @@
       "no_data": "Noch keine Daten verfügbar."
     },
     "cart": {
-      "cart_title": "🛒 Warenkorb",
+      "cart_title": "Warenkorb",
       "empty_cart": "Ihr Wagen ist leer.",
       "checkout_button": "Kasse",
       "remove_button": "Entfernen"
@@ -85,16 +85,16 @@
     },
     "transport_page": {
       "title": "Transport",
-      "transport_mode_factor_label": "🚗 Emissionsfaktor der täglichen Reisemethode:",
-      "train_hours_label": "🚆 Durchschnittliche Stunden für Züge pro Woche:",
-      "flights_uk_label": "✈️ Flüge in Großbritannien pro Jahr:",
-      "flights_europe_label": "✈️ Flüge nach Europa pro Jahr:",
-      "flights_non_europe_label": "🌍 Langstreckenflüge (Nicht-Europa) pro Jahr:",
-      "flight_offset_label": "♻️ Flugversetzbemühungen (%):",
+      "transport_mode_factor_label": "Emissionsfaktor der täglichen Reisemethode:",
+      "train_hours_label": "Durchschnittliche Stunden für Züge pro Woche:",
+      "flights_uk_label": "Flüge in Großbritannien pro Jahr:",
+      "flights_europe_label": "Flüge nach Europa pro Jahr:",
+      "flights_non_europe_label": "Langstreckenflüge (Nicht-Europa) pro Jahr:",
+      "flight_offset_label": "Flugversetzbemühungen (%):",
       "next_button": "Nächste"
     },
     "results_page": {
-      "title": "🌍 Ihr CO2 -Fußabdruck zu Ergebnissen",
+      "title": "Ihr CO2 -Fußabdruck zu Ergebnissen",
       "total_footprint_label": "Totaler Fußabdruck",
       "kg_per_year": "kg co₂ / Jahr",
       "percentage_of_average": "Das ist ungefähr {Prozentsatz}% des britischen nationalen Durchschnitts",
@@ -104,42 +104,42 @@
         "housing": "Verbesserung der Isolierung und nutzen Sie Tarife für erneuerbare Energien.",
         "consumption": "Kaufen Sie weniger, recyceln Sie mehr und vermeiden Sie schnelle Mode."
       },
-      "see_tips_button": "🌱 Sehen Sie Tipps, um Ihren Fußabdruck zu reduzieren"
+      "see_tips_button": "Sehen Sie Tipps, um Ihren Fußabdruck zu reduzieren"
     },
     "cart_sidebar": {
-      "cart_title": "🛒 Warenkorb",
+      "cart_title": "Warenkorb",
       "empty_cart_message": "Ihr Wagen ist leer.",
       "checkout_button": "Kasse",
       "remove_button": "Entfernen"
     },
     "booking": {
-      "header": "📅 Buchen Sie eine Beratung",
+      "header": "Buchen Sie eine Beratung",
       "service_label": "Für welchen Service buchen Sie?",
       "date_label": "Wählen Sie ein Date aus:",
       "time_label": "Wählen Sie einen Zeitfenster:",
-      "finalize_button": "✅ Buchung abschließen",
+      "finalize_button": "Buchung abschließen",
       "no_bookings": "Keine bevorstehenden Buchungen."
     },
     "consumption": {
       "header": "Verbrauch",
-      "electronics_purchase_label": "📱 Elektronikkäufe (jährlich £)",
-      "clothes_spending_label": "👗 Kleidungsausgaben (monatlich £)",
-      "pets_spending_label": "🐶 PET-bezogene Ausgaben (monatlich £)",
-      "health_beauty_spending_label": "💅 Gesundheit & Schönheit (monatlich £)",
-      "communication_spending_label": "📞 Kommunikation (monatlich £)",
-      "entertainment_spending_label": "🎮 Unterhaltung (monatlich £)",
-      "recycling_score_label": "♻️ Recycling Score (0–1)",
+      "electronics_purchase_label": "Elektronikkäufe (jährlich £)",
+      "clothes_spending_label": "Kleidungsausgaben (monatlich £)",
+      "pets_spending_label": "PET-bezogene Ausgaben (monatlich £)",
+      "health_beauty_spending_label": "Gesundheit & Schönheit (monatlich £)",
+      "communication_spending_label": "Kommunikation (monatlich £)",
+      "entertainment_spending_label": "Unterhaltung (monatlich £)",
+      "recycling_score_label": "Recycling Score (0–1)",
       "finish_button": "Beenden"
     },
     "diet": {
       "header": "Diät",
-      "restaurant_spending_label": "💳 Monatliche Restaurant-/Fast -Food -Ausgaben (£):",
-      "food_waste_label": "🍽️ Schätzungsprozent an Lebensmitteln verschwendet (%):",
-      "local_food_label": "🌱 Kaufen Sie lokale oder saisonale Produkte?",
+      "restaurant_spending_label": "Monatliche Restaurant-/Fast -Food -Ausgaben (£):",
+      "food_waste_label": "Schätzungsprozent an Lebensmitteln verschwendet (%):",
+      "local_food_label": "Kaufen Sie lokale oder saisonale Produkte?",
       "next_button": "Nächste"
     },
     "energy_tracker": {
-      "header": "⚡ Energieverbrauchs -Tracker",
+      "header": "Energieverbrauchs -Tracker",
       "usage_input_placeholder": "Geben Sie die Verwendung in kWh ein",
       "add_button": "Hinzufügen"
     },

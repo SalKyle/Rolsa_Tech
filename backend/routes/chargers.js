@@ -17,7 +17,7 @@ router.get("/", async (req, res) => {
           maxresults: 25,
           compact: true,
           verbose: false,
-          key: process.env.OPENCHARGEMAP_API_KEY || "demo", // Use 'demo' for testing
+          key: process.env.OPENCHARGEMAP_API_KEY || "demo", //test
         },
       });
   

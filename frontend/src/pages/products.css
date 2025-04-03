@@ -1,4 +1,4 @@
-/* === Layout === */
+
 .products-page {
     max-width: 1200px;
     margin: 2rem auto;
@@ -60,7 +60,7 @@
     gap: 1.5rem;
   }
   
-  /* === Product Card === */
+
   .product-card {
     border: 1px solid #dcdcdc;
     border-radius: 10px;

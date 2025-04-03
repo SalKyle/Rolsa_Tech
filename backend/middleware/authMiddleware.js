@@ -11,8 +11,8 @@ const authMiddleware = async (req, res, next) => {
       return res.status(401).json({ message: "No token, authorization denied" });
     }
 
-    const token = authHeader.split(' ')[1]; // Extract token correctly
-    // console.log('Received Token:', token); // Debugging log
+    const token = authHeader.split(' ')[1]; 
+    // console.log('Received Token:', token); 
     // console.log('🧾 JWT_SECRET in middleware:', process.env.JWT_SECRET);
 
     const decoded = jwt.verify(token, process.env.JWT_SECRET); // Verify the extracted token

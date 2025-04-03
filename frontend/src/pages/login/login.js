@@ -5,10 +5,10 @@ import { Link } from "react-router-dom";
 import "./login.css";
 import Solar from "../components/media/solar-panel-169439.jpg";
 
-// Google Sign-In Script
+//Google Sign-In logic
 const handleCredentialResponse = (response) => {
   console.log("Encoded JWT ID token: " + response.credential);
-  // Send the token to your server for verification
+  // Sends the token to the server for user verification
   axios
     .post("http://localhost:5000/api/auth/google-login", { token: response.credential })
     .then((res) => {
@@ -32,7 +32,7 @@ const Login = ({ setUser, onError }) => {
     e.preventDefault();
     const userData = { email, password };
     try {
-      const response = await axios.post("http://localhost:5000/api/auth/login", userData);
+      const response = await axios.post("http://localhost:5000/api/auth/login", userData);//normal login logic
       if (response.data) {
         const { token, user } = response.data;
 
@@ -62,10 +62,10 @@ const Login = ({ setUser, onError }) => {
     script.async = true;
     script.defer = true;
 
-    // Define the callback function
+    
     script.onload = () => {
       window.google.accounts.id.initialize({
-        client_id: "205487692902-fjbc0imr8k3ons2lnf1k2ku2msnsmmfm.apps.googleusercontent.com", // Replace with your actual Google Client ID
+        client_id: "205487692902-fjbc0imr8k3ons2lnf1k2ku2msnsmmfm.apps.googleusercontent.com", 
         callback: handleCredentialResponse,
       });
 
@@ -74,13 +74,13 @@ const Login = ({ setUser, onError }) => {
         size: "large",
       });
 
-      window.google.accounts.id.prompt(); // Show One Tap dialog as well
+      window.google.accounts.id.prompt(); 
     };
 
-    // Append the script to the document
+    
     document.body.appendChild(script);
 
-    // Cleanup: Remove the script when the component unmounts
+    
     return () => {
       document.body.removeChild(script);
     };

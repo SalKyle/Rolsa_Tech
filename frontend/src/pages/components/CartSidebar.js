@@ -23,7 +23,7 @@ export default function CartSidebar() {
 
   return (
     <div className="cart-sidebar">
-      <h2 className="cart-title">🛒 Cart</h2>
+      <h2 className="cart-title">Cart</h2>
       {cartItems.length === 0 ? (
         <p className="cart-empty">Your cart is empty.</p>
       ) : (

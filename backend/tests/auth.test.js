@@ -1,5 +1,5 @@
 const request = require('supertest');
-const app = require('../server');  // Assuming your server.js is exported correctly
+const app = require('../server');  
 
 describe('Auth Routes', () => {
   it('should signup a new user', async () => {

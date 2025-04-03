@@ -6,10 +6,10 @@ const API = axios.create({
 
 // Define the getUserProfile function
 export const getUserProfile = (userId) => {
-  return API.get(`/user/${userId}`); // Adjust the URL path according to your backend
+  return API.get(`/user/${userId}`); 
 };
 
-// You can define other API functions here, e.g., login, fetch user data
+
 
 export default API;
 

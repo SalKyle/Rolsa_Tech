@@ -14,7 +14,7 @@
       "login": "ログイン",
       "signup": "サインアップ",
       "settings": "設定",
-      "copy_right": "©{year} Rolsa Technologies。"
+      "copy_right": "Rolsa Technologies。"
     },
     "landing": {
       "title": "Rolsaは変更をドライブします",
@@ -85,11 +85,11 @@
     },
     "transport_page": {
       "title": "輸送",
-      "transport_mode_factor_label": "🚗毎日の旅行方法排出係数：",
+      "transport_mode_factor_label": "毎日の旅行方法排出係数：",
       "train_hours_label": "cor週あたりの電車に費やされる平均時間：",
-      "flights_uk_label": "✈イギリス内の1年間のフライト：",
-      "flights_europe_label": "✈§年間ヨーロッパへのフライト：",
-      "flights_non_europe_label": "🌍年間長距離便（非ヨーロッパ）：",
+      "flights_uk_label": "イギリス内の1年間のフライト：",
+      "flights_europe_label": "§年間ヨーロッパへのフライト：",
+      "flights_non_europe_label": "年間長距離便（非ヨーロッパ）：",
       "flight_offset_label": "hight§フライトオフセットの取り組み（％）：",
       "next_button": "次"
     },
@@ -107,13 +107,13 @@
       "see_tips_button": "footprintを減らすためのヒントをご覧ください"
     },
     "cart_sidebar": {
-      "cart_title": "🛒カート",
+      "cart_title": "カート",
       "empty_cart_message": "あなたのカートは空です。",
       "checkout_button": "チェックアウト",
       "remove_button": "取り除く"
     },
     "booking": {
-      "header": "📅相談を予約してください",
+      "header": "相談を予約してください",
       "service_label": "どのサービスを予約していますか？",
       "date_label": "日付を選ぶ：",
       "time_label": "タイムスロットを選択してください：",
@@ -122,18 +122,18 @@
     },
     "consumption": {
       "header": "消費",
-      "electronics_purchase_label": "📱エレクトロニクス購入（毎年£）",
-      "clothes_spending_label": "👗衣類支出（毎月£）",
-      "pets_spending_label": "🐶ペット関連の支出（毎月£）",
-      "health_beauty_spending_label": "💅健康と美しさ（毎月£）",
-      "communication_spending_label": "📞通信（毎月£）",
-      "entertainment_spending_label": "🎮エンターテイメント（毎月£）",
-      "recycling_score_label": "♻️リサイクルスコア（0–1）",
+      "electronics_purchase_label": "エレクトロニクス購入（毎年£）",
+      "clothes_spending_label": "衣類支出（毎月£）",
+      "pets_spending_label": "ペット関連の支出（毎月£）",
+      "health_beauty_spending_label": "健康と美しさ（毎月£）",
+      "communication_spending_label": "通信（毎月£）",
+      "entertainment_spending_label": "エンターテイメント（毎月£）",
+      "recycling_score_label": "リサイクルスコア（0–1）",
       "finish_button": "仕上げる"
     },
     "diet": {
       "header": "ダイエット",
-      "restaurant_spending_label": "💳毎月のレストラン/ファーストフード支出（£）：",
+      "restaurant_spending_label": "毎月のレストラン/ファーストフード支出（£）：",
       "food_waste_label": "devertayted食品の推定割合を無駄にする（％）：",
       "local_food_label": "local地元または季節の農産物を購入しますか？",
       "next_button": "次"

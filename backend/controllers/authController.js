@@ -31,7 +31,7 @@ const signup = async (req, res) => {
       [name.trim(), email.trim(), hashedPassword],
       function (err) {
         if (err) {
-          console.error('DB Error on signup:', err.message); // 🔍 Log the actual error
+          console.error('DB Error on signup:', err.message); // Log the actual error for debugging
           return res.status(400).json({ error: err.message });
         }
 
@@ -73,14 +73,14 @@ const login = async (req, res) => {
 
     const token = generateToken(user.id, user.email);
 
-    // Updated response: return both token and user details
+  
     res.status(200).json({ 
       message: 'Login successful', 
       token, 
       user: {
         id: user.id,
         email: user.email,
-        // add more fields if needed, e.g. name, role, etc.
+        
       }
     });
     
@@ -94,26 +94,26 @@ const login = async (req, res) => {
 
 // Google login handler
 const googleLogin = async (req, res) => {
-  const { token } = req.body; // The JWT received from the frontend
+  const { token } = req.body; 
 
   try {
     // Verify the JWT sent from Google
     const ticket = await client.verifyIdToken({
       idToken: token,
-      audience: '205487692902-fjbc0imr8k3ons2lnf1k2ku2msnsmmfm.apps.googleusercontent.com', // Your Google Client ID
+      audience: '205487692902-fjbc0imr8k3ons2lnf1k2ku2msnsmmfm.apps.googleusercontent.com', 
     });
 
-    const payload = ticket.getPayload(); // Extract user data from the JWT
-    const { sub: googleId, name, email } = payload; // Extract necessary details
+    const payload = ticket.getPayload(); 
+    const { sub: googleId, name, email } = payload; 
 
-    // Check if the user already exists in your DB
+    
     db.get('SELECT * FROM users WHERE email = ?', [email], async (err, user) => {
       if (err) {
         return res.status(500).json({ message: 'Database error', error: err });
       }
 
       if (user) {
-        // User already exists, generate a JWT token and return it
+        // if User exists, generate a JWT token 
         const jwtToken = generateToken(user.id, user.email);
         return res.status(200).json({
           message: 'User logged in successfully',
@@ -121,8 +121,8 @@ const googleLogin = async (req, res) => {
           token: jwtToken,
         });
       } else {
-        // User doesn't exist, create a new user in your DB
-        const hashedPassword = await bcrypt.hash(googleId, 10); // Using Google ID as a "password"
+        // if User doesn't exist, create a new user in your DB
+        const hashedPassword = await bcrypt.hash(googleId, 10); // Hash the Google ID as a password
 
         db.run(
           'INSERT INTO users (name, email, password) VALUES (?, ?, ?)',
@@ -152,5 +152,5 @@ const googleLogin = async (req, res) => {
 module.exports = {
   signup,
   login,
-  googleLogin, // Export the Google Login function
+  googleLogin, 
 };

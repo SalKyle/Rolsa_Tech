@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useTranslation } from 'react-i18next'; // ✅ Add this
+import { useTranslation } from 'react-i18next'; 
 import './FeatureCard.css';
 
 const FeatureCard = ({ title, description, to }) => {
-  const { t } = useTranslation(); // ✅ Add this
+  const { t } = useTranslation(); 
 
   return (
     <div className="feature-card">

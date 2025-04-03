@@ -3,7 +3,7 @@ const router = express.Router();
 const db = require("../config/db");
 const EnergyModel = require("../models/EnergyModel");
 
-// GET all energy entries
+// GET all energy entries for a specific user
 router.get("/:userId", async (req, res) => {
   try{
     const data = await EnergyModel.getByUser(req.params.userId);
@@ -13,9 +13,7 @@ router.get("/:userId", async (req, res) => {
   }
   
 });
-
-
-// POST new energy entry
+//post request to add a new energy entry
 router.post("/", async (req, res) => {
   const { usage, date, userId } = req.body;
 

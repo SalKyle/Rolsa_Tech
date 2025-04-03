@@ -3,10 +3,10 @@ import ProductCard from './components/ProductCard';
 import CartSidebar from './components/CartSidebar';
 import { CartProvider } from '../context/CartContext';
 import Navbar from './components/Navbar';
-import { useTranslation } from 'react-i18next'; // ✅ Add this
+import { useTranslation } from 'react-i18next';
 import './products.css';
 
-const products = [
+const products = [//ddint ahve  time to create n admin page to input new products so i just ahrdcoded dummy products
   // Solar
   { id: 1, name: 'Solar Panel Pro', category: 'Solar', price: 499, img: 'https://via.placeholder.com/300x180', specs: '400W, Monocrystalline, 25-year warranty' },
   { id: 2, name: 'Solar Inverter Max', category: 'Solar', price: 350, img: 'https://via.placeholder.com/300x180', specs: '3kW inverter, Wi-Fi Monitoring' },
@@ -21,7 +21,7 @@ const products = [
 ];
 
 export default function ProductsPage() {
-  const { t } = useTranslation(); // ✅ Add this
+  const { t } = useTranslation();
 
   const renderSection = (titleKey, category) => {
     const filtered = products.filter((p) => p.category === category);

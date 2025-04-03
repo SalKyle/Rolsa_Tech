@@ -8,7 +8,7 @@ import background from '../components/media/solar-panel-4716640.jpg';
 const LandingPage = () => {
   return (
     <div className="landing-container">
-      {/* Background & Overlay */}
+      
       <div className="image-overlay">
         <img src={background} alt="Background" className="bg-image" />
       </div>
@@ -26,7 +26,7 @@ const LandingPage = () => {
       </div>
 
 
-      {/* Make this visible! */}
+      
       <div className="card-section">
       <FeatureCard 
           title="Check your Carbon Footprint" 

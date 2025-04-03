@@ -12,10 +12,10 @@ router.post("/", async (req, res) => {
   }
 
   try {
-    // ✅ 1. Create booking
+    
     const booking = await BookingModel.create({ userId, service, date, time });
 
-    // ✅ 2. Send confirmation email
+    // supposed  to send a confirmation email but some external errors with the sender email auth
     const transporter = nodemailer.createTransport({
       service: "gmail", // or 'Mailtrap', 'SendGrid', etc.
       auth: {
@@ -26,14 +26,14 @@ router.post("/", async (req, res) => {
 
     const mailOptions = {
       from: `"Rolsa Bookings" <${process.env.EMAIL_USER}>`,
-      to: email, // ✅ sent from frontend
-      subject: "Your Booking is Confirmed ✅",
+      to: email, 
+      subject: "Your Booking is Confirmed ",
       text: `Hello!\n\nYour booking for "${service}" on ${date} at ${time} is confirmed.\n\nThanks for choosing Rolsa!`,
     };
 
     transporter.sendMail(mailOptions, (error, info) => {
-      if (error) console.error("❌ Email failed:", error.message);
-      else console.log("📨 Email sent:", info.response);
+      if (error) console.error("Email failed:", error.message);
+      else console.log("Email sent:", info.response);
     });
 
     res.status(201).json(booking);

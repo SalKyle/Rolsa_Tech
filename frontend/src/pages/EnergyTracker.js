@@ -27,7 +27,7 @@ export default function EnergyTracker() {
     const newEntry = {
       usage: parseInt(input),
       date: new Date().toISOString(),
-      userId: currentUser?.id || null, // optional for now
+      userId: currentUser?.id || null, 
     };
     
 

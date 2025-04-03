@@ -1,4 +1,4 @@
-// utils/transportCalculator.js
+
 const k4 = 0.5; // Mode factor for transport
 const k5 = 0.2; // Factor for train hours per week
 const k6 = 0.3; // Factor for flights in UK

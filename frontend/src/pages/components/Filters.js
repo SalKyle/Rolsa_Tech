@@ -1,7 +1,7 @@
 const connectorOptions = ["Type 2", "CCS", "CHAdeMO"];
 const networkOptions = ["Pod Point", "BP Pulse", "Tesla", "ChargePoint"];
 
-export default function Filters({ filters, setFilters }) {
+export default function Filters({ filters, setFilters }) {//Filtering function for the EV Map but i didnt ahve access to such info but this would be reviewed in the ealuation
   return (
     <div className="ev-filters">
       <div className="ev-filter-group">
