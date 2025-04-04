@@ -3,6 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const db = require('./config/db'); 
+const path = require('path');
 require('./models/userModel');
 require('./config/initDB');
 
@@ -17,7 +18,7 @@ app.use("/api/bookings", require("./routes/booking"));
 app.use("/api/transactions", require("./routes/transactions"));
 app.use("/api/cf", require("./routes/cf"));
 app.use(require('./routes/user'));
-
+app.use(express.static(path.join(__dirname, '../frontend/build')));
 
 
 
@@ -28,7 +29,9 @@ const userRoutes = require('./routes/userRoutes');
 app.use('/api/auth', authRoutes);
 app.use('/api/user', userRoutes);
 
-
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/build', 'index.html'));
+});
 app.get('/', (req, res) => {
   res.send('Welcome to the server!');
 });
