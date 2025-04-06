@@ -4,25 +4,8 @@ import axios from "axios";
 import "./signup.css";
 import Solar from "../components/media/solar-panel-169439.jpg";
 
-// import logo from "../components/media/Bean and Brew.png";
-
-// Google Sign-In logic
-const handleCredentialResponse = (response) => {
-  console.log("Encoded JWT ID token: " + response.credential);
-  // Send the token to the server for verification
-  axios
-    .post("http://localhost:5000/api/auth/google-login", { token: response.credential })
-    .then((res) => {
-      console.log(res.data);
-      setTimeout(() => {
-        window.location.href = "/";
-      }, 2000);
-       
-    })
-    .catch((error) => {
-      console.error("Google Login Error:", error);
-    });
-};
+// Use env variable for API URL
+const API_BASE_URL = process.env.REACT_APP_API_URL;
 
 const Signup = ({ setUser, onError = (error) => console.error("Signup Error:", error) }) => {
   const [name, setUsername] = useState("");
@@ -31,17 +14,32 @@ const Signup = ({ setUser, onError = (error) => console.error("Signup Error:", e
   const [con_password, setcon_Password] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
 
+  // Handle Google Sign-In response
+  const handleCredentialResponse = (response) => {
+    console.log("Encoded JWT ID token: " + response.credential);
+    axios
+      .post(`${API_BASE_URL}/auth/google-login`, { token: response.credential })
+      .then((res) => {
+        console.log(res.data);
+        setTimeout(() => {
+          window.location.href = "/";
+        }, 2000);
+      })
+      .catch((error) => {
+        console.error("Google Login Error:", error);
+      });
+  };
+
   useEffect(() => {
-    
     const script = document.createElement("script");
     script.src = "https://accounts.google.com/gsi/client";
     script.async = true;
     script.defer = true;
 
-    
     script.onload = () => {
       window.google.accounts.id.initialize({
-        client_id: "205487692902-fjbc0imr8k3ons2lnf1k2ku2msnsmmfm.apps.googleusercontent.com", 
+        client_id:
+          "205487692902-fjbc0imr8k3ons2lnf1k2ku2msnsmmfm.apps.googleusercontent.com",
         callback: handleCredentialResponse,
       });
 
@@ -50,13 +48,11 @@ const Signup = ({ setUser, onError = (error) => console.error("Signup Error:", e
         size: "large",
       });
 
-      window.google.accounts.id.prompt(); 
+      window.google.accounts.id.prompt();
     };
 
-    
     document.body.appendChild(script);
 
-    
     return () => {
       document.body.removeChild(script);
     };
@@ -85,7 +81,7 @@ const Signup = ({ setUser, onError = (error) => console.error("Signup Error:", e
 
     const userData = { name, email, password };
     try {
-      const response = await axios.post("http://localhost:5000/api/auth/signup", userData);
+      const response = await axios.post(`${API_BASE_URL}/auth/signup`, userData);
       setUser(response.data);
       setSuccessMessage("Signup successful! Redirecting...");
       setTimeout(() => {
@@ -103,8 +99,12 @@ const Signup = ({ setUser, onError = (error) => console.error("Signup Error:", e
         <img src={Solar} alt="Solar Panel" className="bg" />
       </div>
       <header className="header">
-        {/* <img src={logo} alt="Bean and Brew Cafe Logo" className="logo" /> */}
-        <div className="logo"><Link to="/" >ROLSA <br /><span>TECHNOLOGIES</span></Link></div>
+        <div className="logo">
+          <Link to="/">
+            ROLSA <br />
+            <span>TECHNOLOGIES</span>
+          </Link>
+        </div>
       </header>
 
       <div className="input_container">
@@ -147,7 +147,7 @@ const Signup = ({ setUser, onError = (error) => console.error("Signup Error:", e
           <div className="signup-footer">
             <p>Already have an account? <Link to="/login">Login</Link></p>
             <p>Or sign up with Google</p>
-            <div id="buttonDiv"></div> {/* Google Sign-In Button */}
+            <div id="buttonDiv"></div>
           </div>
         </form>
       </div>
