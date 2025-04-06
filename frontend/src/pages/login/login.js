@@ -5,22 +5,8 @@ import { Link } from "react-router-dom";
 import "./login.css";
 import Solar from "../components/media/solar-panel-169439.jpg";
 
-//Google Sign-In logic
-const handleCredentialResponse = (response) => {
-  console.log("Encoded JWT ID token: " + response.credential);
-  // Sends the token to the server for user verification
-  axios
-    .post("http://localhost:5000/api/auth/google-login", { token: response.credential })
-    .then((res) => {
-      console.log(res.data);
-      setTimeout(() => {
-        window.location.href = "/";
-      }, 2000); 
-    })
-    .catch((error) => {
-      console.error("Google Login Error:", error);
-    });
-};
+// Use env variable for API URL
+const API_BASE_URL = process.env.REACT_APP_API_URL;
 
 const Login = ({ setUser, onError }) => {
   const navigate = useNavigate();
@@ -28,11 +14,27 @@ const Login = ({ setUser, onError }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  // Handle Google Sign-In response
+  const handleCredentialResponse = (response) => {
+    console.log("Encoded JWT ID token: " + response.credential);
+    axios
+      .post(`${API_BASE_URL}/auth/google-login`, { token: response.credential })
+      .then((res) => {
+        console.log(res.data);
+        setTimeout(() => {
+          window.location.href = "/";
+        }, 2000);
+      })
+      .catch((error) => {
+        console.error("Google Login Error:", error);
+      });
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const userData = { email, password };
     try {
-      const response = await axios.post("http://localhost:5000/api/auth/login", userData);//normal login logic
+      const response = await axios.post(`${API_BASE_URL}/auth/login`, userData);
       if (response.data) {
         const { token, user } = response.data;
 
@@ -46,7 +48,7 @@ const Login = ({ setUser, onError }) => {
         localStorage.setItem("user", JSON.stringify(fullUser));
 
         console.log("Login Successful:", response.data);
-        navigate("/"); // Redirect to home page
+        navigate("/");
       } else {
         console.error("Login failed: No user data received");
       }
@@ -56,16 +58,15 @@ const Login = ({ setUser, onError }) => {
   };
 
   useEffect(() => {
-    // Dynamically load the Google Sign-In script
     const script = document.createElement("script");
     script.src = "https://accounts.google.com/gsi/client";
     script.async = true;
     script.defer = true;
 
-    
     script.onload = () => {
       window.google.accounts.id.initialize({
-        client_id: "205487692902-fjbc0imr8k3ons2lnf1k2ku2msnsmmfm.apps.googleusercontent.com", 
+        client_id:
+          "205487692902-fjbc0imr8k3ons2lnf1k2ku2msnsmmfm.apps.googleusercontent.com",
         callback: handleCredentialResponse,
       });
 
@@ -74,13 +75,11 @@ const Login = ({ setUser, onError }) => {
         size: "large",
       });
 
-      window.google.accounts.id.prompt(); 
+      window.google.accounts.id.prompt();
     };
 
-    
     document.body.appendChild(script);
 
-    
     return () => {
       document.body.removeChild(script);
     };
@@ -92,8 +91,12 @@ const Login = ({ setUser, onError }) => {
         <img src={Solar} alt="Solar Panel" className="bg" />
       </div>
       <header className="header">
-        {/* <img src={logo} alt="Bean and Brew Cafe Logo" className="logo" /> */}
-        <div className="logo"><Link to="/" >ROLSA <br /><span>TECHNOLOGIES</span></Link></div>
+        <div className="logo">
+          <Link to="/">
+            ROLSA <br />
+            <span>TECHNOLOGIES</span>
+          </Link>
+        </div>
       </header>
 
       <div className="input_container">
@@ -118,7 +121,7 @@ const Login = ({ setUser, onError }) => {
           <button type="submit">Login</button>
           <div className="signup-footer">
             <p>Or login with Google</p>
-            <div id="buttonDiv"></div> {/* Google Sign-In Button */}
+            <div id="buttonDiv"></div>
             <p>
               Don't have an account? <Link to="/signup">Signup</Link>
             </p>
