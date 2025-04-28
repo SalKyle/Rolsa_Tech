@@ -26,6 +26,7 @@
     "sqlite3": "^5.1.7"
   },
   "devDependencies": {
+    "node-gyp": "^11.2.0",
     "node-pre-gyp": "^0.17.0"
   }
 }

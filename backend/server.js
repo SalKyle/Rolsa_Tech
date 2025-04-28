@@ -1,43 +1,32 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
-const dotenv = require('dotenv');
-const db = require('./config/db'); 
 const path = require('path');
+const db = require('./config/db');
+
 require('./models/userModel');
 require('./config/initDB');
 
-
 const app = express();
-dotenv.config();
+
 app.use(express.json());
 app.use(cors());
-app.use("/api/chargers", require("./routes/chargers"));
-app.use("/api/energy", require("./routes/energy"));
-app.use("/api/bookings", require("./routes/booking"));
-app.use("/api/transactions", require("./routes/transactions"));
-app.use("/api/cf", require("./routes/cf"));
-app.use(require('./routes/user'));
-app.use(express.static(path.join(__dirname, '../frontend/build')));
 
+// API routes
+app.use('/api/chargers', require('./routes/chargers'));
+app.use('/api/energy', require('./routes/energy'));
+app.use('/api/bookings', require('./routes/booking'));
+app.use('/api/transactions', require('./routes/transactions'));
+app.use('/api/cf', require('./routes/cf'));
+app.use('/api/auth', require('./routes/authRoutes'));
+app.use('/api/user', require('./routes/userRoutes'));
 
-
-const authRoutes = require('./routes/authRoutes');
-const userRoutes = require('./routes/userRoutes');
-
-
-app.use('/api/auth', authRoutes);
-app.use('/api/user', userRoutes);
-
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../frontend/build', 'index.html'));
-});
+// Simple health check or welcome endpoint
 app.get('/', (req, res) => {
-  res.send('Welcome to the server!');
+  res.send('Welcome to the ROLSA Technologies API');
 });
 
-console.log('Database connected:', db !== null); 
-
+console.log('Database connected:', db !== null);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
