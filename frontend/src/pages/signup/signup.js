@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./signup.css";
 import Solar from "../components/media/solar-panel-169439.jpg";
@@ -13,6 +13,7 @@ const Signup = ({ setUser, onError = (error) => console.error("Signup Error:", e
   const [password, setPassword] = useState("");
   const [con_password, setcon_Password] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
+  const navigate = useNavigate();
 
   // Handle Google Sign-In response
   const handleCredentialResponse = (response) => {
@@ -22,7 +23,7 @@ const Signup = ({ setUser, onError = (error) => console.error("Signup Error:", e
       .then((res) => {
         console.log(res.data);
         setTimeout(() => {
-          window.location.href = "/";
+          navigate = "/";
         }, 2000);
       })
       .catch((error) => {
@@ -85,7 +86,7 @@ const Signup = ({ setUser, onError = (error) => console.error("Signup Error:", e
       setUser(response.data);
       setSuccessMessage("Signup successful! Redirecting...");
       setTimeout(() => {
-        window.location.href = "/login";
+        navigate = "/login";
       }, 2000);
     } catch (error) {
       onError(error);
