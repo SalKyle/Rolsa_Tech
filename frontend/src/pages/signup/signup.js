@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom";
 import axios from "axios";
 import "./signup.css";
 import Solar from "../components/media/solar-panel-169439.jpg";
 
 // Use env variable for API URL
-const API_BASE_URL = process.env.REACT_APP_API_URL|| "http://localhost:5000";;
+const API_BASE_URL = process.env.REACT_APP_API_URL;
 
 const Signup = ({ setUser, onError = (error) => console.error("Signup Error:", error) }) => {
-  const navigate = useNavigate();
   const [name, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -23,7 +22,7 @@ const Signup = ({ setUser, onError = (error) => console.error("Signup Error:", e
       .then((res) => {
         console.log(res.data);
         setTimeout(() => {
-          navigate = "/";
+          window.location.href = "/";
         }, 2000);
       })
       .catch((error) => {
@@ -82,11 +81,11 @@ const Signup = ({ setUser, onError = (error) => console.error("Signup Error:", e
 
     const userData = { name, email, password };
     try {
-      const response = await axios.post(`${API_BASE_URL}/api/auth/signup`, userData);
+      const response = await axios.post(`${API_BASE_URL}/auth/signup`, userData);
       setUser(response.data);
       setSuccessMessage("Signup successful! Redirecting...");
       setTimeout(() => {
-        navigate = "/login";
+        window.location.href = "/login";
       }, 2000);
     } catch (error) {
       onError(error);
