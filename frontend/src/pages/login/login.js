@@ -6,7 +6,7 @@ import "./login.css";
 import Solar from "../components/media/solar-panel-169439.jpg";
 
 // Use env variable for API URL
-const API_BASE_URL = process.env.REACT_APP_API_URL;
+const API_BASE_URL = process.env.REACT_APP_API_URL  || "http://localhost:5000";
 
 const Login = ({ setUser, onError }) => {
   const navigate = useNavigate();
