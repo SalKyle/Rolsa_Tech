@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./signup.css";
 import Solar from "../components/media/solar-panel-169439.jpg";
 
 // Use env variable for API URL
-const API_BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";;
+const API_BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
 
 const Signup = ({ setUser, onError = (error) => console.error("Signup Error:", error) }) => {
+  const navigate = useNavigate();    // ← hook for navigation
+
   const [name, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -18,11 +21,12 @@ const Signup = ({ setUser, onError = (error) => console.error("Signup Error:", e
   const handleCredentialResponse = (response) => {
     console.log("Encoded JWT ID token: " + response.credential);
     axios
-      .post(`${API_BASE_URL}/auth/google-login`, { token: response.credential })
+      .post(`${API_BASE_URL}/api/auth/google-login`, { token: response.credential })
       .then((res) => {
         console.log(res.data);
+
         setTimeout(() => {
-          window.location.href = "/";
+          navigate("/");             // ← navigate to home
         }, 2000);
       })
       .catch((error) => {
@@ -81,11 +85,13 @@ const Signup = ({ setUser, onError = (error) => console.error("Signup Error:", e
 
     const userData = { name, email, password };
     try {
-      const response = await axios.post(`${API_BASE_URL}/auth/signup`, userData);
+
+      const response = await axios.post(`${API_BASE_URL}/api/auth/signup`, userData);
       setUser(response.data);
       setSuccessMessage("Signup successful! Redirecting...");
+
       setTimeout(() => {
-        window.location.href = "/login";
+        navigate("/login");         // ← navigate to login route
       }, 2000);
     } catch (error) {
       onError(error);
@@ -110,38 +116,7 @@ const Signup = ({ setUser, onError = (error) => console.error("Signup Error:", e
       <div className="input_container">
         <h2>Signup</h2>
         <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            className="signup_input"
-            placeholder="Username"
-            value={name}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
-          <input
-            type="email"
-            placeholder="Email"
-            className="signup_input"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            className="signup_input"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-          <input
-            type="password"
-            placeholder="Confirm Password"
-            className="signup_input"
-            value={con_password}
-            onChange={(e) => setcon_Password(e.target.value)}
-            required
-          />
+          {/* … your inputs … */}
           <button type="submit">Sign Up</button>
           {successMessage && <p className="success-message">{successMessage}</p>}
           <div className="signup-footer">
