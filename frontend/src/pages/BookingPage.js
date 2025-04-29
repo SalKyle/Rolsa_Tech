@@ -9,7 +9,7 @@ import { useTranslation } from "react-i18next";
 
 export default function BookingPage() {
   const { currentUser } = useAuth();
-  const API_BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+  const API_BASE_URL = process.env.REACT_APP_API_URL || 'https://rolsa-tech-ea9t.onrender.com';
 
   const { t } = useTranslation(); 
 
