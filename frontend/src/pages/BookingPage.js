@@ -9,7 +9,10 @@ import { useTranslation } from "react-i18next";
 
 export default function BookingPage() {
   const { currentUser } = useAuth();
-  const API_BASE_URL = process.env.REACT_APP_API_URL || 'https://rolsa-tech-ea9t.onrender.com';
+  // Use window.location.origin to dynamically determine the base URL when deployed
+  // This helps avoid hardcoded URLs that might be incorrect in production
+  const API_BASE_URL = process.env.REACT_APP_API_URL || 
+                       (process.env.NODE_ENV === 'production' ? '' : 'http://localhost:5000');
 
   const { t } = useTranslation(); 
 
@@ -18,46 +21,88 @@ export default function BookingPage() {
   const [time, setTime] = useState("");
   const [userBookings, setUserBookings] = useState([]);
   const [unavailableSlots, setUnavailableSlots] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
+  // Fetch user bookings when component mounts or user changes
   useEffect(() => {
     if (currentUser?.id) {
+      setLoading(true);
+      setError(null);
+      
       axios
-        .get(`${API_BASE_URL}/api/bookings/user/${currentUser.id}`)//gets the bookings for the current user
-        .then((res) => setUserBookings(res.data))
-        .catch((err) => console.error("Booking fetch error", err));
+        .get(`${API_BASE_URL}/api/bookings/user/${currentUser.id}`)
+        .then((res) => {
+          setUserBookings(res.data);
+          setLoading(false);
+        })
+        .catch((err) => {
+          console.error("Booking fetch error", err);
+          setError("Could not load your bookings");
+          setLoading(false);
+        });
     }
-  }, [currentUser]);
+  }, [currentUser, API_BASE_URL]);
 
+  // Fetch availability when service or date changes
   useEffect(() => {
     if (service && date) {
       const formattedDate = date.toISOString().split("T")[0];
+      
+      setLoading(true);
+      setError(null);
+      
       axios
-        .get(`${API_BASE_URL}/api/bookings/availability?date=${formattedDate}&service=${service}`)//gets the available slots for the selected date and service1
-        .then((res) => setUnavailableSlots(res.data))
-        .catch((err) => console.error("Availability fetch error", err));
+        .get(`${API_BASE_URL}/api/bookings/availability`, {
+          params: { date: formattedDate, service }
+        })
+        .then((res) => {
+          setUnavailableSlots(res.data);
+          setLoading(false);
+        })
+        .catch((err) => {
+          console.error("Availability fetch error", err);
+          // Don't show error for availability as it might not be critical
+          setUnavailableSlots([]);
+          setLoading(false);
+        });
     }
-  }, [service, date]);
+  }, [service, date, API_BASE_URL]);
 
   const handleBooking = async () => {
-    if (!service || !date || !time) return alert(t("booking.fill_all_fields", "Fill all fields"));
+    if (!service || !date || !time) {
+      return alert(t("booking.fill_all_fields", "Please fill all fields"));
+    }
+    
+    if (!currentUser?.id) {
+      return alert(t("booking.login_required", "Please login to book a consultation"));
+    }
 
     try {
+      setLoading(true);
+      setError(null);
+      
       const payload = {
-        userId: currentUser?.id,
+        userId: currentUser.id,
         service,
         date: date.toISOString().split("T")[0],
         time,
-        email: currentUser?.email
+        email: currentUser.email
       };
 
-      await axios.post(`${API_BASE_URL}/api/bookings`, payload);//sends tthe fianlise dbooking
-
+      await axios.post(`${API_BASE_URL}/api/bookings`, payload);
+      
       setTime("");
-      const updated = await axios.get(`${API_BASE_URL}/api/bookings/user/${currentUser.id}`);//gets the updated bookings
+      alert(t("booking.success", "Booking successful!"));
+      
+      // Refresh bookings list
+      const updated = await axios.get(`${API_BASE_URL}/api/bookings/user/${currentUser.id}`);
       setUserBookings(updated.data);
+      setLoading(false);
     } catch (err) {
       console.error("Booking failed:", err);
-      alert(t("booking.failed", "Booking failed"));
+      setError(t("booking.failed", "Booking failed. Please try again."));
+      setLoading(false);
     }
   };
 
@@ -66,6 +111,9 @@ export default function BookingPage() {
       <Navbar />
       <div className="booking-container">
         <h1 className="booking-title">{t("booking.header", "Book a Consultation")}</h1>
+        
+        {error && <div className="error-message">{error}</div>}
+        {loading && <div className="loading-indicator">Loading...</div>}
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
@@ -77,7 +125,7 @@ export default function BookingPage() {
                   onClick={() => setService(s)}
                   className={`service-btn ${service === s ? "selected" : ""}`}
                 >
-                  {t(`booking.services.${s}`, s)}
+                  {t(`booking.services.${s.replace(/\s+/g, '_').toLowerCase()}`, s)}
                 </button>
               ))}
             </div>
@@ -110,16 +158,20 @@ export default function BookingPage() {
           </div>
         </div>
 
-        <button onClick={handleBooking} className="booking-submit-btn">
-          {t("booking.finalize_button", "Finalise Booking")}
+        <button 
+          onClick={handleBooking} 
+          className="booking-submit-btn"
+          disabled={loading || !service || !time}
+        >
+          {loading ? t("booking.processing", "Processing...") : t("booking.finalize_button", "Finalise Booking")}
         </button>
 
         {userBookings.length > 0 && (
           <div className="booking-history">
             <h2>{t("booking.your_bookings", "Your Bookings")}</h2>
             <ul>
-              {userBookings.map((b) => (
-                <li key={b.id}>
+              {userBookings.map((b, index) => (
+                <li key={b.id || index}>
                   {b.service} {t("booking.on", "on")} {b.date} {t("booking.at", "at")} {b.time}
                 </li>
               ))}
