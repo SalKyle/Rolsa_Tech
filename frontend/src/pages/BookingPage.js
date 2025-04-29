@@ -22,7 +22,7 @@ export default function BookingPage() {
   useEffect(() => {
     if (currentUser?.id) {
       axios
-        .get(`http://l${API_BASE_URL}/api/bookings/user/${currentUser.id}`)//gets the bookings for the current user
+        .get(`${API_BASE_URL}/api/bookings/user/${currentUser.id}`)//gets the bookings for the current user
         .then((res) => setUserBookings(res.data))
         .catch((err) => console.error("Booking fetch error", err));
     }
@@ -32,7 +32,7 @@ export default function BookingPage() {
     if (service && date) {
       const formattedDate = date.toISOString().split("T")[0];
       axios
-        .get(`http://${API_BASE_URL}/api/bookings/availability?date=${formattedDate}&service=${service}`)//gets the available slots for the selected date and service1
+        .get(`${API_BASE_URL}/api/bookings/availability?date=${formattedDate}&service=${service}`)//gets the available slots for the selected date and service1
         .then((res) => setUnavailableSlots(res.data))
         .catch((err) => console.error("Availability fetch error", err));
     }
@@ -50,10 +50,10 @@ export default function BookingPage() {
         email: currentUser?.email
       };
 
-      await axios.post("http://${API_BASE_URL}/api/bookings", payload);//sends tthe fianlise dbooking
+      await axios.post(`${API_BASE_URL}/api/bookings`, payload);//sends tthe fianlise dbooking
 
       setTime("");
-      const updated = await axios.get(`http://${API_BASE_URL}/api/bookings/user/${currentUser.id}`);//gets the updated bookings
+      const updated = await axios.get(`${API_BASE_URL}/api/bookings/user/${currentUser.id}`);//gets the updated bookings
       setUserBookings(updated.data);
     } catch (err) {
       console.error("Booking failed:", err);
