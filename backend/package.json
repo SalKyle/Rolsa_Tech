@@ -8,7 +8,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "postinstall": "npx node-pre-gyp rebuild -C ./node_modules/sqlite3 && npx node-pre-gyp rebuild -C ./node_modules/bcrypt"
+    "postinstall": "npm rebuild"
   },
   "keywords": [],
   "author": "",
