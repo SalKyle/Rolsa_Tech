@@ -9,13 +9,18 @@ require('./config/initDB');
 
 const app = express();
 
-// Configure CORS to allow requests from your frontend domain
+// CORS configuration - UPDATED to fix the cross-origin issues
 app.use(cors({
-  origin: process.env.FRONTEND_URL || '*',
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  origin: [
+    'https://rolsa-tech-ea9t.onrender.com',  // Your frontend domain
+    'http://localhost:3000'                  // Local development
+  ],
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true
 }));
 
+// Parse JSON request bodies
 app.use(express.json());
 
 // API routes
@@ -27,28 +32,19 @@ app.use('/api/cf', require('./routes/cf'));
 app.use('/api/auth', require('./routes/authRoutes'));
 app.use('/api/user', require('./routes/userRoutes'));
 
-// Serve static assets in production
-if (process.env.NODE_ENV === 'production') {
-  // Set static folder
-  app.use(express.static('client/build'));
+// Catch-all route for API 404s
+app.use('/api/*', (req, res) => {
+  res.status(404).json({ error: 'API endpoint not found' });
+});
 
-  app.get('*', (req, res) => {
-    // Routes all requests that aren't to the API to the React app
-    if (!req.path.startsWith('/api')) {
-      res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-    }
-  });
-} else {
-  // Simple health check for development
-  app.get('/', (req, res) => {
-    res.send('Welcome to the ROLSA Technologies API - Development Mode');
-  });
-}
+// Simple health check or welcome endpoint
+app.get('/', (req, res) => {
+  res.send('Welcome to the ROLSA Technologies API');
+});
 
-// Log database connection status
 console.log('Database connected:', db !== null);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT} in ${process.env.NODE_ENV || 'development'} mode`);
+  console.log(`Server is running on port ${PORT}`);
 });

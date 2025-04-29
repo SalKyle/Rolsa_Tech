@@ -9,10 +9,8 @@ import { useTranslation } from "react-i18next";
 
 export default function BookingPage() {
   const { currentUser } = useAuth();
-  // Use window.location.origin to dynamically determine the base URL when deployed
-  // This helps avoid hardcoded URLs that might be incorrect in production
-  const API_BASE_URL = process.env.REACT_APP_API_URL || 
-                       (process.env.NODE_ENV === 'production' ? '' : 'http://localhost:5000');
+  // Set the explicit backend URL - must match exactly what's deployed on Render
+  const API_BASE_URL = 'https://rolsa-tech.onrender.com';
 
   const { t } = useTranslation(); 
 
@@ -28,17 +26,19 @@ export default function BookingPage() {
   useEffect(() => {
     if (currentUser?.id) {
       setLoading(true);
-      setError(null);
+      setUserBookings([]); // Clear existing data while loading
       
       axios
-        .get(`${API_BASE_URL}/api/bookings/user/${currentUser.id}`)
+        .get(`${API_BASE_URL}/api/bookings/user/${currentUser.id}`, {
+          withCredentials: true  // Important for CORS with credentials
+        })
         .then((res) => {
           setUserBookings(res.data);
           setLoading(false);
         })
         .catch((err) => {
           console.error("Booking fetch error", err);
-          setError("Could not load your bookings");
+          setError("Could not load your bookings. Please try again later.");
           setLoading(false);
         });
     }
@@ -48,13 +48,12 @@ export default function BookingPage() {
   useEffect(() => {
     if (service && date) {
       const formattedDate = date.toISOString().split("T")[0];
-      
       setLoading(true);
-      setError(null);
       
       axios
         .get(`${API_BASE_URL}/api/bookings/availability`, {
-          params: { date: formattedDate, service }
+          params: { date: formattedDate, service },
+          withCredentials: true  // Important for CORS with credentials
         })
         .then((res) => {
           setUnavailableSlots(res.data);
@@ -62,7 +61,6 @@ export default function BookingPage() {
         })
         .catch((err) => {
           console.error("Availability fetch error", err);
-          // Don't show error for availability as it might not be critical
           setUnavailableSlots([]);
           setLoading(false);
         });
@@ -80,7 +78,6 @@ export default function BookingPage() {
 
     try {
       setLoading(true);
-      setError(null);
       
       const payload = {
         userId: currentUser.id,
@@ -90,19 +87,27 @@ export default function BookingPage() {
         email: currentUser.email
       };
 
-      await axios.post(`${API_BASE_URL}/api/bookings`, payload);
+      await axios.post(`${API_BASE_URL}/api/bookings`, payload, {
+        withCredentials: true,  // Important for CORS with credentials
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
       
       setTime("");
       alert(t("booking.success", "Booking successful!"));
       
       // Refresh bookings list
-      const updated = await axios.get(`${API_BASE_URL}/api/bookings/user/${currentUser.id}`);
+      const updated = await axios.get(`${API_BASE_URL}/api/bookings/user/${currentUser.id}`, {
+        withCredentials: true
+      });
       setUserBookings(updated.data);
       setLoading(false);
     } catch (err) {
       console.error("Booking failed:", err);
       setError(t("booking.failed", "Booking failed. Please try again."));
       setLoading(false);
+      alert(t("booking.failed", "Booking failed. Please try again."));
     }
   };
 
@@ -113,7 +118,6 @@ export default function BookingPage() {
         <h1 className="booking-title">{t("booking.header", "Book a Consultation")}</h1>
         
         {error && <div className="error-message">{error}</div>}
-        {loading && <div className="loading-indicator">Loading...</div>}
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
@@ -165,6 +169,8 @@ export default function BookingPage() {
         >
           {loading ? t("booking.processing", "Processing...") : t("booking.finalize_button", "Finalise Booking")}
         </button>
+
+        {loading && <div className="loading-indicator">Loading...</div>}
 
         {userBookings.length > 0 && (
           <div className="booking-history">
