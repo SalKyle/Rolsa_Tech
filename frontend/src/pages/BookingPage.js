@@ -9,8 +9,12 @@ import { useTranslation } from "react-i18next";
 
 export default function BookingPage() {
   const { currentUser } = useAuth();
-  // Set the explicit backend URL - must match exactly what's deployed on Render
-  const API_BASE_URL = 'https://rolsa-tech.onrender.com';
+  
+  // Create CORS proxy configuration
+  const API_URL = 'https://rolsa-tech.onrender.com';
+  // Use CORS proxy to bypass CORS restrictions
+  const CORS_PROXY = 'https://corsproxy.io/?';
+  const getProxiedUrl = (url) => `${CORS_PROXY}${encodeURIComponent(url)}`;
 
   const { t } = useTranslation(); 
 
@@ -28,10 +32,9 @@ export default function BookingPage() {
       setLoading(true);
       setUserBookings([]); // Clear existing data while loading
       
+      // Use the CORS proxy for the request
       axios
-        .get(`${API_BASE_URL}/api/bookings/user/${currentUser.id}`, {
-          withCredentials: true  // Important for CORS with credentials
-        })
+        .get(getProxiedUrl(`${API_URL}/api/bookings/user/${currentUser.id}`))
         .then((res) => {
           setUserBookings(res.data);
           setLoading(false);
@@ -42,7 +45,7 @@ export default function BookingPage() {
           setLoading(false);
         });
     }
-  }, [currentUser, API_BASE_URL]);
+  }, [currentUser]);
 
   // Fetch availability when service or date changes
   useEffect(() => {
@@ -50,11 +53,9 @@ export default function BookingPage() {
       const formattedDate = date.toISOString().split("T")[0];
       setLoading(true);
       
+      // Use the CORS proxy for the request
       axios
-        .get(`${API_BASE_URL}/api/bookings/availability`, {
-          params: { date: formattedDate, service },
-          withCredentials: true  // Important for CORS with credentials
-        })
+        .get(getProxiedUrl(`${API_URL}/api/bookings/availability?date=${formattedDate}&service=${service}`))
         .then((res) => {
           setUnavailableSlots(res.data);
           setLoading(false);
@@ -65,7 +66,7 @@ export default function BookingPage() {
           setLoading(false);
         });
     }
-  }, [service, date, API_BASE_URL]);
+  }, [service, date]);
 
   const handleBooking = async () => {
     if (!service || !date || !time) {
@@ -87,8 +88,8 @@ export default function BookingPage() {
         email: currentUser.email
       };
 
-      await axios.post(`${API_BASE_URL}/api/bookings`, payload, {
-        withCredentials: true,  // Important for CORS with credentials
+      // Use the CORS proxy for the POST request
+      await axios.post(getProxiedUrl(`${API_URL}/api/bookings`), payload, {
         headers: {
           'Content-Type': 'application/json'
         }
@@ -98,9 +99,7 @@ export default function BookingPage() {
       alert(t("booking.success", "Booking successful!"));
       
       // Refresh bookings list
-      const updated = await axios.get(`${API_BASE_URL}/api/bookings/user/${currentUser.id}`, {
-        withCredentials: true
-      });
+      const updated = await axios.get(getProxiedUrl(`${API_URL}/api/bookings/user/${currentUser.id}`));
       setUserBookings(updated.data);
       setLoading(false);
     } catch (err) {
